@@ -1,0 +1,142 @@
+@import 'paradox-seraph.css';
+
+:root {
+  --accented-background-color: #1e1e1e;
+  --light-header-color: #ffffff;
+  --select-text-bg-color: #186a9a;
+  --accent-color: #929292;
+  --background-color: #000000;
+  --font-color: #d3d3d3;
+  --codemirror-color: var(--font-color);
+  --header-color: #bebebe;
+  --border-color: #232629;
+  --link-color: #5584aa; 
+  --code-bg-color: #0a0a0a;
+  --hover-bg-color: #050505;
+  --hr-color: #1d3a52;
+  --control-text-color: var(--font-color); 
+  --side-bar-bg-color: #0c0c0c;
+  --control-text-hover-color: var(--header-color);
+  --item-hover-text-color: var(--header-color);
+  --item-hover-bg-color: var(--hover-bg-color); 
+  --bg-color: var(--background-color);
+  --text-color: var(--font-color);
+  --meta-content-color: var(--accent-color);
+  --md-char-color: var(--accent-color);
+  --window-border: 1px solid rgba(0,0,0,.07);
+  --active-file-bg-color: var(--hover-bg-color);
+}
+
+.outline-item:hover {
+  background-color: var(--hover-bg-color);
+}
+
+#write {
+  cursor: -webkit-image-set(url("night/cursor.png") 1x, url("night/cursor@2x.png") 2x) 8 8, auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--light-header-color);
+}
+
+mark {
+  background: #b8b80a
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #141313;
+}
+
+sup.md-footnote {
+  background-color: var(--code-bg-color);
+  color: var(--font-color);
+}
+
+/* right click menu */
+.context-menu {
+  background-color: #141313;
+}
+
+.context-menu.dropdown-menu .divider {
+  background-color: #232629;
+}
+
+/* focus mode */
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+  color: #4f525a !important;
+}
+
+.on-focus-mode .md-end-block:not(.md-focus) img,
+.on-focus-mode .md-task-list-item:not(.md-focus-container)>input {
+  opacity: #4f525a !important;
+}
+
+.on-focus-mode li[cid]:not(.md-focus-container){
+  color: #4f525a;
+}
+
+.on-focus-mode .md-fences.md-focus .CodeMirror-code>*:not(.CodeMirror-activeline) *,
+.on-focus-mode .CodeMirror.cm-s-inner:not(.CodeMirror-focused) * {
+  color: #4f525a !important;
+}
+
+.on-focus-mode .md-focus,
+.on-focus-mode .md-focus-container {
+  color: var(--light-header-color);
+}
+
+.on-focus-mode #typora-source .CodeMirror-code>*:not(.CodeMirror-activeline) * {
+  color: #4f525a !important;
+}
+
+/* CodeMirror Theme: a modified version of ir_black - https://github.com/FarhadG/code-mirror-themes/blob/master/themes/ir_black.css */
+
+.cm-s-inner {
+	font-size: 1em;
+	line-height: 1.5em;
+	font-family: var(--monospace-font);
+	letter-spacing: 0.3px;
+	word-spacing: 1px;
+	background: var(--code-bg-color) !important;
+	color: var(--codemirror-color);
+}
+.cm-s-inner .CodeMirror-lines {
+	padding: 0px 0;
+}
+.cm-s-inner .CodeMirror-gutters {
+	background-color: var(--code-bg-color) !important;
+	border: none;
+}
+.cm-s-inner div.CodeMirror-cursor {	border-left: 3px solid var(--codemirror-color) !important;}
+.cm-s-inner .CodeMirror-selected {	background: #333333 !important;}
+.cm-s-inner .cm-comment {	color: #575757 !important;}
+.cm-s-inner .cm-keyword {	color: #96CBFE !important;}
+.cm-s-inner .cm-string {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-number {	color: #9f85da !important;}
+.cm-s-inner .cm-property {	color: #9f85da !important;}
+.cm-s-inner .cm-atom {	color: #9f85da !important;}
+.cm-s-inner .cm-operator {	color: #96CBFE !important;}
+.cm-s-inner .CodeMirror-linenumber {	color: #7C7C7C !important;}
+/* Not in original Theme... */
+.cm-s-inner .cm-def {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-punctuation {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-variable {	color: #a6f9fc !important;}
+.cm-s-inner .cm-variable-2 {	color: #a6f9fc !important;}
+.cm-s-inner .cm-variable-3 {	color: #a6f9fc !important;}
+.cm-s-inner .cm-meta {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-string-2 {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-qualifier {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-builtin {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-quote {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-bracket {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-tag {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-attribute {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-hr {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-link {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-plus {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-minus {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-error {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-invalidchar {	color: var(--codemirror-color) !important;}
+
+/* End CodeMirror Theme */

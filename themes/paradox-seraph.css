@@ -1,0 +1,458 @@
+:root {
+  --accent-color: #696969; /* nice */
+  --primary-colour: #306797; /* <> */
+  --background-color: white;
+  --border-color: #dbdbdb;
+  --code-bg-color: #f8f8f8; 
+  --font-color: #1f1f1f;
+  --codemirror-color: var(--font-color);
+  --header-color: #000000;
+  --link-color: #2077b2;
+  --control-text-color: #667176;
+  --side-bar-bg-color: #fafafa;
+  --hr-color: var(--primary-colour);
+  --body-font: "Nunito", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --heading-font: "Roboto Slab", serif;
+  --border-radius: 2px;
+  --document-horizontal-margin: 80px;
+  --document-padding-x: 19ch;
+  --font-size: 16px;
+  --h1-fontsize: 2.7rem;
+  --h2-fontsize: 2.2rem;
+  --h3-fontsize: 1.7rem;
+  --h4-fontsize: 1.4rem;
+  --h5-fontsize: 1.2rem;
+  --h6-fontsize: 1.1rem;
+  --line-height: 1.4;
+  --main-content-margin: 0 auto;
+  --main-content-max-width: 100ch;
+  --monospace-font-size: 15px;
+  --monospace-font: "FiraCode", "Inconsolata", "Consolas", "Menlo", "Liberation Mono", Courier, monospace;
+  --monospace-line-height: 1.4;
+  --monospace: var(--monospace-font); /* Fixes source code mode */
+  --nav-width: 200px;
+  --vertical-padding: 40px;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./paradox/Nunito.ttf') format('woff2'), local('Nunito');
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 350;
+  src: url('./paradox/RobotoSlab.ttf') format('woff2'), local('Roboto Slab'), local('RobotoSlab');
+}
+
+@font-face {
+  font-family: 'FiraCode';
+  src: url('./paradox/FiraCode.ttf') format('woff2'), local('Fira Code'), local('Fira-Code');
+}
+
+/* Narrow layout styles */
+@media (max-width: 640px) {
+  :root {
+    --document-padding-x: 4ch;
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  background-color: var(--background-color);
+}
+
+html,
+body {
+  color: var(--font-color);
+  font-family: var(--body-font);
+  line-height: var(--line-height);
+}
+
+#write {
+	/* size of writing area: */
+  padding-left: var(--document-padding-x);
+  padding-right: var(--document-padding-x);
+  max-width: var(--main-content-max-width);
+  box-sizing: border-box;
+}
+
+/**
+ * ---------------------
+ * Block Elements
+ */
+
+/* yaml */
+pre.md-meta-block {
+  background-color: var(--background-color);
+  padding-bottom: .5rem;
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--border-color);
+  font-family: var(--monospace-font);
+}
+
+/* headings */
+/* <> */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--header-color);
+}
+
+/* <> */
+h1 {
+  padding: 5% 4% 4% 4%;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: var(--h1-fontsize);
+  border: 4px solid var(--primary-colour);
+}
+
+h1:not(:first-child) {
+  margin-top: 3rem;
+}
+
+/* <> */
+h2 {
+  content: '';
+  text-align: center;
+  font-size: var(--h2-fontsize);
+  margin: 1.5rem 10%;
+}
+h2:after {
+  content: '';
+	/* height: 1px; */
+	width: 70%;
+	display: block;
+	margin: .2em auto 0;
+	border-bottom: 2px solid var(--primary-colour);
+}
+
+/* <> */
+h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5em;
+  font-size: var(--h3-fontsize);
+}
+/* <> */
+h3 span{
+  padding: 0 1em;
+  border-left: 2px solid var(--primary-colour);
+  border-right: 2px solid var(--primary-colour);
+}
+
+h4{
+  color: var(--header-color);
+  margin-top: 1rem;
+  margin-bottom: 0.4em;
+  font-size: var(--h4-fontsize );
+}
+/* <> */
+h4 span{
+  padding: 1px 0 0.1em 0;
+  border-bottom: 2px dashed var(--primary-colour);
+}
+
+
+h5{
+  color: var(--header-color);  
+  margin-top: 1rem;
+  margin-bottom: 0.2em;
+  font-size: var(--h5-fontsize);
+}
+
+h6{
+  font-style: oblique;
+  color: var(--header-color);  
+  margin-top: 1rem;
+  margin-bottom: 0.2em;
+  font-size: var(--h6-fontsize);
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+/* table */
+table {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: var(--side-bar-bg-color);
+}
+
+td,
+th {
+  border-style: solid;
+  border-color: var(--border-color);
+  border-width: 1px;
+  padding: .35rem .7rem
+}
+
+li p {
+  margin: 0;
+}
+
+/* .task-list {
+  padding-left: 0;
+}
+
+.task-list-item {
+  padding-left: 1.5em;
+  margin-bottom: 0rem;
+} */
+
+/* Task list Checkbox styling from https://github.com/h16nning/typora-gitbook-theme/blob/main/src/gitbook-teal.css */
+
+.md-task-list-item > input:before,
+input[type="checkbox"]:before {
+  border-radius: 0.2rem;
+  margin-top: -0.08rem;
+  margin-left: -0.1rem;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--font-color);
+  background-color: var(--background-color);
+  content: " ";
+  display: block;
+  transition-duration: 0.3s;
+  transition-property: background-color;
+}
+
+.md-task-list-item:hover > input:before,
+input[type="checkbox"]:hover:before {
+  background-color: var(--primary-colour);
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before,
+input[type="checkbox"]:checked:before {
+  background-color: var(--primary-colour);
+}
+
+.md-task-list-item:hover > input:checked:before,
+.md-task-list-item:hover > input[checked]:before,
+input[type="checkbox"]:hover:checked:before {
+  background-color: var(--primary-colour);
+}
+
+.md-task-list-item > input:after,
+.md-task-list-item > input:after,
+input[type="checkbox"]:after {
+  transform: rotate(-45deg);
+  position: absolute;
+  border: 2px solid white;
+  border-top: 0;
+  border-right: 0;
+  top: 0.16rem;
+  left: 0.1rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  content: " ";
+  opacity: 0;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+}
+
+.md-task-list-item > input:checked:after,
+.md-task-list-item > input[checked]:after,
+input[type="checkbox"]:checked:after {
+  opacity: 1;
+}
+
+
+
+blockquote {
+  font-style: italic; /* <> */
+  margin: 1rem 0;
+  padding-left: 2ch;
+  margin-left: .5ch;
+  position: relative;
+  overflow: visible;   /* <> */
+  border-left: 4px solid var(--primary-colour);
+  color: var(--accent-color);
+}
+
+/* horizontal line */
+hr {
+  border: none;
+  border-bottom: 2px solid var(--hr-color);
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+/* list markers */
+ol > li::marker, ul > li::marker {
+	color: var(--primary-colour);
+	font-weight: bold;
+}
+
+p {
+  margin: 0.1em 0;
+}
+
+/**
+ * Code Fences
+ * see http:/*support.typora.io/Code-Block-Styles
+ */
+
+.cm-s-inner .CodeMirror-gutters {
+   background: var(--code-bg-color);
+}
+
+.code-tooltip {
+  box-shadow: none;
+  border-radius: var(--border-radius);
+  background-color: var(--code-bg-color);
+  border-color: var(--border-color);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.code-tooltip input {
+  outline: none;
+  width: 20ch;
+}
+
+.md-fences .code-tooltip {
+  bottom: -1.8rem;
+  padding: none;
+}
+
+.md-fences.md-focus .cm-s-inner {
+  /* Remove bottom right border radius when tooltip is shown */
+  border-bottom-right-radius: 0;
+}
+
+/* code tooltip autocomplete list */
+
+.autoComplt-hint {
+  background-color: transparent !important;
+  margin: 0 !important;
+  padding: 0.125rem 0.375rem !important;
+  color: var(--text-color) !important;
+  line-height: var(--line-height) !important;
+  height: 1.4rem !important;
+}
+
+.autoComplt-hint-selected {
+  background-color: var(--link-color) !important;
+  color: var(--background-color) !important;
+}
+
+/* basic styles */
+
+.md-fences,
+code,
+tt {
+  border: 1px solid var(--border-color);
+  background-color: var(--code-bg-color);
+  font-family: var(--monospace-font);
+  font-size: var(--monospace-font-size);
+  border-radius: .25rem;
+  padding: 0 .125rem;
+  line-height: var(--monospace-line-height);
+}
+
+.md-fences {
+  margin-bottom: 18px;
+  margin-top: 15px;
+  padding: 0.2em 1em;
+  padding-top: 8px;
+  padding-bottom: 6px;
+}
+
+a {
+  color:  var(--link-color);
+}
+
+
+/**
+ * Control UI (optional)
+ */
+
+.outline-item:hover {
+  color: var(--header-color);
+}
+
+#write div.md-toc-tooltip {
+	background-color: var(--background-color);
+}
+
+/* CodeMirror Theme: a modified version of ir_black - https://github.com/FarhadG/code-mirror-themes/blob/master/themes/ir_black.css */
+
+.cm-s-inner {
+	font-size: 1em;
+	line-height: 1.5em;
+	font-family: var(--monospace-font);
+	letter-spacing: 0.3px;
+	word-spacing: 1px;
+	background: var(--code-bg-color) !important;
+	color: var(--codemirror-color);
+}
+.cm-s-inner .CodeMirror-lines {
+	padding: 0px 0;
+}
+.cm-s-inner .CodeMirror-gutters {
+	background-color: var(--code-bg-color) !important;
+	border: none;
+}
+.cm-s-inner div.CodeMirror-cursor {	border-left: 3px solid var(--codemirror-color) !important;}
+.cm-s-inner .CodeMirror-selected {	background: #afafaf !important;}
+.cm-s-inner .cm-comment {	color: #575757 !important;}
+.cm-s-inner .cm-keyword {	color: #1675ce !important;}
+.cm-s-inner .cm-string {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-number {	color: #5b1d68 !important;}
+.cm-s-inner .cm-property {	color: #5b1d68 !important;}
+.cm-s-inner .cm-atom {	color: #5b1d68 !important;}
+.cm-s-inner .cm-operator {	color: #173d61 !important;}
+.cm-s-inner .CodeMirror-linenumber {	color: #7C7C7C !important;}
+/* Not in original Theme... */
+.cm-s-inner .cm-def {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-punctuation {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-variable {	color: #125d5f !important;}
+.cm-s-inner .cm-variable-2 {	color: #125d5f !important;}
+.cm-s-inner .cm-variable-3 {	color: #125d5f !important;}
+.cm-s-inner .cm-meta {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-string-2 {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-qualifier {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-builtin {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-quote {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-bracket {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-tag {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-attribute {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-hr {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-link {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-plus {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-minus {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-error {	color: var(--codemirror-color) !important;}
+.cm-s-inner .cm-invalidchar {	color: var(--codemirror-color) !important;}
+
+/* End CodeMirror Theme */
