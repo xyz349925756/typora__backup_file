@@ -289,8 +289,8 @@ tt {
 }
 
 code {
-    background-color: #f3f4f4;
-    padding: 0 2px 0 2px;
+     /**background-color: #f3f4f4;
+   padding: 0 2px 0 2px;**/
 }
 
 .md-fences {
