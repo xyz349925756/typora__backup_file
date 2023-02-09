@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+/* CSS Document */
+:root {
+    --code-background: #282a36;
+    --code-current-line: #44475a;
+    --code-section: #44475a;
+    --code-foreground: #f8f8f2;
+    --code-comment: #6272a4;
+    --code-cyan: #8be9fd;
+    --code-green: #50fa7b;
+    --code-orange: #ffb86c;
+    --code-pink: #ff79c6;
+    --code-purple: #bd93f9;
+    --code-red: #ff5555;
+    --code-yellow: #f1fa8c;
+    --code-math: #151320;
+}
+
+/** code highlight */
+
+.cm-s-inner .cm-variable {
+    color: var(--code-green)
+}
+
+.cm-s-inner .cm-operator {
+    color: var(--code-pink)
+}
+
+.cm-s-inner .cm-property {
+    color: var(--code-foreground);
+}
+
+.cm-s-inner .cm-keyword {
+    color: var(--code-pink);
+}
+
+.cm-s-inner .cm-tag {
+    color: var(--code-pink);
+}
+
+.cm-s-inner .cm-attribute {
+    color: var(--code-green);
+}
+
+.CodeMirror div.CodeMirror-cursor {
+    border-left: 1px solid var(--code-foreground);
+    z-index: 3;
+}
+
+.cm-s-inner .cm-string,
+.cm-s-inner .cm-string-2 {
+    color: var(--code-yellow);
+}
+
+.cm-s-inner .cm-comment,
+.cm-s-inner.cm-comment {
+    color: var(--code-comment);
+}
+
+.cm-s-inner .cm-header,
+.cm-s-inner.cm-header,
+.cm-s-inner .cm-def,
+.cm-s-inner.cm-def {
+    color: var(--code-cyan);
+}
+
+.cm-s-inner .cm-quote,
+.cm-s-inner.cm-quote {
+    color: #57ac57;
+}
+
+.cm-s-inner .cm-hr {
+    color: #d8d5d5;
+}
+
+.cm-s-inner .cm-link {
+    color: #d3d3ef;
+}
+
+.cm-s-inner .cm-negative {
+    color: #d95050;
+}
+
+.cm-s-inner .cm-positive {
+    color: #50e650;
+}
+
+.cm-s-inner .cm-meta,
+.cm-s-inner .cm-qualifier {
+    color: var(--code-green);
+}
+
+.cm-s-inner .cm-builtin {
+    color: var(--code-green);
+}
+
+.cm-s-inner .cm-bracket {
+    color: var(--code-foreground);
+}
+
+.cm-s-inner .cm-atom,
+.cm-s-inner.cm-atom {
+    color: var(--code-cyan);
+}
+
+.cm-s-inner .cm-number {
+    color: var(--code-purple);
+}
+
+.cm-s-inner .cm-variable {
+    color: var(--code-foreground);
+}
+
+.cm-s-inner .cm-variable-2 {
+    color: var(--code-foreground);
+}
+
+.cm-s-inner .cm-variable-3 {
+    color: var(--code-cyan);
+    font-style: italic;
+}
+
+.CodeMirror-selectedtext,
+.CodeMirror-selected {
+    background: var(--code-current-line);
+    color: #fff !important;
+    text-shadow: none;
+}
