@@ -231,12 +231,9 @@ pre.md-fences-advanced.md-focus .md-fences-adv-panel {
 
 /*code snippet*/
 #write code, tt {
-    margin: 0 4px;
-    color: var(--drake-highlight);
-    border: .1rem solid #e8eaed;
-    background: #f8f9fa;
-    border-radius: 4px;
-    padding: .1rem .4rem;
+    margin: 0 2px;
+    border-bottom: solid 1px red;
+    padding: 4px;
 }
 
 /*variable*/
@@ -273,14 +270,41 @@ var {
 }
 
 /*quote block*/
+/* blockquote { */
+    /* color: var(--blockquote-color) !important; */
+    /* border-radius: 4px; */
+    /* padding: 10px 16px; */
+    /* background-color: var(--blockquote-bg-color); */
+    /* position: relative; */
+    /* border-left: none; */
+/* } */
+
+blockquote:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 4px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    /* background-color: #8393ad; */
+    border-radius: 4px;
+}
+
 blockquote {
-    color: var(--blockquote-color) !important;
+	font-family: 'Cantarell Thin';
+    color: #000;
     border-radius: 4px;
     padding: 10px 16px;
-    background-color: var(--blockquote-bg-color);
+    /* background-color: var(--blockquote-bg-color); */
+	background-image: linear-gradient(to left,white,#0288d1);
     position: relative;
     border-left: none;
+	/* font-family: 'HanyiSentySuciTablet'; */
+	/* font-size: 13px; */
 }
+
+
 
 #write strong {
     color: var(--strong-color);
@@ -299,7 +323,7 @@ blockquote {
     border-bottom: .1rem solid var(--a-color);
 }
 #write a {
-    color: var(--a-color);
+    color: purple;
     text-decoration: none;
 }
 #write h2 a .md-plain {
@@ -370,29 +394,17 @@ h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
 }
 
 h1 {
-    font-size: 2rem;
     text-align: center;
-    margin-top: 0;
 }
-/* 
-#e98737
-#bf7d4d
-#306959
-#2263ad
-#9072aa
-#b0b1ac
-  */
+
 h1 span.md-plain{
-	/* background: #f44336; */
-	/* border-radius: 0px 10px 0px 0px; */
-	border-radius: 100%;
-	/* padding:1px 15px 2px; */
-	padding: 25px;
-	color: #000000;
-	/*border-top: inset 5px #ffffff; */
-	border-left: outset 5px #000000;
-	/* border-bottom: inset 5px #f44336; */
-	border-right: inset 5px #f44336;
+    border-radius: 5px;
+    padding: 2px 30px 4px;
+    /* color: white; */
+    border-left: 100px solid darkturquoise;
+    border-top: 30px solid transparent;
+    border-right: 100px solid darkorange;
+    border-bottom: 0px solid darkorange;
 }
 
 h1 span.md-plain.fa-star:before {
@@ -400,70 +412,77 @@ h1 span.md-plain.fa-star:before {
 }
 
 h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
+    border-bottom: solid 1px darkorange;
+    border-right: double 90px #0288d1;
+    border-radius: 0px 5px 5px 0px;
 }
 h2 span.md-plain{
-	background: #ffd800;
-	border-radius: 0px 10px 10px 0px;
-	padding: 1px 10px;
-	color: #ffffff;
-	/* border-left: outset 6px #f44336; */
-	/* border-right: inset 6px #f44336; */
+    background-image: linear-gradient(to right,darkorange,#2196F3);
+    border-radius: 0px 5px 0px 0px;
+    padding: 2px 30px 2px;
+    color: rgb(255, 255, 255);
+    border-bottom: solid 1px orange;
+    border-top: solid 1px #0288d1;
 }
 
-.on-focus-mode h2.md-end-block.md-heading:not(.md-focus):not(.md-focus-container):after {
-    background-color: var(--blur-text-color) !important;
-}
+/* .on-focus-mode h2.md-end-block.md-heading:not(.md-focus):not(.md-focus-container):after { */
+    /* background-color: var(--blur-text-color) !important; */
+/* } */
 
 h3 {
-    font-size: 1.4rem;
+    border-bottom: solid 1px darkcyan;
+    border-radius: 0px 5px 0px 0px;
 }
 
 h3 span.md-plain{
-	background: #9C27B0;
-	border-radius: 1px 15px;
-	padding: 1px 15px 2px;
-	color: #ffffff;
-	/* border-left: outset 6px #f44336; */
-	/* border-right: inset 6px #f44336; */
+    background-image: linear-gradient(to right,darkcyan,darkgray);
+    border-radius: 0px 6px 0px 0px;
+    padding: 2px 30px 2px;
+    color: white;
+    border-bottom: solid 1px darkcyan;
+    border-top: solid 1px darkgray;
 }
 
 h4 {
-    font-size: 1.2rem;
+    border-bottom: solid 1px darkred;
+    border-right: ridge 20px darkred;
+    border-radius: 0px 4px;
 }
 h4 span.md-plain{
-    background: #2196F3;
-    border-radius: 15px 1px;
-    padding: 1px 15px 2px;
-    color: #ffffff;
-    /* border-left: outset 6px #f44336; */
-    /* border-right: inset 6px #f44336; */
+	background-image: linear-gradient(to right,#f44336,#ff9800);
+	border-radius: 0px 5px 0px 0px;
+	padding: 2px 30px 2px;
+	color: white;
+	border-top: solid 1px #FF9800;
+	border-bottom: solid 1px red;
 }
 
 h5 {
-    font-size: 1rem;
+    border-bottom: solid 1px cyan;
+    border-right: groove 20px cyan;
 }
 h5 span.md-plain{
-	background: #009688;
-	border-radius: 10px 10px 0px 0px;
-	padding: 1px 15px 2px;
-	color: #ffffff;
-	/* border-left: outset 6px #f44336; */
-	/* border-right: inset 6px #f44336; */
+    background-image: linear-gradient(to right,cyan,#2196F3);
+    border-radius: 0px 4px 0px 0px;
+    padding: 2px 30px 2px;
+    color: white;
+    border-top: solid 1px #2196F3;
+    border-bottom: solid 1px cyan;
 }
 
 h6 {
-    font-size: 1rem;
+    border-bottom: solid 1px darkgreen;
+    border-right: dotted 20px darkgreen;
 }
 h6 span.md-plain{
-	background: #8BC34A;
-	border-radius: 0px 0px 10px 10px;
-	padding: 1px 15px 2px;
-	color: #ffffff;
-	/* border-left: outset 6px #f44336; */
-	/* border-right: inset 6px #f44336; */
+    background-image: linear-gradient(to right,#673AB7,#4CAF50);
+    border-radius: 0px 4px 0px 0px;
+    padding: 2px 30px 2px;
+    color: white;
+    border-top: solid 1px #673AB7;
+    border-bottom: solid 1px green;
 }
+
 
 h1:hover a.anchor,
 h2:hover a.anchor,
@@ -520,7 +539,7 @@ hr {
     height: 2px;
     padding: 0;
     margin: 16px 0;
-    background-color: var(--horizontal-divider-color);
+	background-image: linear-gradient(to left, #42a5f5, white);
     border: 0 none;
     overflow: hidden;
     box-sizing: content-box;
@@ -592,7 +611,8 @@ ol:last-child {
 #write table {
     margin-top: 1rem;
     word-break: initial;
-    background-color: var(--table-bg-color);
+	background-image: linear-gradient(to right, #428bca15, #428bca65);
+	border: 1px solid #285e8e;
 }
 table tr {
     border-top: .1em solid var(--table-border-color);
@@ -637,13 +657,14 @@ table tr td:last-child {
 
 /* height light */
 #write mark {
-    border: .1em solid var(--height-light-border-color);
-    color: var(--height-light-color);
+    border-bottom: 0.1em solid #f44336;
+    color: #f44336;
     background-color: transparent;
-    padding: .1rem .5rem;
-    border-radius: 2rem;
-    margin: 0 .2rem;
-    font-size: .95rem;
+    padding: 0.1rem 0.5rem;
+    /* border-radius: 2rem; */
+    margin: 0 0.2rem;
+    /* font-size: 14px; */
+    /* font-family: 'Hanyi Senty Triumph Calligraphy'; */
 }
 
 /*shortcut*/
