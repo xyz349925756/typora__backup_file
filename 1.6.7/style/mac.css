@@ -1,0 +1,187 @@
+#typora-sidebar:hover .sidebar-tab-btn {
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+  opacity: 1;
+}
+
+.html-for-mac .use-file-tree-style .sidebar-footer {
+  position: initial;
+}
+
+.html-for-mac #typora-sidebar:hover #file-library-tree {
+  padding-bottom: 25px;
+}
+
+.html-for-mac .sidebar-footer .sidebar-footer-item {
+  padding-top: 6px;
+  padding-bottom: 3px;
+}
+
+.html-for-mac [show-os='node'] {
+  display: none;
+}
+
+.footer-btn {
+  font-size: 12px;
+}
+
+#switch-file-list-btn {
+  float: left;
+}
+
+#file-library-tree,
+#file-library-list {
+  padding-bottom: 60px;
+}
+
+#write.first-line-indent .md-p:empty {
+  padding-left: 2em;
+}
+
+#file-library-search-input {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  line-height: 16px;
+  margin: 8px 16px 10px 0;
+  width: 0;
+  -webkit-flex: 1;
+  flex: 1;
+  background: transparent;
+}
+
+.ty-show-search #file-library-search-input {
+  animation-name: expandFromRight;
+  animation-duration: 0.3s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  padding-right: 72px;
+}
+
+.html-for-mac .ty-search-item-line,
+.html-for-mac .ty-search-item-line-pass {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.html-for-mac .ty-search-item-summary {
+  padding-bottom: 4px;
+}
+
+.html-for-mac .file-list-item-count {
+  margin-bottom: 0;
+}
+
+.html-for-mac .ty-cm-lang-input:empty {
+  padding-left: 50% !important; 
+  position: relative;
+}
+
+.html-for-mac .ty-cm-lang-input:empty:after {
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.html-for-mac video {
+  transform: translateZ(0);
+}
+
+.modal .modal-dialog{
+  text-align:center;
+  /*height: 90%;*/
+}
+
+.modal-content {
+  border: none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /*top: 50%;
+  transform: translateY(-50%);*/
+}
+
+.btn {
+  padding: 2px 16px;
+  border-color: transparent;
+}
+
+.btn:hover,
+.btn-primary:hover {
+  border-color: transparent;
+}
+
+#table-insert-dialog {
+  top: 0;
+}
+
+.modal-backdrop.in {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.mac-seamless-mode .modal-dialog {
+  font-size: 12.5px;
+  margin-top: 140px;
+}
+
+.modal-title {
+  font-size: 1.15em;
+  font-weight: bold;
+}
+
+.modal-header {
+  border: none;
+}
+
+@media (min-width: 340px) {
+  .modal-dialog {
+    width: 300px;
+    margin: 5% auto;
+  }
+}
+
+@media (max-height: 380px) {
+  .mac-seamless-mode .modal-dialog,
+  .modal-dialog {
+    margin-top: 40px;
+  }
+}
+
+
+[data-tag='content-lost'] .modal-dialog{
+  width: 400px;
+}
+
+.btn-primary {
+  background-color: #007aff;
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+  background-color: rgba(0, 122, 255, 0.9);
+}
+
+.ty-show-notification .md-notification-container {
+  background: var(--bg-color);
+  box-shadow: 0 1px 0 rgb(12 13 14 / 10%), 0 1px 3px rgb(12 13 14 / 10%), 0 4px 20px rgb(12 13 14 / 4%), 0 1px 1px rgb(12 13 14 / 3%);
+}
+
+#md-notification:before {
+  top: 15px;
+}
+
+.mac-seamless-mode #md-notification:before {
+  padding-top: var(--title-bar-height);
+}
+
+.cm-s-native-scroll .CodeMirror-scroll {
+  overflow-x: hidden;
+  /*margin-bottom: -50px;
+  margin-right: -50px;
+  padding-bottom: 50px;*/
+}
+
+/*.cm-s-native-scroll .CodeMirror-gutter {
+  padding-bottom: 0;
+  margin-bottom: -50px;
+}*/
