@@ -774,7 +774,7 @@ mark .md-meta {
   vertical-align: middle;
 }
 .outline-item {
-  padding-top: 3px;
+  padding-top: 1px;
   padding-bottom: 3px;
   cursor: pointer;
 }

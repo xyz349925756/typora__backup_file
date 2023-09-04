@@ -288,7 +288,7 @@ p > img:only-child {
 .md-tag,
 [md-inline="linebreak"] {
   font-family: var(--monospace);
-  opacity: 0.6;
+  opacity: 0.9;
   color: inherit;
   white-space: pre-wrap;
 }
@@ -2442,7 +2442,7 @@ script.math-jax-error {
   min-width: 100%;
 }
 .file-node-content {
-  padding-top: 2px;
+  /* padding-top: 2px; */
   cursor: default;
   color: #777;
   color: #9bb6bb;
