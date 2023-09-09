@@ -1,0 +1,196 @@
+/* 本文件为列表样式设置 */
+/* ================================================================= */
+
+
+#write>:is(ul, ol):first-child {
+  margin-top: 10px;
+}
+
+li p.first {
+  display: inline-block;
+}
+
+li>:is(ul, ol) {
+  margin: 0;
+}
+
+:is(ol, ul) li p {
+  margin-bottom: 5px;
+}
+
+blockquote :is(ol, ul) li p {
+  margin: 2px 0 !important;
+}
+
+/* —————————————————————————————————— 有序列表 —————————————————————————————————— */
+#write ol {
+  list-style  : var(--level-1-orderly-list-symbol-style);
+  padding-left: var(--orderly-list-level-indentation);
+}
+
+#write ol ol {
+  list-style-type: var(--level-2-orderly-list-symbol-style);
+}
+
+#write ol ol ol {
+  list-style-type: var(--level-more-orderly-list-symbol-style);
+}
+
+/* 有序列表前符号 */
+#write ol li::marker {
+  font-family: "HarmonyOS-Regular";
+  font-size  : var(--orderly-list-symbol-size);
+  color      : var(--orderly-list-symbol-color);
+}
+
+/* —————————————————— 有序列表层级竖线 —————————————————— */
+#write ol ol::before {
+  display    : var(--orderly-list-level-line-state);
+  border-left: var(--orderly-list-left-level-line);
+  content    : " ";
+  position   : absolute;
+  left       : -12px;
+  top        : 0;
+  bottom     : 0;
+}
+
+/* 调整层级线间距（除一级有序列表） */
+#write ol>li>ol>li>ol::before {
+  margin-left: -1.5px;
+}
+
+#write blockquote ol ol::before {
+  left: -11px;
+}
+
+/* —————————————————————————————————— 无序列表 —————————————————————————————————— */
+#write ul {
+  list-style  : none;
+  position    : relative;
+  padding-left: var(--unordered-list-level-indentation);
+}
+
+#write :is(ul>li, ul>li>ul>li, ul>li>ul>li>ul>li):before {
+  font-family: "iconfont";
+  position   : absolute;
+  top        : 3px;
+  font-size  : var(--unordered-list-symbol-size);
+  color      : var(--orderly-list-symbol-color);
+}
+
+#write ul>li:not(.task-list-item)::before {
+  content: "\e628";
+  left   : -18px;
+}
+
+#write ul>li>ul>li:not(.task-list-item)::before {
+  content: "\e601";
+  left   : -28px;
+}
+
+#write ul>li>ul>li>ul>li:not(.task-list-item)::before {
+  content: "\e60c";
+  left   : -18px;
+}
+
+/* —————————————————— 无序列表层级竖线 —————————————————— */
+#write ul ul::after {
+  display    : var(--unordered-list-level-line-state);
+  border-left: var(--unordered-list-left-level-line) !important;
+  content    : " ";
+  position   : absolute;
+  left       : -11.5px;
+  top        : -4px;
+  bottom     : 0px;
+}
+
+#write blockquote ul ul::after {
+  left: -12px;
+}
+
+
+/* —————————————————————————————————— 任务列表 —————————————————————————————————— */
+#write ul li.task-list-item {
+  padding-left: 8px;
+  position    : relative;
+}
+
+/* —————————————————— 任务列表方框设置 —————————————————— */
+#write ul li.md-task-list-item>input {
+  margin-left     : -1.3em;
+  appearance      : initial;
+  display         : block;
+  background-color: var(--task-list-box-bg-color) !important;
+  position        : absolute;
+  top             : 1px;
+  left            : 2px;
+  border          : var(--task-list-box-border);
+  border-radius   : var(--task-list-box-border-radius);
+  margin-top      : 4.5px !important;
+  height          : var(--task-list-box-size);
+  width           : var(--task-list-box-size);
+  transition      : all .3s ease;
+  padding         : 0 !important;
+  /* box-shadow   : 0px 0px 5px 0px rgb(0 0 0 / 10%); */
+}
+
+#write ul li.md-task-list-item>input:hover {
+  background-color: var(--hover-task-list-box-bg-color) !important;
+}
+
+/* 任务列表完成 */
+#write ul li.md-task-list-item input:checked {
+  background-color: var(--task-list-checked-box-bg-color) !important;
+  border-color    : transparent;
+}
+
+#write ul li.md-task-list-item>input:checked::before {
+  font-family: 'iconfont';
+  content    : "\e666";
+  font-size  : var(--task-list-checked-tick-size);
+  color      : var(--task-list-checked-tick-color);
+  position   : absolute;
+  top        : 5%;
+  left       : 4%;
+  font-weight: bold;
+}
+
+/* 任务列表已完成文本样式 */
+#write ul li.task-list-done p span {
+  text-decoration: line-through;
+  color          : var(--task-list-checked-text-color) !important;
+}
+
+blockquote ul li.md-task-list-item.task-list-done {
+  color: var(--blockquote-task-list-checked-text-color);
+}
+
+/* —————————————————— 任务列表层级竖线 —————————————————— */
+#write .task-list-item.md-task-list-item ul::after {
+  display    : var(--task-list-level-line-state);
+  border-left: var(--task-list-left-level-line);
+  content    : " ";
+  position   : absolute;
+  left       : -19px !important;
+  top        : -1px !important;
+}
+
+#write blockquote .task-list-item.md-task-list-item ul::after {
+  left: -18px !important;
+}
+
+/* 光标所在列表的符号样式 */
+li.md-focus-container::marker,
+li.md-focus-container::before {
+  color     : var(--focus-list-symbol-color) !important;
+  transition: all .3s ease;
+}
+
+li.md-focus-container>input:not([checked]) {
+  border-color: var(--focus-list-symbol-color) !important;
+}
+
+#write ul li.md-focus-container.md-task-list-item>input[checked] {
+  border-color    : transparent !important;
+  background-color: var(--focus-list-symbol-color) !important;
+}
