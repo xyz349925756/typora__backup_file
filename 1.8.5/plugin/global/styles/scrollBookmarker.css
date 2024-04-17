@@ -1,0 +1,39 @@
+#plugin-scroll-bookmarker {
+    right: 25px;
+    max-width: 400px;
+    max-height: 500px;
+    overflow-y: overlay;
+}
+
+#plugin-scroll-bookmarker .bookmark-item {
+    display: flex;
+    margin: 0.3rem;
+    align-items: center;
+    padding-left: 0.5em;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+#plugin-scroll-bookmarker .bookmark-item:hover {
+    background-color: var(--item-hover-bg-color);
+}
+
+#plugin-scroll-bookmarker .bookmark-item-content {
+    padding-right: 10px;
+    /* word-wrap: break-word; */
+    /* flex-wrap: wrap; */
+    flex: 1;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+#plugin-scroll-bookmarker .bookmark-btn {
+    font-size: 17px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+#plugin-scroll-bookmarker .bookmark-btn:hover {
+    color: #f70505;
+}

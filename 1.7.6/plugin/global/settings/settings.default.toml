@@ -1,0 +1,785 @@
+# 1. 如果您对 toml 格式不太了解，可以花三分钟时间学习一下：https://toml.io/cn/v1.0.0
+# 2. 修改配置前，请读本目录下的【请读我.md】文件
+# 3. 如何修改配置？答：将此文件的内容粘贴到 settings.user.toml 文件中，接着关闭此文件，根据说明文字修改 settings.user.toml 文件，最后重启 Typora
+# 4. 所有插件都允许单独开启/关闭，开发者鼓励您修改配置，以符合自身需求
+
+
+############### global ###############
+# 通用配置
+[global]
+# 所有插件的总开关，若为false，则关闭全部插件
+ENABLE = true
+# 如果你使用了自定义图表插件（kanban、markmap、echarts等等）并且使用了交互模式（INTERACTIVE_MODE置为true），那么下面两个配置请至少一个置为true，否则你将不能退出交互模式，修改fence
+# 为【自定义图表】添加一个【编辑】按钮（当点击【编辑】按钮时退出交互模式）
+CLICK_EDIT_BUTTON_TO_EXIT_INTERACTIVE_MODE = true
+# ctrl+click【自定义图表】退出交互模式
+CTRL_CLICK_TO_EXIST_INTERACTIVE_MODE = false
+
+
+############### window_tab ###############
+[window_tab]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "标签页管理"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 当Typora使用【一体化】窗口样式时，是否隐藏标题栏
+HIDE_WINDOW_TITLE_BAR = false
+# 拖拽排序标签页的方式(1 or 2)
+# 1类似于idea，2类似于vscode
+DRAG_STYLE = 1
+# 鼠标向下拖拽标签，当拖拽的垂直距离超过标签本身的5倍高度时，视为新建窗口
+HEIGHT_SCALE = 5
+# 总是在当前标签页打开(可以在右键菜单中设置)
+# 不建议设置为true，因为【总是】在当前标签页打开，而当你重启Typora时只有一个标签页，所以你永远就只会有一个标签，如此就失去了此插件的意义了
+# 这个配置的使用方法是：当你打开多个标签后，通过右键菜单将其临时设置为true，实现在当前标签页打开文件，每次重启后就会自动恢复为false
+LOCAL_OPEN = false
+# 调整content的top，以免被tab遮挡
+CHANGE_CONTENT_TOP = true
+# 调整.md-notification-container的z-index，以免被tab遮挡
+CHANGE_NOTIFICATION_Z_INDEX = true
+# 关闭标签页的快捷键
+CLOSE_HOTKEY = ["ctrl+w"]
+# 切换下一个标签页的快捷键
+SWITCH_NEXT_TAB_HOTKEY = ["ctrl+PageDown", "ctrl+Tab"]
+# 切换上一个标签页的快捷键
+SWITCH_PREVIOUS_TAB_HOTKEY = ["ctrl+PageUp", "ctrl+shift+Tab"]
+# 当鼠标位于标签页时，可以使用ctrl+wheel切换标签页
+CTRL_WHEEL_TO_SCROLL = true
+# 当鼠标位于标签页时，可以点击鼠标中键关闭标签页
+MIDDLE_CLICK_TO_CLOSE = true
+# typora1.1版本以后，支持使用锚点跳转到本地文件，是否拦截处理（从新建窗口改成新建标签页）
+INTERCEPT_INTERNAL_AND_LOCAL_LINKS = true
+
+
+############### search_multi ###############
+[search_multi]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "全局多关键字搜索"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 快捷键
+HOTKEY = "ctrl+shift+p"
+# 允许【ctrl+鼠标拖拽】拖动模态框
+ALLOW_DRAG = true
+# 模态框自动隐藏
+AUTO_HIDE = false
+# 当输入框为空，且键入backspace时，隐藏模态框
+BACKSPACE_TO_HIDE = true
+# 打开文件后，自动聚焦
+# 设置此选项时为了键盘党可以通过键盘上下键、ctrl+enter进行快速操作，如果你是鼠标党，可以置为false
+REFOUCE_WHEN_OPEN_FILE = true
+# 搜索内容时大小写敏感(此选项不必手动调整，可以在UI设置)
+CASE_SENSITIVE = false
+# 将文件路径加入搜索内容(此选项不必手动调整，可以在UI设置)
+INCLUDE_FILE_PATH = true
+# 搜索时联动其他插件(此选项不必手动调整，可以在UI设置)
+LINK_OTHER_PLUGIN = false
+# 当处于联动状态时，search_multi模态框隐藏时，联动插件跟着隐藏
+LINK_PLUGIN_AUTO_HIDE = false
+# 展示文件路径时使用相对路径
+RELATIVE_PATH = true
+# 关键词按空格分割
+SEPARATOR = " "
+# hint展示文件修改时间
+# 设置此选项时为了通过额外的信息帮助查找文件，我嫌弃它扎眼就没开启，如果你总是找不到目标文件，可以开启
+SHOW_MTIME = false
+# 查找文件的最大尺寸。大于MAX_SIZE的文件在搜索时将被忽略。若<0则不过滤
+# Typora只支持打开小于2000000字节的文件，不建议修改成比2000000还大的值，毕竟找到了也不能在typora里打开
+MAX_SIZE = 2000000
+# Typora允许打开的文件的后缀名，此外的文件在搜索时将被忽略
+# 不建议新增后缀名，毕竟找到了也不能在typora里打开
+ALLOW_EXT = ["", "md", "markdown", "mdown", "mmd", "text", "txt", "rmarkdown", "mkd", "mdwn", "mdtxt", "rmd", "mdtext", "apib"]
+
+
+############### multi_highlighter ###############
+[multi_highlighter]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "多关键字高亮"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 快捷键
+HOTKEY = "ctrl+shift+h"
+# 允许【ctrl+鼠标拖拽】拖动
+ALLOW_DRAG = true
+# 当输入框为空，且键入backspace时，隐藏模态框
+BACKSPACE_TO_HIDE = true
+# 大小写敏感(此选项不必手动调整，可以在UI设置)
+CASE_SENSITIVE = false
+# 关键词按空格分割
+SEPARATOR = " "
+# 展示执行按钮
+# 我嫌弃它丑就没开启，如果你是鼠标党，可以开启
+SHOW_RUN_BUTTON = false
+# 打开其他文件时自动重新搜索
+RESEARCH_WHILE_OPEN_FILE = true
+# 点击时显示当前的索引数
+SHOW_CURRENT_INDEX = true
+# 定位时高亮关键字出现提示边框
+SHOW_KEYWORD_OUTLINE = true
+# 定位时高亮关键字提示所在行
+SHOW_KEYWORD_BAR = true
+# 高亮的颜色
+# 每个关键字按序对应一个颜色，颜色数量不限，你可以修改、继续添加颜色
+STYLE_COLOR = [
+    # 浅一些的颜色
+    '#bbeeff', '#ffbbcc', '#88ee88', '#ccbbff', '#ffee88', '#FFFFa0', '#88cccc', '#ffbb88', '#cccccc', '#ffaabb',
+    # 深一些的颜色
+    '#99ccff', '#ff99cc', '#66cc66', '#cc99ff', '#ffcc66', '#FFFF80', '#dd9966', '#aaaaaa', '#66aaaa', '#dd6699',
+]
+# 当搜索关键字数量超出STYLE_COLOR范围时面板显示的颜色（页面中无颜色）
+# 20个关键字肯定够用了，此选项没太大意义
+# 就算20个真的不够用，那我也是建议你给STYLE_COLOR选项新增一些颜色，而不是修改此选项
+DEFAULT_COLOR = "#dd6699"
+# DO NOT edit this field unless you know what you are doing
+# Typora本身有限制: ctrl+F 搜索后，点击任意地方原先高亮的地方就会消失
+# 这是由于高亮都是通过添加标签实现的，但是#write标签不允许添加非默认标签，所以需要在编辑的时候remove掉添加的标签
+# 如果此选项为false，有可能导致你无法编辑页面，直到你重新打开此文件
+REMOVE_WHEN_EDIT = true
+# DO NOT edit this field unless you know what you are doing
+# 性能选项：关键字数量大于X时使用fenceMultiHighlighterList（以空间换时间）。若<0，则总是使用
+# 此选项用在当搜索了很多关键字时，保证有较快的响应速度
+USE_LIST_THRESHOLD = -1
+# DO NOT edit this field unless you know what you are doing
+# 性能选项：当fenceMultiHighlighterList数量超过X时，clear之（以时间换空间）。若<0，则总不启用
+# 此选项用在当上一个策略使用太多次后，花费时间去回收空间，保证不会占用太大内存
+CLEAR_LIST_THRESHOLD = 12
+
+
+############### outline ###############
+[outline]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "类别大纲"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 快捷键
+HOTKEY = ""
+# 打开模态框后默认使用的大纲类型 fence/image/table/all
+DEFAULT_TYPE = "fence"
+# 是否使用混合标签
+USE_ALL = true
+# 给混合标签上色
+SET_COLOR_IN_ALL = true
+# 当显示模态框时，打开新文件后自动检测并重新生成大纲
+AUTO_REFRESH_WHEN_OPEN_FILE = true
+# 统计并显示被其他插件隐藏的元素(此选项不必手动调整，可以在UI设置)
+# 比如使用了【章节折叠】插件隐藏文件内容，如果你希望outline能统计被隐藏内容，就置为true，不过这样就会导致统计的编号不对（因为你把隐藏的也算进去了）
+SHOW_HIDDEN = false
+# 在模态框里展示的名字
+[outline.SHOW_NAME]
+fence = "Fence"
+image = "Figure"
+table = "Table"
+
+
+############### commander ###############
+[commander]
+# 启用插件
+# 有一些插件（比如：更新功能）依赖于此插件，若关闭此插件，那些插件都将失效
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "命令行环境"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 快捷键
+HOTKEY = "ctrl+g"
+# 允许拖动模态框
+ALLOW_DRAG = true
+# 当输入框为空，且键入backspace时，隐藏模态框
+BACKSPACE_TO_HIDE = true
+# 【快捷键】和【在右键菜单中】调用内建命令，是否弹出模态框
+# 注意: 123使用的是child_process.exec。因此如果程序的输出超出200K，会引发Error：maxBuffer exceeded。此时必须使用echo
+#   1.always: 总是弹出
+#   2.error: 只在异常时弹出
+#   3.silent: 总是静默（其实可以在控制台console中看到）
+#   4.echo: 立即回显程序输出、适合需要不断打印日志的耗时任务
+QUICK_EXEC_SHOW = "error"
+# 【在命令输入框里回车】和【点击执行命令按钮】时，使用的回显类型
+#   1. always: 等待程序执行完毕后一次性输出
+#   2. echo: 立即回显程序输出
+COMMIT_EXEC_SHOW = "echo"
+# 启用内建的命令列表（若为false，则BUILTIN配置失效）
+USE_BUILTIN = true
+# 内建命令列表。支持无限添加。
+# 目前支持4个参数:
+#   1. name:   命令展示的名称
+#   2. shell:  cmd/bash、powershell、gitbash、wsl（如果使用 gitbash、wsl，请确保已经将其加入环境变量）
+#   3. hotkey: 快捷键调用命令行（可选）
+#   4. cmd:    执行的命令
+# cmd提供内置环境变量:
+#   1. $f: 当前文件路径
+#   2. $d: 当前文件所属目录
+#   3. $m: 当前挂载目录（你在侧边栏看到的根目录）
+[[commander.BUILTIN]] # dummy
+name = ""
+shell = "cmd/bash"
+cmd = ""
+[[commander.BUILTIN]]
+name = "Explorer"
+shell = "powershell"
+hotkey = "ctrl+alt+e"
+cmd = "explorer $d"
+[[commander.BUILTIN]]
+name = "Vscode"
+shell = "cmd/bash"
+cmd = "code $f"
+[[commander.BUILTIN]]
+name = "WT"
+shell = "cmd/bash"
+cmd = "cd $d && wt"
+[[commander.BUILTIN]]
+name = "GitCommit"
+shell = "cmd/bash"
+cmd = "cd $m && git add . && git commit -m \"message\""
+
+
+############### md_padding ###############
+[md_padding]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "中英文混排优化"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 快捷键
+HOTKEY = ["ctrl+shift+b"]
+# 不希望拆分的单词：
+#   ==   是highlight拓展语法
+#   > [! 是callouts拓展语法
+IGNORE_WORDS = ["==", "> [!"]
+
+
+############### read_only ###############
+[read_only]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "只读模式"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 进入和脱离只读模式的快捷键
+HOTKEY = "ctrl+shift+r"
+# 默认使用只读模式（打开Typora就进入只读模式）
+READ_ONLY_DEFAULT = false
+# 开启只读模式后，右下角数字统计区域出现的提示文件
+SHOW_TEXT = "ReadOnly"
+
+
+############### toolbar ###############
+[toolbar]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "多功能搜索栏"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 快捷键
+HOTKEY = "ctrl+j"
+# 当输入框为空，且键入backspace时，隐藏模态框
+BACKSPACE_TO_HIDE = true
+# 用户键入内容 = 搜索工具名称 + 空格 + 搜索内容
+# eg：【ops 资源管理器打开】
+# 如果没有匹配到搜索工具，使用默认工具
+#   0. ""：不使用默认
+#   1. "plu"：插件
+#   2. "tab"：当前标签页
+#   3. "his"：最近文件
+#   4. "ops"：常用操作
+#   5. "mode"：切换文件模式
+#   6. "theme"：临时切换主题
+#   7. "func"：功能列表
+#   8. "all": 混合查找（所有项目都混在一起查找）
+DEFAULT_TOOL = "func"
+# 是否使用负向查询（类似于google）
+# 比如：【plu multi -search】
+#   - 若为false：查找【包含multi关键字，同时包含-search关键字】的插件
+#   - 若为true：查找【包含multi关键字，但是不包含search关键字】的插件
+# 负向查询和正向查询可以随意组合：
+#   - 【his close -win -mark 标签】：查找最近打开的文件，要求文件标题【包含close、标签，不包含win、mark】
+USE_NEGATIVE_SEARCH = true
+# 用户输入的防抖时间（单位：ms）（用户输入完60ms后才执行）
+# 为什么时间默认这么短？因为这种查询都是非常简单的，甚至大部分是直接从内存取的（当然，不建议30以下）
+DEBOUNCE_INTERVAL = 60
+# toolbar的在页面的20%位置出现
+TOOLBAR_TOP_PERCENT = 20
+# toolbar的宽度为页面的80%
+TOOLBAR_WIDTH_PERCENT = 80
+
+
+############### blur ###############
+[blur]
+# 启用插件（此插件暂时无法在低版本Typora使用）
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "模糊模式"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 快捷键
+HOTKEY = ""
+# 默认使用模糊模式（打开Typora就进入模糊模式）
+BLUR_DEFAULT = false
+# 模糊类型: blur/hide
+#   blur：非聚焦组件变模糊
+#   hide：非聚焦组件直接隐藏
+BLUR_TYPE = "blur"
+# 鼠标悬停时可见(BLUR_TYPE为hide时失效)
+RESRTORE_WHEN_HOVER = true
+# 模糊等级: 数值越大越模糊(BLUR_TYPE为hide时失效)
+BLUR_LEVEL = 10
+
+
+############### resize_image ###############
+[resize_image]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "图片调整"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 每次操作的缩放倍率
+SCALE = 0.1
+# 允许超出范围
+ALLOW_OVERSIZE = true
+# 图片水平位置：center/left/right
+IMAGE_ALIGN = "center"
+# 是否记录图片放缩状态（直到关闭typora）
+RECORD_RESIZE = true
+
+
+############### datatables ###############
+[datatables]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "表格增强"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 是否分页
+PAGING = true
+# 使用分页时，单页显示的数据条数
+PAGE_LENGTH = 25
+# 开启垂直滚动条(表格的高度)，<0则全部显示
+SCROLLY = -1
+# 当显示更少的记录时，是否允许表格减少高度
+SROLL_COLLAPSE = true
+# 是否使用排序功能
+ORDERING = true
+# 是否在初始化的时候排序
+DEFAULT_ORDER = false
+# 是否使用搜索
+SEARCHING = true
+# 在搜索或者过滤时，是否不区分大小写
+CASE_INSENSITIVE = true
+# 对在搜索中是否正则表达式
+REGEX = false
+
+
+############### go_top ###############
+[go_top]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "一键到顶"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 滚动所用时间（单位：ms）
+SCROLL_TIME = 600
+# 到顶快捷键
+HOTKEY_GO_TOP = ""
+# 到底快捷键
+HOTKEY_GO_BOTTOM = ""
+# 在右下角添加按钮
+USE_BUTTON = true
+
+
+############### mindmap ###############
+[mindmap]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "思维导图"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 尽力修复跨等级标题问题（MD001规范）
+FIX_ERROR_LEVEL_HEADER = true
+
+
+############### markmap ###############
+[markmap]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "markmap"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# js/css从何处加载: local/network
+RESOURCE_FROM = "local"
+
+# markmap共有两个功能:toc和fence，此为toc。若为false，以下配置全部失效
+ENABLE_TOC_MARKMAP = true
+# 在右下角添加一个快捷按钮
+USE_BUTTON = true
+# 是否允许icon换行
+ALLOW_ICON_WRAP = true
+# 当pin到页面顶部时，占据页面的30%高度
+HEIGHT_PRECENT_WHEN_PIN_UP = 30
+# 当pin到页面右侧时，占据页面的50%宽度
+WIDTH_PRECENT_WHEN_PIN_RIGHT = 50
+# 在拖拽模态框的时候是否使用动画
+# 使用动画视觉效果比较好，但是不跟手
+USE_ANIMATION_WHEN_DRAG = false
+# 在调整模态框的时候是否使用动画
+USE_ANIMATION_WHEN_RESIZE = false
+
+# markmap共有两个功能:toc和fence，此为fence。若为false，以下配置全部失效
+ENABLE_FENCE_MARKMAP = true
+# 代码块语言
+# 强烈建议不要修改。如果要修改，请跟着修改TEMPLATE选项里的语言
+LANGUAGE = "markmap"
+# 默认处于交互模式（处于交互模式下，鼠标click图表并不会展开代码块）
+INTERACTIVE_MODE = true
+# 代码块默认高度
+DEFAULT_FENCE_HEIGHT = "300px"
+# 代码块背景颜色
+DEFAULT_FENCE_BACKGROUND_COLOR = "#f8f8f8"
+# 插入的模板
+FENCE_TEMPLATE = """```markmap
+---
+markmap:
+  colorFreezeLevel: 2
+---
+
+# markmap
+
+## Links
+
+- <https://markmap.js.org/>
+- [GitHub](https://github.com/gera2ld/markmap)
+
+## Related Projects
+
+- [coc-markmap](https://github.com/gera2ld/coc-markmap)
+- [gatsby-remark-markmap](https://github.com/gera2ld/gatsby-remark-markmap)
+
+## Features
+
+- links
+- **strong** ~~del~~ *italic* ==highlight==
+- multiline
+  text
+- `inline code`
+
+- Katex
+  - $x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$
+  - [More Katex Examples](#?d=gist:af76a4c245b302206b16aec503dbe07b:katex.md)
+- Now we can wrap very very very very long text based on `maxWidth` option
+```
+"""
+
+
+############### auto_number ###############
+[auto_number]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "自动编号"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 启用侧边栏自动编号
+ENABLE_SIDE_BAR = true
+# 启用正文自动编号
+ENABLE_CONTENT = true
+# 启用TOC自动编号
+ENABLE_TOC = true
+# 启用表格自动编号
+ENABLE_TABLE = true
+# 启用图片自动编号
+ENABLE_IMAGE = true
+# 启用代码块自动编号
+ENABLE_FENCE = true
+# 导出时运用样式
+ENABLE_WHEN_EXPORT = true
+# 编号的下标使用的字体
+FONT_FAMILY = "monospace"
+# 编号的下标的位置：left/right/center
+ALIGN = "center"
+# 编号的下标名称
+[auto_number.NAMES]
+table = "Table"
+image = "Figure"
+fence = "Fence"
+
+
+############### fence_enhance ###############
+[fence_enhance]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "代码块增强"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+
+# fence_enhance插件包含两个功能：button、hotkey，若置为false，以下配置全部失效
+ENABLE_BUTTON = true
+# 自动隐藏按钮，鼠标移动到代码块才显示
+AUTO_HIDE = false
+# 启用复制代码功能
+ENABLE_COPY = true
+# 启用代码调整缩进功能(此功能低版本Typora不可使用)
+ENABLE_INDENT = true
+# 启用折叠代码功能
+ENABLE_FOLD = true
+# 折叠形式：
+#   1.hidden: 隐藏除第一行外的所有行
+#   2.scroll: 添加滚动条（可视高度只有一行，所以非常反人类）
+FOLD_OVERFLOW = "hidden"
+# 所有代码块默认使用折叠
+FOLD_DEFAULT = false
+# 操作成功时，icon提示的保持时间（单位：ms）
+# 比如当你点击【复制代码】按钮后，icon会变成【✔】，并在保持一段时间后自动恢复。此选项就是设置这个保持时间
+WAIT_RECOVER_INTERVAL = 1000
+# 节流时间（单位：ms）
+# 300毫秒内多次点击【复制代码】按钮，只会执行一次（此选项其实没啥意义，添加此配置只是出于强迫症）
+CLICK_CHECK_INTERVAL = 300
+# 高亮鼠标悬停所在的代码行，若置为false，则HIGHLIGHT_COLOR失效
+# 我嫌弃晃眼就没有开启，如果你总是找不到光标，可以开启
+HIGHLIGHT_WHEN_HOVER = false
+# 高亮颜色
+HIGHLIGHT_LINE_COLOR = "rgba(176, 178, 180, 0.4)"
+
+# fence_enhance插件包含三个功能：button、hotkey、highlight，若置为false，以下配置全部失效
+ENABLE_HOTKEY = true
+# 不建议修改下面的快捷键，原因有二：
+#   1. 和很多ide的快捷键保持一致
+#   2. typora强制绑定了很多快捷键，实际可修改的快捷键并不多
+# 强制绑定的快捷键如下：
+#   1. Ctrl-A: "selectAll",
+#   2. Ctrl-Up: "goDocStart",
+#   3. Ctrl-Down: "goDocEnd",
+#   4. Ctrl-Left: "goGroupLeft",
+#   5. Ctrl-Right: "goGroupRight",
+#   6. Alt-Left: "goLineStart",
+#   7. Alt-Right: "goLineEnd",
+#   8. Ctrl-Backspace: "delGroupBefore",
+#   9. Ctrl-Delete: "delGroupAfter",
+#   10.Ctrl-[: "indentLess",
+#   11.Ctrl-]: "indentMore",
+#   12.Ctrl-U: "undoSelection",
+#   13.Shift-Ctrl-U: "redoSelection",
+#   14.Alt-U: "redoSelection",
+
+# 注意：此处的快捷键字符串使用的是codeMirror的方式（doc: https://codemirror.net/5/doc/manual.html#keymaps）
+# 如果不想使用此功能，请置为""
+# 将当前行和上一行互换
+SWAP_PREVIOUS_LINE = "Shift-Alt-Up"
+# 将当前行和下一行互换
+SWAP_NEXT_LINE = "Shift-Alt-Down"
+# 复制当前行到下一行
+COPY_PREVIOUS_LINE = "Ctrl-Alt-Up"
+# 复制当前行到上一行
+COPY_NEXT_LINE = "Ctrl-Alt-Down"
+# 直接在下面新建一行
+INSERT_LINE_NEXT = "Ctrl-Enter"
+# 直接在上面新建一行
+INSERT_LINE_PREVIOUS = "Shift-Ctrl-Enter"
+
+
+############### collapse_paragraph ###############
+[collapse_paragraph]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "章节折叠"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 是否记录章节放缩状态（直到关闭typora）
+RECORD_COLLAPSE = true
+
+
+############### truncate_text ###############
+[truncate_text]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "文段截断"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 剩余文本段
+REMAIN_LENGTH = 80
+
+
+############### export_enhance ###############
+[export_enhance]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "导出增强"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 是否下载网络图片(若为true，有可能因为网络问题导致导出超时)
+# 此选项可在右键菜单中修改，不建议在配置中置为true，除非你有频繁导出html的需求
+DOWNLOAD_NETWORK_IMAGE = false
+# 下载并发量(若DOWNLOAD_NETWORK_IMAGE为false，则此配置失效)
+DOWNLOAD_THREADS = 10
+
+
+############### resize_table ###############
+[resize_table]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "表格调整"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 是否去除表格单元格最小宽度限制
+REMOVE_MIX_WIDTH = true
+# 单元格边线的拖拽范围（单位：px）
+THRESHOLD = 20
+# 是否记录表格放缩状态（直到关闭typora）
+RECORD_RESIZE = true
+
+
+############### text_stylize ###############
+[text_stylize]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "文字风格化"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 弹出颜色面板的快捷键
+SHOW_MODAL_HOTKEY = ""
+# 设置字体颜色的快捷键
+SET_COLOR_HOTKEY = ""
+# 每13个颜色一行
+NUM_PER_LINE = 13
+# 颜色列表（由于markdown支持的html语法限制， 不支持rgb格式的颜色）
+COLORS = [
+    "#330000", "#331900", "#333300", "#193300", "#003300", "#003319", "#003333", "#001933", "#000033", "#190033", "#330033", "#330019", "#000000",
+    "#660000", "#663300", "#666600", "#336600", "#006600", "#006633", "#006666", "#003366", "#000066", "#330066", "#660066", "#660033", "#202020",
+    "#990000", "#994C00", "#999900", "#4C9900", "#009900", "#00994C", "#009999", "#004C99", "#000099", "#4C0099", "#990099", "#99004C", "#404040",
+    "#CC0000", "#CC6600", "#CCCC00", "#66CC00", "#00CC00", "#00CC66", "#00CCCC", "#0066CC", "#0000CC", "#6600CC", "#CC00CC", "#CC0066", "#606060",
+    "#FF0000", "#FF8000", "#FFFF00", "#80FF00", "#00FF00", "#00FF80", "#00FFFF", "#0080FF", "#0000FF", "#7F00FF", "#FF00FF", "#FF007F", "#808080",
+    "#FF3333", "#FF9933", "#FFFF33", "#99FF33", "#33FF33", "#33FF99", "#33FFFF", "#3399FF", "#3333FF", "#9933FF", "#FF33FF", "#FF3399", "#A0A0A0",
+    "#FF6666", "#FFB266", "#FFFF66", "#B2FF66", "#66FF66", "#66FFB2", "#66FFFF", "#66B2FF", "#6666FF", "#B266FF", "#FF66FF", "#FF66B2", "#C0C0C0",
+    "#FF9999", "#FFCC99", "#FFFF99", "#CCFF99", "#99FF99", "#99FFCC", "#99FFFF", "#99CCFF", "#9999FF", "#CC99FF", "#FF99FF", "#FF99CC", "#E0E0E0",
+    "#FFCCCC", "#FFE5CC", "#FFFFCC", "#E5FFCC", "#CCFFCC", "#CCFFE5", "#CCFFFF", "#CCE5FF", "#CCCCFF", "#E5CCFF", "#FFCCFF", "#FFCCE5", "#FFFFFF",
+]
+
+
+############### custom ###############
+[custom]
+# 启用插件
+# 注意：若不启用此插件，那么所有自定义插件都会失效
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "自定义插件"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 允许在settings.user.toml中设置custom_plugin.user.toml中的选项
+# 本来【自定义插件】的选项应该在custom_plugin.user.toml中设置的，但是一直有收到反馈，用户错误地写在了settings.user.toml。无奈只能作此兼容
+# 若在两处皆有定义，settings.user.toml的优先级高于custom_plugin.user.toml
+# 1.如果你不理解我在说什么，并且不想弄懂，请将此选项置为true
+# 2.如果你不理解我在说什么，并且想弄懂，建议查看本目录下的【请读我.md】中的【settings.XXX.toml和custom_plugin.XXX.toml的区别是什么？】章节
+# 3.如果能理解我在说什么，并且知道settings.user.toml和custom_plugin.user.toml的区别，建议将此选项置为false
+ALLOW_SET_CONFIG_IN_SETTINGS_TOML = true
+
+
+############### right_click_menu ###############
+[right_click_menu]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "右键菜单"
+# 是否在右键菜单中可点击
+CLICKABLE = true
+# 点击后是否隐藏菜单（此选项不必在此调整，可以在UI中设置）
+DO_NOT_HIDE = false
+# 对于【启用但是没有出现在下面MENUS选项】的插件，自动加入到最后一个MENUS
+# 强烈不建议将此选项置为false，若置为false，且在MENUS中删去那些处于启用状态的插件，那么：
+#   1. 那些插件依旧处于启用状态，但是就不能通过右键菜单调用了
+#   2. 如果插件系统后续新增了插件，那么你就根本无法感知到新增插件的存在
+FIND_LOST_PLUGIN = true
+# 自定义右键菜单
+#  每一个MENUS对应一个一级菜单，允许无限添加一级菜单，允许重复添加同一个插件
+#  NAME: 一级菜单的名称
+#  LIST: 二级菜单的插件列表（"---"：代表在页面上插入一个divider，以作分隔）
+[[right_click_menu.MENUS]]
+NAME = "非常用插件"
+LIST = [
+    "blur",
+    "markmap",
+    "resize_image",
+    "datatables",
+    "go_top",
+    "auto_number",
+    "fence_enhance",
+    "truncate_text",
+    "export_enhance",
+    "resize_table",
+    "text_stylize",
+    "toolbar",
+    "right_click_menu",
+    "---",
+    "file_counter",
+    "mermaid_replace",
+    "test",
+]
+[[right_click_menu.MENUS]]
+NAME = "常用插件"
+LIST = [
+    "window_tab",
+    "search_multi",
+    "multi_highlighter",
+    "outline",
+    "md_padding",
+    "read_only",
+    "---",
+    "commander",
+    "mindmap",
+    "collapse_paragraph",
+    "custom",
+]
+
+
+############### file_counter ###############
+[file_counter]
+# 启用插件
+ENABLE = true
+# 在右键菜单中展示的名称
+NAME = "文件计数"
+# 是否在右键菜单中可点击
+CLICKABLE = false
+# Typora允许打开小于2000000(即MAX_FILE_SIZE)的文件，大于maxSize的文件在搜索时将被忽略。若maxSize<0则不过滤
+MAX_SIZE = 2000000
+# Typora允许打开的文件的后缀名，此外的文件在搜索时将被忽略
+ALLOW_EXT = ["", "md", "markdown", "mdown", "mmd", "text", "txt", "rmarkdown", "mkd", "mdwn", "mdtxt", "rmd", "mdtext", "apib"]
+# 当侧边栏出现横向滚动条时，ctrl+wheel进行横向滚动
+CTRL_WHEEL_TO_SCROLL_SIDEBAR_MENU = true
+
+
+############### mermaid_replace ###############
+[mermaid_replace]
+# 启用插件
+ENABLE = false
+# 在右键菜单中展示的名称
+NAME = "mermaid组件替换"
+# 是否在右键菜单中可点击
+CLICKABLE = false
+
+
+############### test ###############
+[test]
+# 启用插件
+ENABLE = false
+# 在右键菜单中展示的名称
+NAME = "测试专用"
+# 是否在右键菜单中可点击
+CLICKABLE = false

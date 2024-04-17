@@ -1,0 +1,24 @@
+<style class="text/css">
+.md-alert-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: normal;
+    line-height: 30px;
+}
+
+.md-alert-text-note .md-alert-text-container:after {
+  content: "笔记";
+}
+.md-alert-text-tip .md-alert-text-container:after {
+  content: "提示";
+}
+.md-alert-text-important .md-alert-text-container:after {
+  content: "重要";
+}
+.md-alert-text-warning .md-alert-text-container:after {
+  content: "警告";
+}
+.md-alert-text-caution .md-alert-text-container:after {
+  content: "危险";
+}
+

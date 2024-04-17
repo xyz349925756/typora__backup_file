@@ -1,0 +1,27 @@
+#write .fence-enhance {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    position: absolute;
+    top: .3em;
+    right: .5em;
+    z-index: 8;
+    font-size: ${this.config.BUTTON_SIZE};
+}
+
+.fence-enhance .enhance-btn {
+    opacity: ${this.config.BUTTON_OPACITY};
+    cursor: pointer;
+    margin-left: ${this.config.BUTTON_MARGIN};
+}
+
+.fence-enhance .enhance-btn:last-child {
+    margin-left: 0;
+}
+
+.fence-enhance .enhance-btn:hover {
+    opacity: ${this.config.BUTTON_OPACITY_HOVER};
+}
+
+.CodeMirror-line:hover {
+    background-color: ${bgColorWhenHover};
+}
