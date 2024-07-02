@@ -1,0 +1,1 @@
+{"tag_name":"1.9.15","name":"1.9.15","body":"1. feat：【core】：新增 entities，复用 Element 对象及其方法\r\n2. fix：【markdownLint】：尽力兼容不同的主题( #651 ）\r\n3. chg：【core】【search_multi】：优化代码，提高可读性\r\n4. doc：优化 readme 文件\r\n\r\n","zipball_url":"https://api.github.com/repos/obgnail/typora_plugin/zipball/1.9.15"}

@@ -1,0 +1,58 @@
+.plugin-toc {
+    display: flex;
+    height: 100%;
+    right: 0;
+    box-shadow: initial;
+    border-left: dashed 1px rgba(0, 0, 0, 0.2);
+}
+
+#plugin-toc .grip-right {
+    position: absolute;
+    left: -5px;
+    width: 10px;
+    height: 100%;
+    cursor: ew-resize;
+}
+
+.plugin-toc .toc-ul {
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.plugin-toc .toc-root {
+    margin: 0 0.5em 4em 0.5em;
+}
+
+.plugin-toc ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.plugin-toc li {
+    margin-bottom: 0.1em;
+    overflow-wrap: break-word;
+}
+
+.plugin-toc ul ul {
+    margin-left: 1.5em;
+}
+
+.plugin-toc .toc-node {
+    padding: 1px 5px;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.plugin-toc .toc-node:hover {
+    cursor: pointer;
+    background-color: var(--item-hover-bg-color);
+}
+
+.plugin-toc .toc-node.active {
+    font-weight: 700;
+}
+
+.plugin-toc .toc-text:hover {
+    text-decoration: underline;
+}

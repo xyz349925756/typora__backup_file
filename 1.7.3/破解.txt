@@ -1,6 +1,0 @@
-# 自动配置相关文件
-.\node_inject.exe
-# 序列号生成
-.\license-gen.exe
-
-邮箱随便填写

@@ -1,0 +1,11 @@
+.plugin-file-counter {
+    float: right;
+    overflow-x: visible;
+    overflow-y: hidden;
+    margin-right: 10px;
+    padding: 0 3px;
+    border-radius: 3px;
+    background: ${background_color};
+    color: ${color};
+    font-weight: ${font_weight};
+}

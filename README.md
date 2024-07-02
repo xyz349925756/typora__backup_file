@@ -1,7 +1,36 @@
-typora 各版本备份。1.6以上的以前破解方式失效。
+---
+这只是 typora 的 theme 备份。
+---
 
-有其他方式可以破解。
-
-> [!Note]
+> [!tip]
 >
-> 请支持正版！
+> 本仓库只是typora theme 不是破解！
+
+Typora 官网： https://typora.io/
+
+中国分销商网： https://typoraio.cn/
+
+此主题是我自己修改的，预览图。
+
+![image-20240702093038930](.README.assets/image-20240702093038930.png)
+
+![image-20240702093119171](.README.assets/image-20240702093119171.png)
+
+插件部分
+
+![image-20240702093254108](.README.assets/image-20240702093254108.png)
+
+> [!note]
+>
+> 上面都是自定义的。需要替换部分文件。
+
+![image-20240702093540384](.README.assets/image-20240702093540384.png)
+
+typora plugin  插件： https://github.com/obgnail/typora_plugin
+
+typora theme   主题： https://github.com/liangjingkanji/DrakeTyporaTheme
+
+本仓库是已经定制过的文件替换一下即可。
+
+
+

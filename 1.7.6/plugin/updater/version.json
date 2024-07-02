@@ -1,1 +1,0 @@
-{"tag_name":"1.6.3","name":"1.6.3","body":"1. feat：【代码块增强】添加【将当前行和上/下一行互换】、【复制当前行到上/下一行】、【直接在上/下面新建一行】六个功能\r\n2. feat：【导出增强】添加 DOWNLOAD_THREADS（下载并发量）配置，允许高并发下载图片\r\n3. change：【文字风格化】优化样式\r\n4. doc：优化说明文档\r\n","zipball_url":"https://api.github.com/repos/obgnail/typora_plugin/zipball/1.6.3"}

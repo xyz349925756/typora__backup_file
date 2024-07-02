@@ -1,0 +1,3586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="initial-scale=1" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>Typora</title>
+    <link
+      rel="stylesheet"
+      href="typora://app/typemark/lib.asar/bootstrape/css/bootstrap.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      css-include
+      href="typora://app/typemark/lib.asar/diagram/css/mermaid.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="./style/font-awesome-4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="./style/ionicons-2.0.1/css/ionicons.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="./style/typora-icon/style.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="./style/typora-file-icon/style.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      css-include
+      href="./style/base.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="./style/base-control.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      css-include
+      href="./style/codemirror.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style/window.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="./style/megamenu.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="typora-bg://bg.css"
+      id="bg_css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="typora://app/userData/themes/current-theme.css"
+      id="theme_css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="" id="base_user_css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href=""
+      id="theme_user_css"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body
+    class="typora-node native-window no-collapse-outline allow-file-tree-scroll"
+  >
+    <header aria-hidden="true">
+      <div
+        aria-hidden="true"
+        class="dropdown-menu stopselect dropmenu"
+        id="toc-dropmenu"
+        role="menu"
+      >
+        <div class="outline-title-wrapper">
+          <span class="outline-title" data-localize="Outline" data-lg="Front"
+            >Outline</span
+          >
+          <span class="btn fa fa-arrow-circle-left" id="pin-outline-btn"></span>
+        </div>
+        <div class="divider outline-title-divider"></div>
+        <div
+          role="list"
+          id="toc-content"
+          class="outline-content"
+          data-after-content="Outline is Empty."
+        ></div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="stopselect dropmenu sidebar-menu"
+        id="typora-sidebar"
+        role="menu"
+      >
+        <div class="info-panel-tab-wrapper ty-tab-wrapper">
+          <div style="flex: 1"></div>
+          <div class="info-panel-tab" id="info-panel-tab-file">
+            <div
+              class="info-panel-tab-title"
+              data-localize="Files"
+              data-lg="Front"
+            >
+              Files
+            </div>
+            <div class="info-panel-tab-border"></div>
+          </div>
+          <div class="info-panel-tab" id="info-panel-tab-search-back">
+            <div
+              class="info-panel-tab-title"
+              data-localize="Files"
+              data-lg="Front"
+            >
+              Files
+            </div>
+            <div class="info-panel-tab-border"></div>
+          </div>
+          <div style="flex: 1"></div>
+          <div class="info-panel-tab" id="info-panel-tab-outline">
+            <div
+              class="info-panel-tab-title"
+              data-localize="Outline"
+              data-lg="Front"
+            >
+              Outline
+            </div>
+            <div class="info-panel-tab-border"></div>
+          </div>
+          <div class="info-panel-tab" id="info-panel-tab-search">
+            <div
+              class="info-panel-tab-title"
+              data-localize="Search"
+              data-lg="Front"
+            >
+              Search
+            </div>
+            <div class="info-panel-tab-border"></div>
+          </div>
+          <div style="flex: 1"></div>
+        </div>
+        <div class="sidebar-osx-tab ty-tab-wrapper">
+          <div class="sidebar-tabs">
+            <div class="sidebar-tab-btn" id="switch-sidebar-icon">
+              <span
+                class="ty-icon ty-three-cells"
+                ty-hint="Switch to File List view"
+              ></span>
+            </div>
+            <div class="sidebar-tab" id="sidepanel-segmented-input-files"></div>
+            <div
+              class="sidebar-tab"
+              id="sidepanel-segmented-input-outline"
+              data-localize="Outline"
+              data-lg="Front"
+            >
+              Outline
+            </div>
+            <div
+              class="sidebar-tab-btn"
+              id="sidebar-search-btn"
+              ty-hint="Search"
+            >
+              <span class="ion-ios7-search-strong"></span>
+            </div>
+          </div>
+          <div class="ty-sidebar-search-panel" id="ty-sidebar-search-tabs">
+            <div class="sidebar-tab-btn" id="ty-sidebar-search-back-btn">
+              <span class="ty-icon ty-left-arrow" ty-hint="Close Search"></span>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-content" id="sidebar-content">
+          <div id="file-library-search">
+            <div id="file-library-search-panel" class="ty-sidebar-search-panel">
+              <input
+                type="search"
+                id="file-library-search-input"
+                placeholder="Search"
+                aria-label="Search files"
+                autocomplete="off"
+                data-localize="Search"
+              />
+              <span
+                ty-hint="Case Sensitive"
+                id="filesearch-case-option-btn"
+                class="searchpanel-search-option-btn"
+                aria-label="Case Sensitive"
+                ><svg class="icon">
+                  <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="#find-and-replace-icon-case"
+                  ></use>
+                </svg> </span
+              ><span
+                ty-hint="Whole Word"
+                id="filesearch-word-option-btn"
+                class="searchpanel-search-option-btn"
+                aria-label="Whole Word"
+                ><svg class="icon">
+                  <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="#find-and-replace-icon-word"
+                  ></use>
+                </svg> </span
+              ><span
+                ty-hint="Regular Expression"
+                id="filesearch-regexp-option-btn"
+                class="searchpanel-search-option-btn"
+                aria-label="Regular Expression"
+                ><svg class="icon">
+                  <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="#find-and-replace-icon-regexp"
+                  ></use>
+                </svg> </span
+              ><span
+                class="btn close-btn"
+                aria-label="Close outline filter"
+                id="close-outline-filter-btn"
+                style="display: none"
+                ><span class="ion-close-round"></span
+              ></span>
+            </div>
+            <div id="file-library-search-result"></div>
+            <script id="file-search-item-template" type="text/x-template">
+              <div class="ty-search-item">
+              					<div class="ty-search-item-summary">
+              						<div class="ty-search-item-collapse-icon">
+              								<i class="fa fa-caret-right"></i>
+              								<i class="fa fa-caret-down"></i>
+              						</div>
+              						<div style="display:-webkit-flex;display:flex;">
+              							<div class="file-list-item-file-name">
+              								<span class="file-list-item-file-name-part"></span><span class="file-list-item-file-ext-part"></span>
+              							</div>
+              							<div class="file-list-item-right"><span class="file-list-item-count">0</span></div>
+              						</div>
+              						<div class="file-list-item-parent-loc"></div>
+              					</div>
+              					<div class="ty-search-item-matches"></div>
+              				</div>
+            </script>
+          </div>
+          <div
+            id="outline-content"
+            class="outline-content sidebar-content-content"
+            data-after-content="Outline is Empty."
+          ></div>
+          <div id="file-library" class="sidebar-content-content">
+            <div
+              id="file-library-tree"
+              class="no-selection"
+              data-state="rendering"
+              data-after-content="No Folder is Opened."
+            ></div>
+            <div id="file-library-list" class="no-selection" data-state="">
+              <div id="sidebar-loading-template" class="file-list-item">
+                <div class="sidebar-loading">
+                  <div class="typora-quick-open-info">
+                    <span data-localize="Loading" data-lg="Front">Loading</span>
+                  </div>
+                  <div class="typora-search-spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                  </div>
+                </div>
+                <div class="oversize-list-template">
+                  <div class="oversize-list-template-mark">
+                    <i
+                      class="fa fa-exclamation-triangle"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+                  <div
+                    data-localize="Selected folders contains too many files. \nPlease switch to <a id='switch-to-tree-on-oversize'>File Tree view</a> for better performance."
+                    data-lg="Front"
+                    data-lt="html"
+                  >
+                    Selected folders contains too many files. Please switch to
+                    <a id="switch-to-tree-on-oversize">File Tree view</a> for
+                    better performance.
+                  </div>
+                </div>
+              </div>
+              <div
+                id="file-library-list-children"
+                data-after-content="No Files Available"
+              ></div>
+            </div>
+            <script id="file-list-item-template" type="text/x-template">
+              <div class="file-list-item file-library-node file-library-file-node" data-create-date="" data-path="" data-parent-path="" tabindex="-1">
+              					<div class="file-list-item-parent-loc">/</div>
+              					<div class="file-list-item-time"></div>
+              					<div class="file-list-item-file-name">
+              						<span class="file-list-item-file-name-part"></span><span class="file-list-item-file-ext-part"></span>
+              					</div>
+              					<div class="file-list-item-summary"></div>
+              				</div>
+            </script>
+            <script id="folder-menu-item-template" type="text/x-template">
+              <li role="presentation" class="folder-menu-item file-action-item folder-menu-groupm show" ty-hint-pos="right">
+              					<a role="menuitem" tabindex="-1" href="#"><i class="fa fa-folder-o"></i><span style="flex:1;overflow: hidden;text-overflow: ellipsis;"></span><i class="fa fa-thumb-tack sidebar-folder-right-icon sidebar-folder-pin" ty-hint="Pin"></i><i class="fa fa-trash-o sidebar-folder-right-icon sidebar-folder-remove" ty-hint="Remove from List"></i></a>
+              				</li>
+            </script>
+            <script id="sidebar-loading-template" type="text/x-template">
+              <div class="sidebar-loading-template">
+
+              				</div>
+            </script>
+            <script id="file-library-node-template" type="text/x-template">
+              <div class="file-library-node file-tree-node" data-path="" data-has-sub="false" tabindex="-1">
+              				<div class="file-node-background">
+
+              				</div>
+              				<div class="file-node-content" draggable="true">
+              					<span class="file-node-open-state">
+              						<i class="fa fa-caret-right"></i><i class="fa fa-caret-down"></i>
+              					</span>
+              					<i class="file-node-icon"></i>
+              					<span class="file-node-title"><span class="file-node-title-name-part"></span><span class="file-node-title-ext-part"></span></span>
+              					<div class="file-tree-rename-div">
+              						<input class="file-tree-rename-input" />
+              					</div>
+              				</div>
+              				<div class="file-node-children">
+              				</div>
+              			  </div>
+            </script>
+          </div>
+          <div
+            id="file-info-content"
+            class="sidebar-content-content"
+            style="display: none"
+          >
+            <div id="file-info-meta-group">
+              <div
+                id="file-info-last-saved-sub"
+                class="file-info-item-subtitle"
+              >
+                Saved just now
+              </div>
+              <div class="file-info-title file-info-field">
+                <div id="file-info-filename" class="file-info-field-value">
+                  Utitled.md
+                </div>
+                <div
+                  id="file-info-filename-input-area"
+                  class="file-info-field-value"
+                  style="display: none"
+                >
+                  <input id="file-info-filename-input" />
+                  <span id="file-info-filename-input-ext"></span>
+                </div>
+              </div>
+              <div class="file-info-field" id="file-info-file-path">
+                <i class="fa fa-folder-o file-info-field-key"></i>
+                <span class="file-info-field-value"></span>
+              </div>
+              <div class="file-info-field" id="file-info-last-modified">
+                <i class="fa fa-clock-o file-info-field-key"></i>
+                <span class="file-info-field-value"></span>
+              </div>
+            </div>
+            <div id="file-info-save-group">
+              <div class="file-info-item-subtitle">This is a New Document</div>
+              <div id="file-info-save-btn" class="file-info-save-btn">
+                Save Now
+              </div>
+            </div>
+            <div id="file-info-contet-group">
+              <div class="file-info-item-subtitle">Content</div>
+              <div class="file-info-field file-info-field-read">
+                <span
+                  class="file-info-field-read-value"
+                  id="file-info-field-read-value-minutes"
+                  >0</span
+                >minutes
+              </div>
+              <div class="file-info-field file-info-field-read">
+                <span
+                  class="file-info-field-read-value"
+                  id="file-info-field-read-value-word"
+                  >0</span
+                >words
+              </div>
+              <div class="file-info-field file-info-field-read">
+                <span
+                  class="file-info-field-read-value"
+                  id="file-info-field-read-value-ch"
+                  >0</span
+                >characters
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-footer no-selection" id="ty-sidebar-footer">
+          <div
+            style="display: -webkit-flex; display: flex; background: inherit"
+          >
+            <div
+              class="sidebar-footer-item footer-item-right footer-btn file-action-item not-empty-menu-group"
+              id="sidebar-new-file-btn"
+              ty-hint="New File"
+            >
+              <span
+                class="ty-icon ty-add"
+                style="position: relative; top: 1px"
+              ></span>
+            </div>
+            <div
+              class="sidebar-footer-item footer-item-left footer-btn outline-action-item"
+              id="unpin-outline-btn"
+              ty-hint="Unpin Outline Panel"
+            >
+              <span
+                ><span class="ty-icon ty-export1"></span> <span></span
+              ></span>
+            </div>
+            <div class="sidebar-footer-main-item" id="sidebar-menu-btn">
+              <span class="sidebar-footer-item"
+                ><span
+                  class="sidebar-footer-main-item-label"
+                  id="sidebar-footer-main-item-label"
+                  >Open Folder... </span
+                ><span class="footer-btn"
+                  ><span
+                    class="ty-icon ty-dots-v"
+                    aria-hidden="true"
+                  ></span></span
+              ></span>
+              <ul
+                id="sidebar-files-menu"
+                class="dropdown-menu"
+                role="menu"
+                aria-labelledby="drop5"
+                tabindex="-1"
+              >
+                <li
+                  role="presentation"
+                  class="menuitem-group-label file-action-item not-empty-menu-group"
+                >
+                  <span data-localize="Action" data-lg="Front">Action</span>
+                  <span
+                    class="ty-icon ty-delete-button"
+                    ty-hint="Close Sidebar Menu"
+                    id="close-sidebar-menu-btn"
+                  ></span>
+                </li>
+                <li
+                  role="presentation"
+                  class="file-action-item not-empty-menu-group"
+                >
+                  <a
+                    role="menuitem"
+                    tabindex="-1"
+                    href="#"
+                    id="new-file-from-sidebar-menu"
+                    data-localize="New File"
+                    data-lg="Front"
+                    >New File</a
+                  >
+                </li>
+                <li
+                  role="presentation"
+                  class="file-action-item not-empty-menu-group"
+                >
+                  <a
+                    role="menuitem"
+                    tabindex="-1"
+                    href="#"
+                    id="search-from-sidebar-menu"
+                    data-localize="Search"
+                    data-lg="Menu"
+                    >Search</a
+                  >
+                </li>
+                <li
+                  role="presentation"
+                  class="file-action-item not-empty-menu-group"
+                >
+                  <a
+                    role="menuitem"
+                    tabindex="-1"
+                    href="#"
+                    id="reveal-folder-from-sidebar-menu"
+                    data-localize="Reveal in Finder"
+                    data-lg="Front"
+                    >Reveal in Finder</a
+                  >
+                </li>
+                <li
+                  role="presentation"
+                  class="file-action-item not-empty-menu-group"
+                >
+                  <a
+                    role="menuitem"
+                    tabindex="-1"
+                    href="#"
+                    id="open-folder-from-sidebar-menu"
+                    data-localize="Open Folder..."
+                    data-lg="Front"
+                    >Open Folder...</a
+                  >
+                </li>
+                <li
+                  role="presentation"
+                  class="file-action-item not-empty-menu-group"
+                >
+                  <a
+                    role="menuitem"
+                    tabindex="-1"
+                    href="#"
+                    id="refresh-from-sidebar-menu"
+                    data-localize="Refresh Folder"
+                    data-lg="Front"
+                    >Refresh Folder</a
+                  >
+                </li>
+                <li
+                  role="presentation"
+                  class="menuitem-group-label file-action-item file-sort-item not-empty-menu-group"
+                >
+                  <span data-localize="Sort" data-lg="Front">Sort</span>
+                  <span class="sort-button-area"
+                    ><span
+                      ><span
+                        id="ty-group-by-folder-btn"
+                        class="ty-icon ty-package ty-side-sort-btn active"
+                        ty-hint="Group By Folder"
+                      ></span> </span
+                    ><span
+                      ><span
+                        id="ty-sort-by-natural-btn"
+                        class="ty-icon ty-sort-by-natural ty-side-sort-btn ty-side-sort-btn2 active"
+                        ty-hint="Sort Naturally (Ascending)"
+                      ></span>
+                      <span
+                        id="ty-sort-by-name-btn"
+                        class="ty-icon ty-sort-by-alphabet-a ty-side-sort-btn ty-side-sort-btn2"
+                        ty-hint="Sort by Name (Ascending)"
+                      ></span>
+                      <span
+                        id="ty-sort-by-date-btn"
+                        class="ty-icon ty-sort-by-date-a ty-side-sort-btn ty-side-sort-btn2"
+                        ty-hint="Sort by Modification Date (Ascending)"
+                      ></span>
+                      <span
+                        id="ty-sort-by-create-btn"
+                        class="ty-icon ty-sort-new-up ty-side-sort-btn ty-side-sort-btn2"
+                        ty-hint="Sort by Creation Date (Ascending)"
+                      ></span></span
+                  ></span>
+                  <div class="clearfix"></div>
+                </li>
+                <li
+                  role="presentation"
+                  class="menuitem-group-label file-action-item folder-menu-group show"
+                >
+                  <span data-localize="Recent Locations" data-lg="Menu"
+                    >Recent Locations</span
+                  >
+                </li>
+                <li
+                  role="presentation"
+                  class="folder-menu-item folder-menu-group selected-folder-menu-item file-action-item show"
+                >
+                  <a role="menuitem" tabindex="-1" href="#"
+                    ><i class="fa fa-folder-o"></i><span></span
+                  ></a>
+                </li>
+                <li
+                  role="presentation"
+                  class="menuitem-group-label file-action-item empty-menu-group"
+                  id="folder-menu-item-after"
+                >
+                  <span data-localize="Location" data-lg="Front">Location</span>
+                </li>
+                <li
+                  role="presentation"
+                  class="file-action-item empty-menu-group"
+                >
+                  <a
+                    role="menuitem"
+                    tabindex="-1"
+                    href="#"
+                    id="open-folder-from-sidebar-menu"
+                    data-localize="Open Folder..."
+                    data-lg="Front"
+                    >Open Folder...</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div
+              class="sidebar-footer-item footer-item-right footer-btn file-action-item not-empty-menu-group"
+              id="switch-file-list-btn"
+              ty-hint="Switch File List/Tree View"
+            >
+              <span class="switch-file-list-btn-to-list"
+                ><span class="ty-icon ty-three-cells"></span> </span
+              ><span class="switch-file-list-btn-to-tree"
+                ><span class="ty-icon ty-file-tree"></span
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" id="typora-sidebar-resizer">
+        <div class="typora-sidebar-resizer-bar"></div>
+      </div>
+      <div id="top-titlebar" class="stopselect">
+        <span id="w-titlebar-left"
+          ><span class="toolbar-icon" style="float: left" id="w-menu-btn"
+            ><span class="ty-menu-btn-area"
+              ><span class="ty-menu-btn-area-sub ty-menu-btn-area-sub1"></span>
+              <span class="ty-menu-btn-area-sub ty-menu-btn-area-sub2"></span>
+              <span
+                class="ty-menu-btn-area-sub ty-menu-btn-area-sub3"
+              ></span> </span></span
+          ><span class="title-text" id="title-text">Typora</span> </span
+        ><span id="w-traffic-lights"
+          ><span id="w-min" class="btn toolbar-icon"
+            ><span class="ty-icon ty-minimize10"></span> </span
+          ><span id="w-max-group" class=""
+            ><span id="w-max" class="btn toolbar-icon"
+              ><span class="ty-icon ty-maximize10"></span> </span
+            ><span id="w-full" class="btn toolbar-icon"
+              ><span class="ion-arrow-resize"></span> </span
+            ><span id="w-pin" class="btn toolbar-icon"
+              ><span class="ion-pin"></span> </span></span
+          ><span id="w-unpin" class="btn toolbar-icon"
+            ><span class="ion-pin"></span> </span
+          ><span id="w-restore" class="btn toolbar-icon"
+            ><span
+              style="zoom: 1.1"
+              class="ty-icon ty-window-restore"
+            ></span> </span
+          ><span id="w-close" class="btn toolbar-icon"
+            ><span class="ty-icon ty-close10"></span> </span></span
+        ><span id="w-top-margin"></span>
+      </div>
+      <div class="megamenu-menu stopselect" id="megamenu-menu-sidebar">
+        <div class="megamenu-menu-header quiet-focus" tabindex="-1">
+          <a class="menu-style-btn" id="megamenu-back-btn"
+            ><i class="ion-android-arrow-back"></i
+          ></a>
+          <a id="megamenu-menu-header-title"
+            ><span
+              class="megamenu-menu-header-title-menu"
+              data-localize="Menu"
+              data-lg="Panel"
+              >Menu</span
+            >
+            <span
+              class="megamenu-menu-header-title-back"
+              data-localize="Back"
+              data-lg="Panel"
+              >Back</span
+            ></a
+          >
+        </div>
+        <ul class="dropdown-menu megamenu-menu-list" id="megamenu-menu-list">
+          <li>
+            <a role="menuitem" id="m-new" title="New"
+              ><i class="fa fa-file-o"></i
+              ><span data-localize="New" data-lg="Menu">New</span></a
+            >
+          </li>
+          <li>
+            <a role="menuitem" id="m-open" class="active" title="Open"
+              ><i class="fa fa-folder-open-o"></i
+              ><span data-localize="Open" data-lg="Menu">Open</span></a
+            >
+          </li>
+          <li>
+            <a role="menuitem" id="m-save" title="Save"
+              ><i class="fa fa-save"></i
+              ><span data-localize="Save" data-lg="Menu">Save</span></a
+            >
+            <a role="menuitem" id="m-saved" title="Saved"
+              ><i class="fa fa-check-circle-o"></i
+              ><span data-localize="Saved" data-lg="Front">Saved</span></a
+            >
+          </li>
+          <li>
+            <a role="menuitem" id="m-save-as" title="Save As.."
+              ><i class="fa fa-paste"></i
+              ><span data-localize="Save As" data-lg="Menu">Save As</span></a
+            >
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a role="menuitem" id="m-export" title="Export"
+              ><i class="fa fa-share-square-o"></i
+              ><span data-localize="Export" data-lg="Menu">Export</span></a
+            >
+          </li>
+          <li>
+            <a role="menuitem" id="m-print" title="Print"
+              ><i class="fa fa-print"></i
+              ><span data-localize="Print" data-lg="Menu">Print</span></a
+            >
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a role="menuitem" id="m-theme" title="Theme"
+              ><i class="fa fa-magic"></i
+              ><span data-localize="Themes" data-lg="Menu">Themes</span></a
+            >
+          </li>
+          <li>
+            <a role="menuitem" id="m-preference" title="Preferences"
+              ><i class="fa fa-cog"></i
+              ><span data-localize="Preferences" data-lg="Menu"
+                >Preferences</span
+              ></a
+            >
+          </li>
+          <li>
+            <a role="menuitem" id="m-about" title="About"
+              ><i class="fa fa-question-circle"></i
+              ><span data-localize="About" data-lg="Menu">About</span></a
+            >
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a role="menuitem" id="m-close" title="Close"
+              ><i class="fa fa-power-off"></i
+              ><span data-localize="Close" data-lg="Front">Close</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <content
+      ><div id="md-searchpanel" class="form-inline searchpanel-replace-mode">
+        <div
+          style="display: -webkit-flex; display: flex; flex-wrap: nowrap"
+          id="searchpanel-search-group"
+        >
+          <div style="text-align: right">
+            <div class="ty-search-panel-row">
+              <span
+                class="input-group-addon search-type-selection btn"
+                style="display: inline-block"
+                id="md-search-type-label"
+                ><label
+                  ><span data-localize="Search" data-lg="Front">Search</span
+                  >&nbsp;</label
+                ><i class="fa fa-sort-desc"></i
+              ></span>
+            </div>
+            <div class="ty-search-panel-row ty-replace-panel-row">
+              <span
+                class="input-group-addon search-type-selection btn"
+                style="display: inline-block"
+                id="md-replace-type-label"
+                ><label
+                  ><span data-localize="Replace" data-lg="Front">Replace</span
+                  >&nbsp;</label
+                ><i class="fa fa-sort-asc"></i
+              ></span>
+            </div>
+          </div>
+          <div style="-webkit-flex: 1; flex: 1">
+            <div class="ty-search-panel-row">
+              <input
+                type="text"
+                class="form-control"
+                data-localize="search text"
+                data-lg="Front"
+                placeholder="search text"
+                autocorrect="off"
+                spellcheck="false"
+                autocapitalize="off"
+                id="search-panel-input"
+              />
+              <span
+                ty-hint="Regular Expression"
+                id="searchpanel-regexp-option-btn"
+                class="searchpanel-search-option-btn"
+                aria-label="Regular Expression"
+                ><svg class="icon" style="width: 20px; height: 14px">
+                  <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="#find-and-replace-icon-regexp"
+                  ></use>
+                </svg> </span
+              ><span
+                ty-hint="Case Sensitive"
+                id="searchpanel-case-option-btn"
+                class="searchpanel-search-option-btn"
+                aria-label="Case Sensitive"
+                ><svg class="icon" style="width: 20px; height: 14px">
+                  <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="#find-and-replace-icon-case"
+                  ></use>
+                </svg> </span
+              ><span
+                ty-hint="Whole Word"
+                id="searchpanel-word-option-btn"
+                class="searchpanel-search-option-btn"
+                aria-label="Whole Word"
+                ><svg class="icon" style="width: 20px; height: 14px">
+                  <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="#find-and-replace-icon-word"
+                  ></use></svg
+              ></span>
+            </div>
+            <div class="ty-search-panel-row ty-replace-panel-row">
+              <input
+                type="text"
+                class="form-control"
+                data-localize="replace with"
+                data-lg="Front"
+                placeholder="replace with"
+                autocorrect="off"
+                spellcheck="false"
+                autocapitalize="off"
+                id="search-panel-replace-input"
+              />
+            </div>
+          </div>
+          <div style="-webkit-flex: 0 150px; flex: 0">
+            <div class="ty-search-panel-row">
+              <span
+                class="input-group-addon btn"
+                style="border-right: 0; padding: 0 8px"
+                id="search-panel-prev"
+                ><span class="ion-chevron-up"></span> </span
+              ><span
+                class="input-group-addon btn"
+                id="search-panel-next"
+                style="border-left: 0; padding: 0 8px"
+                ><span class="ion-chevron-down"></span> </span
+              ><span
+                class="input-group-addon"
+                id="search-panel-status"
+                style="border-left: 0; padding: 0 12px 0 0"
+              ></span>
+              <span class="input-group-addon btn close-btn"
+                ><span class="ion-close-round"></span>
+                <span class="ty-icon ty-upload" aria-hidden="true"></span
+              ></span>
+            </div>
+            <div class="ty-search-panel-row ty-replace-panel-row">
+              <span
+                class="input-group-addon btn"
+                style="padding-right: 15px; border-right: 0; text-align: left"
+                id="search-panel-replaceall-btn"
+                ><span data-localize="All" data-lg="Front">All</span> </span
+              ><span
+                class="input-group-addon btn"
+                style="text-align: right; border-left: 0"
+                id="search-panel-replace-btn"
+                ><span data-localize="Replace" data-lg="Front"
+                  >Replace</span
+                > </span
+              ><span
+                class="input-group-addon"
+                style="text-align: right; border-left: 0"
+              ></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group input-group-sm" id="searchpanel-msg">
+          <div class="alert alert-warning" role="alert">
+            <span class="searchpanel-msg-icon fa fa-check"></span>
+            <span
+              id="searchpanel-msg-content"
+              data-localize="Search text not found in article"
+              data-lg="Front"
+              >Search text not found in article</span
+            >
+            <span
+              id="searchpanel-msg-close-btn"
+              class="searchpanel-msg-btn"
+              style="padding-right: 4px"
+              data-localize="Dismiss"
+              data-lg="Front"
+              >Dismiss</span
+            >
+            <span
+              id="searchpanel-msg-undo-btn"
+              class="searchpanel-msg-btn"
+              data-localize="Undo"
+              data-lg="Front"
+              >Undo</span
+            >
+          </div>
+        </div>
+      </div>
+      <div id="typora-quick-open" class="modal-dialog" style="display: none">
+        <div id="typora-quick-open-input">
+          <input
+            type="text"
+            class="input"
+            tabindex="1"
+            autocorrect="off"
+            spellcheck="false"
+            autocapitalize="off"
+            value=""
+            placeholder="Search by file name"
+            data-localize="Search by file name"
+            data-lg="Front"
+          />
+        </div>
+        <div class="typora-quick-open-list" id="typora-quick-open-list">
+          <div
+            class="ty-quick-open-category"
+            id="ty-quick-open-folder-category"
+          >
+            <div
+              class="ty-quick-open-category-title"
+              data-localize="Pinned and Recent Locations"
+            >
+              Pinned and Recent Locations
+            </div>
+            <div
+              id="ty-quick-open-folder-list-inner"
+              class="ty-quick-open-category-list-inner"
+            ></div>
+          </div>
+          <div
+            class="ty-quick-open-category"
+            id="ty-quick-open-recent-category"
+          >
+            <div
+              class="ty-quick-open-category-title"
+              data-localize="Recent Files"
+              data-lg="Menu"
+            >
+              Recent Files
+            </div>
+            <div
+              id="ty-quick-open-recent-list-inner"
+              class="ty-quick-open-category-list-inner"
+            ></div>
+          </div>
+          <div
+            class="ty-quick-open-category"
+            id="ty-quick-open-infolder-category"
+          >
+            <div
+              class="ty-quick-open-category-title"
+              data-localize="File Results"
+              data-lg="Menu"
+            >
+              File Results
+            </div>
+            <div class="typora-quick-open-list-inner"></div>
+          </div>
+        </div>
+        <script id="typora-quick-open-item-templ" type="text/x-custom-template">
+          <div class="typora-quick-open-item">
+                <div class="typora-quick-open-item-title"></div>
+                <div class="typora-quick-open-item-path"></div>
+              </div>
+        </script>
+        <script id="typora-uploading-image-templ" type="text/x-custom-template">
+          <span class="md-image-uploading-mask-wrapper">
+                <span class="md-image-uploading-mask">
+                      <span class="md-image-uploading-label"></span>
+                      <span class="uploading-line"></span>
+                      <span class="uploading-line"></span>
+                      <span class="uploading-line"></span>
+                </span>
+              </span>
+        </script>
+        <script
+          id="typora-quick-loading-item-templ"
+          type="text/x-custom-template"
+          aria-hidden="true"
+        >
+          <div class="typora-quick-open-info-item">
+                <div class="typora-quick-open-info" data-localize="Searching" data-lg="Front">Searching</div>
+                <div class="typora-search-spinner"> <div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>
+              </div>
+        </script>
+      </div>
+      <script type="text/javascript">
+        if (window.process) {
+          var typoraOptionPrefix = /^--tyopt=/;
+          for (argv of process.argv) {
+            if (typoraOptionPrefix.exec(argv)) {
+              window._options = JSON.parse(argv.substr("--tyopt=".length));
+              window.dirname = window._options.dirname;
+              break;
+            }
+          }
+        }
+
+        var mathPackages = [
+          "noundefined",
+          "autoload",
+          "ams",
+          "textmacros",
+          "xypic",
+        ];
+        if ((window._options || {}).allowPhysicsConflict) {
+          mathPackages.push("physics");
+        }
+
+        var autoNumberingForMath = (window._options || {}).autoNumberingForMath;
+        var mathJaxTags = autoNumberingForMath ? "all" : "none";
+        if (autoNumberingForMath == "ams") mathJaxTags = "ams";
+        if (
+          autoNumberingForMath == "0" ||
+          autoNumberingForMath == "null" ||
+          autoNumberingForMath == "false" ||
+          autoNumberingForMath == "nil"
+        )
+          mathJaxTags = "none";
+
+        window.MathJax = {
+          loader: {
+            load: [
+              /*'ui/safe', 'a11y/semantic-enrich',*/ "input/tex/extensions/xypic",
+            ],
+          },
+          startup: {
+            typeset: false,
+            ready: () => {
+              console.debug("MathJax is loaded, but not yet initialized");
+
+              const { RANGES } = MathJax._.core.MmlTree.OperatorDictionary;
+              RANGES[28][3] =
+                RANGES[30][3] =
+                RANGES[33][3] =
+                RANGES[47][3] =
+                  "mtext";
+              MathJax.startup.defaultReady();
+              MathJax.startup.document.addStyleSheet();
+            },
+            pageReady: () => {
+              /*var safeOptions = MathJax.startup.document.safe.options;
+					safeOptions.safeProtocols.file = false;
+					safeOptions.idPattern = /^mjx-[-a-zA-Z0-9_.:]+$/;
+					safeOptions.dataPattern = /^data-(mjx|semantic)-/;*/
+              //MathJax.startup.document.options.internalSpeechTitles = true;
+              console.debug("MathJax is initialized");
+            },
+          },
+          tex: {
+            macros: {
+              /*
+						MathJax.startup.input[0].configuration.handlers.get("macro")._configuration.items
+					*/
+              // https://github.com/mathjax/MathJax/pull/1810/files
+              AA: "\u00c5",
+              alef: "\\aleph",
+              alefsym: "\\aleph",
+              Alpha: "\\mathrm{A}",
+              and: "\\land",
+              ang: "\\angle",
+              Bbb: "\\mathbb",
+              Beta: "\\mathrm{B}",
+              bold: "\\mathbf",
+              bull: "\\bullet",
+              C: "\\mathbb{C}",
+              Chi: "\\mathrm{X}",
+              clubs: "\\clubsuit",
+              cnums: "\\mathbb{C}",
+              Complex: "\\mathbb{C}",
+              coppa: "\u03D9",
+              Coppa: "\u03D8",
+              Dagger: "\\ddagger",
+              Digamma: "\u03DC",
+              darr: "\\downarrow",
+              dArr: "\\Downarrow",
+              Darr: "\\Downarrow",
+              diamonds: "\\diamondsuit",
+              empty: "\\emptyset",
+              Epsilon: "\\mathrm{E}",
+              Eta: "\\mathrm{H}",
+              euro: "\u20AC",
+              exist: "\\exists",
+              geneuro: "\u20AC",
+              geneuronarrow: "\u20AC",
+              geneurowide: "\u20AC",
+              H: "\\mathbb{H}",
+              hAar: "\\Leftrightarrow",
+              harr: "\\leftrightarrow",
+              Harr: "\\Leftrightarrow",
+              hearts: "\\heartsuit",
+              image: "\\Im",
+              infin: "\\infty",
+              Iota: "\\mathrm{I}",
+              isin: "\\in",
+              Kappa: "\\mathrm{K}",
+              koppa: "\u03DF",
+              Koppa: "\u03DE",
+              lang: "\\langle",
+              larr: "\\leftarrow",
+              Larr: "\\Leftarrow",
+              lArr: "\\Leftarrow",
+              lrarr: "\\leftrightarrow",
+              Lrarr: "\\Leftrightarrow",
+              lrArr: "\\Leftrightarrow",
+              Mu: "\\mathrm{M}",
+              N: "\\mathbb{N}",
+              natnums: "\\mathbb{N}",
+              Nu: "\\mathrm{N}",
+              O: "\\emptyset",
+              officialeuro: "\u20AC",
+              Omicron: "\\mathrm{O}",
+              or: "\\lor",
+              P: "\u00B6",
+              pagecolor: ["", 1],
+              part: "\\partial",
+              plusmn: "\\pm",
+              Q: "\\mathbb{Q}",
+              R: "\\mathbb{R}",
+              rang: "\\rangle",
+              rarr: "\\rightarrow",
+              Rarr: "\\Rightarrow",
+              rArr: "\\Rightarrow",
+              real: "\\Re",
+              reals: "\\mathbb{R}",
+              Reals: "\\mathbb{R}",
+              Rho: "\\mathrm{P}",
+              sdot: "\\cdot",
+              sampi: "\u03E1",
+              Sampi: "\u03E0",
+              sect: "\\S",
+              spades: "\\spadesuit",
+              stigma: "\u03DB",
+              Stigma: "\u03DA",
+              sub: "\\subset",
+              sube: "\\subseteq",
+              supe: "\\supseteq",
+              Tau: "\\mathrm{T}",
+              textvisiblespace: "\u2423",
+              thetasym: "\\vartheta",
+              uarr: "\\uparrow",
+              uArr: "\\Uparrow",
+              Uarr: "\\Uparrow",
+              varcoppa: "\u03D9",
+              varstigma: "\u03DB",
+              vline: "\\smash{\\large\\lvert}",
+              weierp: "\\wp",
+              Z: "\\mathbb{Z}",
+              Zeta: "\\mathrm{Z}",
+              dashint: "\\unicodeInt{x2A0D}",
+              ddashint: "\\unicodeInt{x2A0E}",
+              oiint: "\\unicodeInt{x222F}",
+              oiiint: "\\unicodeInt{x2230}",
+              ointctrclockwise: "\\unicodeInt{x2233}",
+              unicodeInt: [
+                "\\mathop{\\vcenter{\\mathchoice{\\huge\\unicode{#1}\\,}{\\unicode{#1}}{\\unicode{#1}}{\\unicode{#1}}}\\,}\\nolimits",
+                1,
+              ],
+              varointclockwise: "\\unicodeInt{x2232}",
+            },
+            maxBuffer: 10 * 1024,
+            displayMath: [
+              ["$$\n", "\n$$"],
+              ["$$\r\n", "\r\n$$"],
+            ],
+            inlineMath: [
+              ["$", "$"],
+              ["$$", "$$"],
+            ],
+            processEscapes: true,
+            packages: { "[+]": mathPackages },
+            tags: mathJaxTags,
+            // function called when TeX syntax errors occur
+            formatError: (jax, err) => {
+              var message = err.message.replace(/\n.*/, "");
+              return jax.parseOptions.nodeFactory.create(
+                "error",
+                message,
+                err.id,
+                "Error: " + message
+              );
+            },
+            useLabelIds: true,
+          },
+          svg: {
+            scale: 1,
+            minScale: 80,
+          },
+          options: {
+            skipHtmlTags: [
+              "script",
+              "noscript",
+              "style",
+              "textarea",
+              "pre",
+              "code",
+              "span",
+            ],
+            processHtmlClass:
+              "md-mathjax-preview|md-inline-math|inline-math-export-jax|math-in-toc",
+            menuOptions: {
+              settings: {
+                inTabOrder: false,
+              },
+            },
+            sre: {
+              speech: "shallow", // or 'shallow', or 'deep'
+            },
+            enableMenu: false,
+            ignoreHtmlClass: "tex2jax_ignore",
+            renderActions: {
+              //
+              // Force speech enrichment regardless of the menu settings
+              // https://mathjax.github.io/MathJax-demos-web/speech-tex-chtml.html.html
+              /*enrich: {'[+]': [
+						function (doc) {doc.enrich(true)},
+						function (math, doc) {math.enrich(doc, true)}  
+					]}*/
+            },
+            safeOptions: {
+              allow: {
+                //
+                //  Values can be "all", "safe", or "none"
+                //
+                URLs: "safe", // safe are in safeProtocols below
+                classes: "all", // safe start with mjx- (can be set by pattern below)
+                cssIDs: "all", // safe start with mjx- (can be set by pattern below)
+                styles: "all", // safe are in safeStyles below
+              },
+              //
+              //  Which URL protocols are allowed
+              //
+              safeProtocols: {
+                http: true,
+                https: true,
+                file: true,
+                javascript: false,
+                data: false,
+              },
+            },
+          },
+        };
+      </script>
+      <style id="no-sel-style"></style>
+      <script
+        type="text/javascript"
+        src="./lib.asar/MathJax3/es5/tex-svg-full.js"
+        id="MathJax-script"
+        defer="defer"
+      ></script>
+      <style type="text/css" id="write-style"></style>
+      <div id="typora-source" style="z-index: -1"></div>
+      <div class="md-notification-container">
+        <div id="md-notification"></div>
+      </div>
+      <div
+        id="typora-table-row-tracker"
+        style="display: none"
+        class="md-tooltip-hide typora-table-tracker"
+      >
+        <div class="typora-table-drag-area"></div>
+        <div class="typora-table-data-area"></div>
+      </div>
+      <div
+        id="typora-table-col-tracker"
+        style="display: none"
+        class="md-tooltip-hide typora-table-tracker"
+      >
+        <div class="typora-table-drag-area"></div>
+        <div class="typora-table-data-area"></div>
+      </div>
+      <div
+        id="typora-table-row-insert-marker"
+        class="typora-table-insert-marker"
+        style="display: none"
+      >
+        <i class="fa fa-caret-left"></i> <i class="fa fa-caret-right"></i>
+      </div>
+      <div
+        id="typora-table-col-insert-marker"
+        class="typora-table-insert-marker"
+        style="display: none"
+      >
+        <i class="fa fa-caret-down"></i> <i class="fa fa-caret-up"></i>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+        <symbol
+          id="find-and-replace-icon-case"
+          viewBox="0 0 20 16"
+          fill-rule="evenodd"
+        >
+          <path
+            d="M10.919,13 L9.463,13 C9.29966585,13 9.16550052,12.9591671 9.0605,12.8775 C8.95549947,12.7958329 8.8796669,12.6943339 8.833,12.573 L8.077,10.508 L3.884,10.508 L3.128,12.573 C3.09066648,12.6803339 3.01716722,12.7783329 2.9075,12.867 C2.79783279,12.9556671 2.66366746,13 2.505,13 L1.042,13 L5.018,2.878 L6.943,2.878 L10.919,13 Z M4.367,9.178 L7.594,9.178 L6.362,5.811 C6.30599972,5.66166592 6.24416701,5.48550102 6.1765,5.2825 C6.108833,5.07949898 6.04233366,4.85900119 5.977,4.621 C5.91166634,4.85900119 5.84750032,5.08066564 5.7845,5.286 C5.72149969,5.49133436 5.65966697,5.67099923 5.599,5.825 L4.367,9.178 Z M18.892,13 L18.115,13 C17.9516658,13 17.8233338,12.9755002 17.73,12.9265 C17.6366662,12.8774998 17.5666669,12.7783341 17.52,12.629 L17.366,12.118 C17.1839991,12.2813341 17.0055009,12.4248327 16.8305,12.5485 C16.6554991,12.6721673 16.4746676,12.7759996 16.288,12.86 C16.1013324,12.9440004 15.903001,13.0069998 15.693,13.049 C15.4829989,13.0910002 15.2496679,13.112 14.993,13.112 C14.6896651,13.112 14.4096679,13.0711671 14.153,12.9895 C13.896332,12.9078329 13.6758342,12.7853342 13.4915,12.622 C13.3071657,12.4586658 13.1636672,12.2556679 13.061,12.013 C12.9583328,11.7703321 12.907,11.4880016 12.907,11.166 C12.907,10.895332 12.9781659,10.628168 13.1205,10.3645 C13.262834,10.100832 13.499665,9.8628344 13.831,9.6505 C14.162335,9.43816561 14.6033306,9.2620007 15.154,9.122 C15.7046694,8.9819993 16.3883292,8.90266676 17.205,8.884 L17.205,8.464 C17.205,7.98333093 17.103501,7.62750116 16.9005,7.3965 C16.697499,7.16549885 16.4023352,7.05 16.015,7.05 C15.7349986,7.05 15.5016676,7.08266634 15.315,7.148 C15.1283324,7.21333366 14.9661673,7.28683292 14.8285,7.3685 C14.6908326,7.45016707 14.5636672,7.52366634 14.447,7.589 C14.3303327,7.65433366 14.2020007,7.687 14.062,7.687 C13.9453327,7.687 13.8450004,7.65666697 13.761,7.596 C13.6769996,7.53533303 13.6093336,7.46066711 13.558,7.372 L13.243,6.819 C14.0690041,6.06299622 15.0653275,5.685 16.232,5.685 C16.6520021,5.685 17.0264983,5.75383264 17.3555,5.8915 C17.6845016,6.02916736 17.9633322,6.22049877 18.192,6.4655 C18.4206678,6.71050122 18.5944994,7.00333163 18.7135,7.344 C18.8325006,7.68466837 18.892,8.05799797 18.892,8.464 L18.892,13 Z M15.532,11.922 C15.7093342,11.922 15.8726659,11.9056668 16.022,11.873 C16.1713341,11.8403332 16.3124993,11.7913337 16.4455,11.726 C16.5785006,11.6606663 16.7068327,11.5801671 16.8305,11.4845 C16.9541673,11.3888329 17.0789993,11.2756673 17.205,11.145 L17.205,9.934 C16.7009975,9.95733345 16.279835,10.0004997 15.9415,10.0635 C15.603165,10.1265003 15.3313343,10.2069995 15.126,10.305 C14.9206656,10.4030005 14.7748337,10.5173327 14.6885,10.648 C14.6021662,10.7786673 14.559,10.9209992 14.559,11.075 C14.559,11.3783349 14.6488324,11.5953327 14.8285,11.726 C15.0081675,11.8566673 15.2426652,11.922 15.532,11.922 L15.532,11.922 Z"
+          ></path>
+        </symbol>
+        <symbol
+          id="find-and-replace-icon-word"
+          viewBox="0 0 20 16"
+          fill-rule="evenodd"
+        >
+          <rect opacity="0.6" x="1" y="3" width="2" height="6"></rect>
+          <rect opacity="0.6" x="17" y="3" width="2" height="6"></rect>
+          <rect x="6" y="3" width="2" height="6"></rect>
+          <rect x="12" y="3" width="2" height="6"></rect>
+          <rect x="9" y="3" width="2" height="6"></rect>
+          <path
+            d="M4.5,13 L15.5,13 L16,13 L16,12 L15.5,12 L4.5,12 L4,12 L4,13 L4.5,13 L4.5,13 Z"
+          ></path>
+          <path
+            d="M4,10.5 L4,12.5 L4,13 L5,13 L5,12.5 L5,10.5 L5,10 L4,10 L4,10.5 L4,10.5 Z"
+          ></path>
+          <path
+            d="M15,10.5 L15,12.5 L15,13 L16,13 L16,12.5 L16,10.5 L16,10 L15,10 L15,10.5 L15,10.5 Z"
+          ></path>
+        </symbol>
+        <symbol
+          id="find-and-replace-icon-regexp"
+          viewBox="0 0 20 16"
+          fill-rule="evenodd"
+        >
+          <path
+            xmlns="http://www.w3.org/2000/svg"
+            d="M1.62 10a13.63 13.63 0 0 0 .45 3.51A13.39 13.39 0 0 0 3.4 16.7a.91.91 0 0 1 .1.27.41.41 0 0 1 0 .21.38.38 0 0 1-.1.15l-.14.11-.83.5a14.89 14.89 0 0 1-1.11-2 13.62 13.62 0 0 1-.74-2 13.22 13.22 0 0 1-.42-2 16.4 16.4 0 0 1 0-4.14 13.22 13.22 0 0 1 .42-2 13.84 13.84 0 0 1 .74-2A14.94 14.94 0 0 1 2.4 2l.83.51.14.11a.4.4 0 0 1 .1.15.41.41 0 0 1 0 .21.93.93 0 0 1-.1.27A13.6 13.6 0 0 0 1.62 10zM5 13.51a1.53 1.53 0 0 1 .11-.59 1.5 1.5 0 0 1 .31-.48 1.5 1.5 0 0 1 1.65-.32 1.51 1.51 0 0 1 .8.8 1.47 1.47 0 0 1 .12.59 1.46 1.46 0 0 1-.12.59 1.56 1.56 0 0 1-.32.48 1.46 1.46 0 0 1-.48.32 1.57 1.57 0 0 1-1.18 0 1.4 1.4 0 0 1-.47-.32A1.5 1.5 0 0 1 5 13.51zm10.8-4.72l-.54.94-1.75-1-.34-.23a1.38 1.38 0 0 1-.27-.26A1.84 1.84 0 0 1 13 9v2h-1V9a2.16 2.16 0 0 1 .12-.76 1.82 1.82 0 0 1-.58.48l-1.74 1-.54-.94 1.73-1a2.25 2.25 0 0 1 .75-.29 1.77 1.77 0 0 1-.75-.28L9.2 6.2l.54-.94 1.75 1 .33.24a1.64 1.64 0 0 1 .27.27A2 2 0 0 1 12 6V4h1v2a2.93 2.93 0 0 1 0 .4 1.36 1.36 0 0 1-.1.36 2.24 2.24 0 0 1 .59-.49l1.74-1 .54.94-1.73 1-.36.18a1.29 1.29 0 0 1-.36.1 2.11 2.11 0 0 1 .36.1 2 2 0 0 1 .36.19zM18.37 10a13.65 13.65 0 0 0-.45-3.51 13.81 13.81 0 0 0-1.32-3.27.93.93 0 0 1-.1-.27.45.45 0 0 1 0-.21.36.36 0 0 1 .1-.15l.14-.11.86-.48a15.54 15.54 0 0 1 1.1 2 13.79 13.79 0 0 1 .74 2 13.18 13.18 0 0 1 .42 2 16.16 16.16 0 0 1 .14 2 16.21 16.21 0 0 1-.13 2 13.18 13.18 0 0 1-.42 2 13.57 13.57 0 0 1-.74 2 15.49 15.49 0 0 1-1.1 2l-.84-.5-.14-.11a.35.35 0 0 1-.1-.15.44.44 0 0 1 0-.21.91.91 0 0 1 .1-.27 13.62 13.62 0 0 0 1.31-3.23 13.69 13.69 0 0 0 .43-3.53z"
+          />
+        </symbol>
+      </svg>
+      <div
+        class="modal fade"
+        id="table-insert-dialog"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div
+                class="modal-title"
+                id="myModalLabel"
+                data-localize="Insert Table"
+                data-lg="Front"
+              >
+                Insert Table
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group">
+                    <span
+                      class="input-group-addon"
+                      data-localize="Columns"
+                      data-lg="Front"
+                      >Columns</span
+                    >
+                    <input
+                      id="table-insert-col"
+                      class="form-control"
+                      value="3"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="input-group">
+                    <span
+                      class="input-group-addon"
+                      data-localize="Rows"
+                      data-lg="Front"
+                      >Rows</span
+                    >
+                    <input
+                      id="table-insert-row"
+                      class="form-control"
+                      value="4"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+                data-localize="Cancel"
+                data-lg="Front"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-localize="OK"
+                data-lg="Front"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade stopselect"
+        id="image-create-folder-confirm"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close">&times;</button>
+              <div
+                class="modal-title"
+                data-localize="Copy Image to…"
+                data-lg="Front"
+              >
+                Copy Image to…
+              </div>
+            </div>
+            <div class="modal-body">
+              <div
+                class="row"
+                data-localize='Typora are trying copy the newly inserted image to folder <code id="image-create-folder-target"></code> according to your YAML Front Matter setting. But the target folder does not exist, create it now?'
+                data-lg="Front"
+                data-lt="html"
+              >
+                Typora are trying copy the newly inserted image to folder
+                <code id="image-create-folder-target"></code> according to your
+                YAML Front Matter setting. But the target folder does not exist,
+                create it now?
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary image-create-folder-dialog-yes"
+                data-localize="Create Folder"
+                data-lg="Front"
+              >
+                Create Folder
+              </button>
+              <button
+                type="button"
+                class="btn btn-default image-create-folder-dialog-no"
+                data-localize="Cancel"
+                data-lg="Front"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-default image-create-folder-dialog-help"
+                style="float: left"
+                data-localize="More Info"
+                data-lg="Front"
+              >
+                Learn More…
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="componenet">
+        <div class="md-mathjax-tooltip">
+          <div class="btn-group btn-group-sm">
+            <button
+              type="button"
+              class="btn btn-default jax-trigger-delete-button"
+              aria-label="Delete Math"
+            >
+              <i class="ty-icon ty-delete"></i>
+            </button>
+          </div>
+        </div>
+        <div class="md-diagram-panel md-fences-adv-panel">
+          <div class="md-diagram-panel-header md-fences-adv-panel-header"></div>
+          <div
+            class="md-diagram-panel-preview md-fences-adv-panel-preview"
+          ></div>
+          <div class="md-diagram-panel-error md-fences-adv-panel-error"></div>
+        </div>
+        <script id="md-mathblock-panel-templ" type="text/x-custom-template">
+          <div class="md-mathblock-panel md-rawblock-panel" contenteditable="false">
+          				<div contenteditable="false" class="md-rawblock-control md-rawblock-before">$$
+          					<span class="md-math-tag-input ty-input ty-input-before" tabindex="-1" contenteditable="plaintext-only"></span>
+          				</div>
+          				<div class="md-rawblock-control md-rawblock-input md-mathblock-input">
+          				</div>
+          				<div contenteditable="false" class="md-rawblock-control md-rawblock-after">$$
+          					<span class="md-math-tag-input ty-input ty-input-after" tabindex="-1" contenteditable="plaintext-only"></span>
+          				</div>
+          				<div class="code-tooltip" contenteditable="false">
+          					<div class="md-mathjax-preview" contenteditable="false"></div>
+          				</div>
+          			</div>
+        </script>
+        <script id="md-rawblock-tooltip-templ" type="text/x-custom-template">
+          <div class="md-rawblock-tooltip md-rawblock-control"  contenteditable="false">
+          				<span class="md-rawblock-tooltip-name">{type}</span>
+          				<span class="md-rawblock-tooltip-btn md-rawblock-tooltip-edit-btn" ty-hint="Edit">
+          					<i class="fa fa-code" aria-hidden="true"></i>
+          				</span>
+          				<span class="md-rawblock-tooltip-btn md-rawblock-tooltip-ok-btn" ty-hint="Finish Editing">
+          						<i class="ion-checkmark"></i>
+          				</span>
+          			</div>
+        </script>
+        <script id="md-html-iframe-preload-temp" type="text/x-custom-template">
+          function iframePreloadScript(cid){
+          				var resizeTimer;
+          				var stopObserverTimer;
+
+          				function resize(){
+          					resizeTimer = null;
+          					top.postMessage({
+          						msg: "changeHeight",
+          						height: document.body.parentElement.offsetHeight,
+          						cid: cid
+          					}, "*");
+          				}
+          				var observer = new MutationObserver(function(){
+          					if(!resizeTimer) {
+          						requestAnimationFrame(resize);
+          						resizeTimer = true;
+          					}
+          				});
+
+          				function startListenContentChanges(onInit) {
+          					if(!document.body) return;
+
+          					if(stopObserverTimer) {
+          						clearTimeout(stopObserverTimer);
+          						observer.disconnect();
+          					}
+
+          					observer.observe(document.body, {
+          						attributes: true,
+          						childList: true,
+          						subtree: true
+          					});
+
+          					resize();
+          					setTimeout(resize, 300);
+          					if(onInit) {
+          						setTimeout(resize, 1000);
+          						setTimeout(resize, 3000);
+          						setTimeout(resize, 5000);
+          					}
+          				}
+
+          				function initApplication(){
+          					startListenContentChanges(true);
+
+          					window.addEventListener('message', function(e){
+          						if(e.data == "syncHeight") {
+          							startListenContentChanges();
+          						}
+          					});
+
+          					var mousedownPos;
+          					document.addEventListener("mousedown", function(e){
+          						top.postMessage({
+          							msg: "mousedown",
+          							cid: cid
+          						}, "*");
+          						mousedownPos = null;
+
+          						if(e.target.tagName == "A") {
+          							e.target.target = "_blank";
+          						} else if(e.ctrlKey || e.metaKey){
+          							top.postMessage({
+          								msg: "startEditing",
+          								cid: cid
+          							}, "*");
+          							e.preventDefault();
+          						} else {
+          							mousedownPos = [e.offsetX, e.offsetY]
+          						}
+          					});
+          					document.addEventListener("contextmenu", function(e){
+          						top.postMessage({
+          							msg: "contextmenu",
+          							event: {
+          								clientY: e.clientY,
+          								clientX: e.clientX
+          							},
+          							cid: cid
+          						}, "*");
+          					});
+          				}
+
+          				document.onreadystatechange = function () {
+          					if (document.readyState === "interactive") {
+          						initApplication();
+          					}
+          				}
+          			};
+        </script>
+      </div>
+      <script
+        id="md-htmlblock-panel-placeholder-templ"
+        type="text/x-custom-template"
+      >
+        <div class="ty-lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </script>
+      <script
+        id="md-htmlblock-panel-novideo-templ"
+        type="text/x-custom-template"
+      >
+        <div class="md-resouce-error-wrapper">
+        		<span class="md-resouce-error-mark"><span class="ty-icon ty-no-video"></span></span>
+        		<span class="md-resouce-error-message">{src}</span>
+        		</div>
+      </script>
+      <script
+        id="md-htmlblock-panel-nohtml-templ"
+        type="text/x-custom-template"
+      >
+        <div class="md-resouce-error-wrapper">
+        		<span class="md-resouce-error-mark"><span class="ty-icon ty-error-file"></span></span>
+        		<span class="md-resouce-error-message">{src}</span>
+        		</div>
+      </script>
+      <script id="ty-enter-mode-warning-temp" type="text/x-custom-template">
+        <p class="ty-enter-mode-warning-header" style="margin-bottom: 0"></p>
+        		<div style="padding-left: 64px;display: flex;flex-direction: row;align-items: flex-end;justify-content: space-between;margin-bottom: 8px;">
+        			<div class="ty-enter-mode-warning-body" style="opacity: 0.7;font-size: 0.8rem;text-align: left;flex:1;margin-right: 16px;">
+        			</div>
+        			<div style="padding:0;background: inherit;">
+        				<label style="opacity: 0.7;font-size: 0.8rem;margin-right:16px;"><input id="ty-suppress-mode-warning-input" type="checkbox" style="margin-right:8px;vertical-align: middle;"><span data-localize="Do not show this again" data-lg="Panel" style="vertical-align: middle;">Do not show this again</span></label>
+        				<button id="ty-suppress-mode-warning-close-btn" class='btn btn-default btn-sm' style='float:right;margin-top:1px;' data-localize='Dismiss' data-lg="Front">Dismiss</button>
+        			</div>
+        		</div>
+      </script>
+      <template id="ty-resize-temp"
+        ><div class="ty-resize-top ty-resize-top-top ty-resize-control"></div>
+        <div class="ty-resize-bottom ty-resize-bottom ty-resize-control"></div>
+        <div class="ty-resize-top ty-resize-top-left ty-resize-control"></div>
+        <div class="ty-resize-top ty-resize-top-right ty-resize-control"></div>
+        <div class="ty-resize-left ty-resize-top-left ty-resize-control"></div>
+        <div
+          class="ty-resize-right ty-resize-top-right ty-resize-control"
+        ></div>
+        <div
+          class="ty-resize-bottom ty-resize-bottom-left ty-resize-control"
+        ></div>
+        <div
+          class="ty-resize-bottom ty-resize-bottom-right ty-resize-control"
+        ></div>
+        <div
+          class="ty-resize-left ty-resize-bottom-left ty-resize-control"
+        ></div>
+        <div
+          class="ty-resize-right ty-resize-bottom-right ty-resize-control"
+        ></div></template
+      ><span class="tip" title="tooltip content"></span>
+      <span
+        id="inline-math-export-jax"
+        class="inline-math-export-jax"
+        style="display: none"
+        >$x}$</span
+      >
+      <div id="bottom-hint" class="ty-block-hint" style="display: none">
+        Paragraph
+      </div>
+      <div id="ty-auto-suggest" class="auto-suggest-container"></div>
+      <div
+        id="typora-caret"
+        style="
+          display: none;
+          position: absolute;
+          width: 1px;
+          box-sizing: border-box;
+          border-right: 1px solid;
+        "
+      ></div>
+      <div
+        id="math-inline-preview"
+        class="code-tooltip md-tooltip-hide md-hover-tip"
+        style="display: none"
+      >
+        <div class="md-arrow"></div>
+        <div
+          id="math-inline-preview-content"
+          class="code-tooltip-content"
+        ></div>
+      </div>
+      <div id="zoom-hint" style="display: none" role="panel">
+        <span id="zoom-hint-current">100%</span>
+        <span
+          id="zoom-hint-in"
+          role="button"
+          class="zoom-hint-button"
+          aria-label="zoom out"
+          ><i class="ion-minus-round"></i
+        ></span>
+        <span
+          id="zoom-hint-out"
+          role="button"
+          class="zoom-hint-button"
+          aria-label="zoom in"
+          ><i class="ion-plus-round"></i
+        ></span>
+        <span
+          id="zoom-hint-reset"
+          role="button"
+          class="zoom-hint-button"
+          aria-label="reset zoom factor"
+          >Reset</span
+        >
+      </div>
+      <div
+        id="write"
+        class="ty-before-first-render"
+        contenteditable="false"
+        spellcheck="true"
+        tabindex="-1"
+      >
+        <div style="opacity: 0">
+          <h1>ABCDEFG</h1>
+          <p>abcdefg</p>
+        </div>
+      </div>
+      <canvas style="display: none" id="video-canvas"></canvas>
+      <div id="ty-oversize-body" contenteditable="false" style="display: none">
+        <div class="ty-oversize-modal">
+          <div
+            style="
+              font-size: 24px;
+              opacity: 0.8;
+              text-align: left;
+              margin-bottom: 8px;
+            "
+          >
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          </div>
+          <div
+            style="opacity: 0.8"
+            data-localize="The file is too large to render in Typora."
+            data-lg="Front"
+          >
+            The file is too large to render in Typora.
+          </div>
+          <div style="margin-top: 24px; text-align: right">
+            <button
+              style="display: none"
+              id="ty-oversize-file-open-in"
+              class="btn btn-default"
+              data-localize="Open in…"
+              data-lg="Front"
+            >
+              Open in…
+            </button>
+            <button
+              style="display: none"
+              id="ty-oversize-file-quick-look"
+              class="btn btn-default"
+              data-localize="QuickLook"
+              data-lg="Front"
+            >
+              QuickLook
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="mermaid-canvas" style="display: none"></div>
+      <ul
+        class="dropdown-menu context-menu"
+        id="context-menu-for-source"
+        role="menu"
+      >
+        <li data-group="copy-paste" data-key="cut">
+          <a role="menuitem" data-localize="Cut" data-lg="Menu">Cut</a>
+        </li>
+        <li data-group="copy-paste" data-key="copy">
+          <a role="menuitem" data-localize="Copy" data-lg="Menu">Copy</a>
+        </li>
+        <li data-group="copy-paste" data-key="paste">
+          <a role="menuitem" data-localize="Paste" data-lg="Menu">Paste</a>
+        </li>
+      </ul>
+      <ul class="dropdown-menu context-menu" id="context-menu" role="menu">
+        <li data-group="image" data-key="reveal-img-in-finder" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Open Image Location…" data-lg="Menu"
+              >Open Image Location…</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-group="image" data-key="reveal-img-in-browser" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Open Image in Browser…" data-lg="Menu"
+              >Open Image in Browser…</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-group="image" data-key="copy-img-to-target" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Copy to %@" data-lg="Menu"
+              >Copy to %@</span
+            ></a
+          >
+        </li>
+        <li data-group="image" data-key="select-img-target" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Copy Image to…" data-lg="Menu"
+              >Copy Image to…</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-group="image" data-key="move-img-to-target" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Move to %@" data-lg="Menu"
+              >Copy to %@</span
+            ></a
+          >
+        </li>
+        <li data-group="image" data-key="select-img-target-move" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Rename or Move Image to…" data-lg="Menu"
+              >Rename or Move Image to…</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-group="image" data-key="upload-img" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Upload Image" data-lg="Menu"
+              >Upload Images</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-group="image" data-key="zoom-img" class="hide has-extra-menu">
+          <a role="menuitem"
+            ><span data-localize="Zoom Image" data-lg="Menu">Zoom Image</span>
+            <i class="fa fa-caret-right"></i
+          ></a>
+        </li>
+        <li
+          data-group="image"
+          data-key="switch-img-syntax"
+          class="hide has-extra-menu"
+        >
+          <a role="menuitem"
+            ><span data-localize="Switch Image Syntax" data-lg="Menu"
+              >Switch Image Syntax</span
+            >
+            <i class="fa fa-caret-right"></i
+          ></a>
+        </li>
+        <li data-group="image" data-key="delete-img-file" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Delete Image File" data-lg="Menu"
+              >Delete Image File</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-group="image" data-key="delete-img" class="hide">
+          <a role="menuitem"
+            ><span class="ty-menu-shortcut"></span
+            ><span data-localize="Delete Image" data-lg="Menu"
+              >Delete Image</span
+            ></a
+          >
+        </li>
+        <li class="divider hide" data-group="image"></li>
+        <li data-group="video" data-key="play" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Play" data-lg="Menu">Play</span></a
+          >
+        </li>
+        <li data-group="video" data-key="pause" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Pause" data-lg="Menu">Pause</span></a
+          >
+        </li>
+        <li class="divider hide" data-group="video"></li>
+        <li data-group="hyperlink" data-key="jumpto">
+          <a role="menuitem"
+            ><span data-localize="Open Link" data-lg="Menu">Open Link</span
+            ><span class="ty-menu-shortcut ty-no-key-mod">Ctrl+Click</span></a
+          >
+        </li>
+        <li
+          class="divider hide"
+          data-group="hyperlink"
+          id="divider-after-jumpto"
+        ></li>
+        <li
+          class="divider hide"
+          data-group="spell-check"
+          id="divider-before-learn"
+        ></li>
+        <li data-group="spell-check" data-key="learn">
+          <a role="menuitem" data-localize="Learn Spelling" data-lg="Menu"
+            >Learn Spelling</a
+          >
+        </li>
+        <li data-group="spell-check" data-key="unlearn">
+          <a role="menuitem" data-localize="Unlearn Spelling" data-lg="Menu"
+            >Unlearn Spelling</a
+          >
+        </li>
+        <li class="divider" data-group="spell-check"></li>
+        <li id="search-service-placeholder" class="hide"></li>
+        <li data-group="edit-block" data-key="edit">
+          <a role="menuitem"
+            ><span data-localize="Edit" data-lg="Menu">Edit</span
+            ><span class="ty-menu-shortcut ty-no-key-mod">Click</span></a
+          >
+        </li>
+        <li data-group="copy-paste" class="has-btn-submenu">
+          <span class="menu-item-container"
+            ><a
+              class="menu-style-btn"
+              data-key="cut"
+              data-label="Cut"
+              data-lg="Menu"
+              data-key-str="ctrl+x"
+              ><i class="ty-icon ty-cut"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key="copy"
+              data-label="Copy"
+              data-lg="Menu"
+              data-key-str="ctrl+c"
+              ><i class="ty-icon ty-copy"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key="paste"
+              data-label="Paste"
+              data-lg="Menu"
+              data-key-str="ctrl+v"
+              ><i class="ty-icon ty-paste"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key="backspace"
+              data-label="Delete Selected"
+              data-lg="Menu"
+              data-key-str=""
+              ><i class="ty-icon ty-delete1"></i></a
+          ></span>
+        </li>
+        <li data-group="hyperlink" data-key="copy_link" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Copy Link Address" data-lg="Menu"
+              >Copy Link Address</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-group="emoji" data-key="copy-emoji" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Copy Emoji" data-lg="Menu">Copy Emoji</span
+            ><span class="ty-menu-shortcut ty-no-key-mod"></span
+          ></a>
+        </li>
+        <li data-group="image" data-key="copy-img" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Copy Image Content" data-lg="Menu"
+              >Copy Image Content</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key="copy-as" data-group="copy-paste" class="has-extra-menu">
+          <a role="menuitem"
+            ><span data-localize="Copy / Paste As…" data-lg="Menu"
+              >Copy / Paste As…</span
+            >
+            <i class="fa fa-caret-right"></i
+          ></a>
+        </li>
+        <li data-key="copy-all-code" data-group="code" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Copy Code Content" data-lg="Menu"
+              >Copy Code Content</span
+            ></a
+          >
+        </li>
+        <li data-key="format-selected-code" data-group="code" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Auto Indent Selected Code" data-lg="Menu"
+              >Format Selected Code Content</span
+            ></a
+          >
+        </li>
+        <li data-key="format-all-code" data-group="code" class="hide">
+          <a role="menuitem"
+            ><span data-localize="Auto Indent Whole Code" data-lg="Menu"
+              >Format Whole Code Content</span
+            ></a
+          >
+        </li>
+        <li data-key="download-as" data-group="adv-media">
+          <a role="menuitem"
+            ><span data-localize="Save %@ As…" data-lg="Menu"
+              >Save Media As…</span
+            ><span class="ty-menu-shortcut ty-no-key-mod"></span
+          ></a>
+        </li>
+        <li class="divider"></li>
+        <li data-group="inline-style" class="has-btn-submenu">
+          <span class="menu-item-container"
+            ><a
+              class="menu-style-btn"
+              data-key
+              data-style="strong"
+              data-label="Strong"
+              data-lg="Menu"
+              data-key-str="ctrl+b"
+              ><i class="ty-icon ty-bold"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key
+              data-style="em"
+              data-label="Emphasis"
+              data-lg="Menu"
+              data-key-str="ctrl+i"
+              ><i class="ty-icon ty-italic"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key
+              data-style="code"
+              data-label="Code"
+              data-lg="Menu"
+              data-key-str="ctrl+shift+`"
+              ><i class="ty-icon ty-code"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key
+              data-style="link"
+              data-label="Hyperlink"
+              data-lg="Menu"
+              ><i class="ty-icon ty-link-icon" data-key-str="ctrl+k"></i></a
+          ></span>
+        </li>
+        <li data-group="block-wrap" class="has-btn-submenu">
+          <span class="menu-item-container"
+            ><a
+              class="menu-style-btn"
+              data-key
+              data-indent="blockquote"
+              data-label="Quote"
+              data-lg="Menu"
+              data-key-str="ctrl+shift+q"
+              ><i class="ty-icon ty-quote"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key
+              data-indent="ol"
+              data-label="Ordered List"
+              data-lg="Menu"
+              data-key-str="Ctrl+Shift+["
+              ><i class="ty-icon ty-number"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key
+              data-indent="ul"
+              data-label="Unordered List"
+              data-lg="Menu"
+              data-key-str="Ctrl+Shift+]"
+              ><i class="ty-icon ty-bullet-list"></i
+            ></a>
+            <a
+              class="menu-style-btn"
+              data-key
+              data-indent="tasklist"
+              data-label="Task List"
+              data-lg="Menu"
+              ><i class="ty-icon ty-check"></i></a
+          ></span>
+        </li>
+        <li data-group="block-tab" data-block-auto-hide class="has-btn-submenu">
+          <span class="menu-item-container"
+            ><a
+              class="menu-style-btn menu-style-btn-2width"
+              data-key
+              data-tab="left"
+              data-label="Outdent"
+              data-lg="Menu"
+              data-key-str="Shift+Tab"
+              ><i class="ty-icon ty-left"></i
+            ></a>
+            <a
+              class="menu-style-btn menu-style-btn-2width"
+              data-key
+              data-tab="right"
+              data-label="Indent"
+              data-lg="Menu"
+              data-key-str="Tab"
+              ><i class="ty-icon ty-right"></i></a
+          ></span>
+        </li>
+        <li class="divider" data-group="inline-style"></li>
+        <li data-key="table" data-group="table" class="has-extra-menu">
+          <a role="menuitem"
+            ><span data-localize="Table" data-lg="Menu">Table</span>
+            <i class="fa fa-caret-right"></i
+          ></a>
+        </li>
+        <li data-key="block-style" class="has-extra-menu">
+          <a role="menuitem"
+            ><span data-localize="Paragraph" data-lg="Menu">Paragraph</span>
+            <i class="fa fa-caret-right"></i
+          ></a>
+        </li>
+        <li data-key="insert" class="has-extra-menu">
+          <a role="menuitem"
+            ><span data-localize="Insert" data-lg="Menu">Insert</span>
+            <i class="fa fa-caret-right"></i
+          ></a>
+        </li>
+        <li class="divider" data-group="delete-block"></li>
+        <li data-key="delete-block" data-group="delete-block">
+          <a role="menuitem"
+            ><span data-localize="Delete Block" data-lg="Menu"
+              >Delete Block</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li class="divider" data-group="dev-tool"></li>
+        <li data-group="dev-tool" data-key="dev-tool">
+          <a role="menuitem" data-localize="Inspect Element" data-lg="Menu"
+            >Inspect Element</a
+          >
+        </li>
+      </ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="block-style-menu"
+        role="menu"
+      >
+        <li data-block-auto-disable data-key>
+          <a role="menuitem" data-block="header1" class="state-off"
+            ><span data-localize="Heading 1" data-lg="Menu">Heading 1</span
+            ><span class="ty-menu-shortcut">Ctrl+1</span></a
+          >
+        </li>
+        <li data-block-auto-disable data-key>
+          <a role="menuitem" data-block="header2" class="state-off"
+            ><span data-localize="Heading 2" data-lg="Menu">Heading 2</span
+            ><span class="ty-menu-shortcut">Ctrl+2</span></a
+          >
+        </li>
+        <li data-block-auto-disable data-key>
+          <a role="menuitem" data-block="header3" class="state-off"
+            ><span data-localize="Heading 3" data-lg="Menu">Heading 3</span
+            ><span class="ty-menu-shortcut">Ctrl+3</span></a
+          >
+        </li>
+        <li data-block-auto-disable data-key>
+          <a role="menuitem" data-block="header4" class="state-off"
+            ><span data-localize="Heading 4" data-lg="Menu">Heading 4</span
+            ><span class="ty-menu-shortcut">Ctrl+4</span></a
+          >
+        </li>
+        <li data-block-auto-disable data-key>
+          <a role="menuitem" data-block="header5" class="state-off"
+            ><span data-localize="Heading 5" data-lg="Menu">Heading 5</span
+            ><span class="ty-menu-shortcut">Ctrl+5</span></a
+          >
+        </li>
+        <li data-block-auto-disable data-key>
+          <a role="menuitem" data-block="header6" class="state-off"
+            ><span data-localize="Heading 6" data-lg="Menu">Heading 6</span
+            ><span class="ty-menu-shortcut">Ctrl+6</span></a
+          >
+        </li>
+        <li class="divider"></li>
+        <li data-key>
+          <a role="menuitem" data-block="paragraph" class="state-off state-on"
+            ><span data-localize="Paragraph" data-lg="Menu">Paragraph</span
+            ><span class="ty-menu-shortcut">Ctrl+0</span></a
+          >
+        </li>
+      </ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="edit-menu"
+        role="menu"
+      >
+        <li data-key="copy_as_markdown" data-copy-action>
+          <a role="menuitem"
+            ><span data-localize="Copy as Markdown" data-lg="Menu"
+              >Copy as Markdown</span
+            ><span class="ty-menu-shortcut">Ctrl+Shift+C</span></a
+          >
+        </li>
+        <li data-key="copy_as_html_source" data-copy-action>
+          <a role="menuitem"
+            ><span data-localize="Copy as HTML Code" data-lg="Menu"
+              >Copy as HTML Code</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key="copy_as_simple_html" data-copy-action>
+          <a role="menuitem"
+            ><span data-localize="Copy without Theme Styling" data-lg="Menu"
+              >Copy without Theme Styling</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li class="divider" data-group="adv-media"></li>
+        <li data-key="copy_as_image" data-group="adv-media">
+          <a role="menuitem"
+            ><span data-localize="Copy as Image" data-lg="Menu"
+              >Copy as Image</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key="copy_as_word" data-group="math" menu-for-win>
+          <a role="menuitem"
+            ><span data-localize="Copy to MS Word" data-lg="Menu"
+              >Copy to MS Word</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key="copy_as_mathml" data-group="math">
+          <a role="menuitem"
+            ><span data-localize="Copy as MathML" data-lg="Menu"
+              >Copy as MathML</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key="copy_as_math_tex" data-group="math">
+          <a role="menuitem"
+            ><span data-localize="Copy as Tex" data-lg="Menu">Copy as Tex</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li class="divider" data-paste-action></li>
+        <li data-key="paste_as_plain" data-paste-action>
+          <a role="menuitem"
+            ><span data-localize="Paste as Plain Text" data-lg="Menu"
+              >Paste as Plain Text</span
+            ><span class="ty-menu-shortcut">Ctrl+Shift+V</span></a
+          >
+        </li>
+      </ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="zoom-img-menu"
+        role="menu"
+      >
+        <li data-key="zoom-img-to-factor" data-factor="25%">
+          <a role="menuitem">25%</a>
+        </li>
+        <li data-key="zoom-img-to-factor" data-factor="33%">
+          <a role="menuitem">33%</a>
+        </li>
+        <li data-key="zoom-img-to-factor" data-factor="50%">
+          <a role="menuitem">50%</a>
+        </li>
+        <li data-key="zoom-img-to-factor" data-factor="67%">
+          <a role="menuitem">67%</a>
+        </li>
+        <li data-key="zoom-img-to-factor" data-factor="80%">
+          <a role="menuitem">80%</a>
+        </li>
+        <li class="divider"></li>
+        <li data-key="zoom-img-to-factor" data-factor="100%">
+          <a role="menuitem">100%</a>
+        </li>
+        <li class="divider"></li>
+        <li data-key="zoom-img-to-factor" data-factor="150%">
+          <a role="menuitem">150%</a>
+        </li>
+        <li data-key="zoom-img-to-factor" data-factor="200%">
+          <a role="menuitem">200%</a>
+        </li>
+      </ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="switch-img-syntax-menu"
+        role="menu"
+      >
+        <li data-key="switch-img-syntax-markdown">
+          <a role="menuitem" class="state-off"
+            ><span><span>Markdown</span> <code>![alt](src)</code></span></a
+          >
+        </li>
+        <li data-key="switch-img-syntax-html">
+          <a role="menuitem" class="state-off"
+            ><span
+              ><span>HTML</span>
+              <code
+                >&lt;img src=&quot;src&quot; alt=&quot;alt&quot; /&gt;</code
+              ></span
+            ></a
+          >
+        </li>
+      </ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="table-menu"
+        role="menu"
+      >
+        <li data-key="insert_row_before">
+          <a role="menuitem"
+            ><span data-localize="Add Row Above" data-lg="Menu"
+              >Add Row Above</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key="insert_row_after">
+          <a role="menuitem"
+            ><span data-localize="Add Row Below" data-lg="Menu"
+              >Add Row Below</span
+            ><span class="ty-menu-shortcut">Ctrl+Enter</span></a
+          >
+        </li>
+        <li data-key="insert_col_before">
+          <a role="menuitem"
+            ><span data-localize="Add Column Before" data-lg="Menu"
+              >Add Column Before</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key="insert_col_after">
+          <a role="menuitem"
+            ><span data-localize="Add Column After" data-lg="Menu"
+              >Add Column After</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li class="divider"></li>
+        <li data-key="move_row_up">
+          <a role="menuitem"
+            ><span data-localize="Move Row Up" data-lg="Menu">Move Row Up</span
+            ><span class="ty-menu-shortcut">Alt+↑</span></a
+          >
+        </li>
+        <li data-key="move_row_down">
+          <a role="menuitem"
+            ><span data-localize="Move Row Down" data-lg="Menu"
+              >Move Row Down</span
+            ><span class="ty-menu-shortcut">Alt+↓</span></a
+          >
+        </li>
+        <li data-key="move_col_left">
+          <a role="menuitem"
+            ><span data-localize="Move Column Left" data-lg="Menu"
+              >Move Column Left</span
+            ><span class="ty-menu-shortcut">Alt+←</span></a
+          >
+        </li>
+        <li data-key="move_col_right">
+          <a role="menuitem"
+            ><span data-localize="Move Column Right" data-lg="Menu"
+              >Move Column Right</span
+            ><span class="ty-menu-shortcut">Alt+→</span></a
+          >
+        </li>
+        <li class="divider"></li>
+        <li data-key="delete_table_row">
+          <a role="menuitem"
+            ><span data-localize="Delete Row" data-lg="Menu">Delete Row</span
+            ><span class="ty-menu-shortcut">Ctrl+Shift+Backspace</span></a
+          >
+        </li>
+        <li data-key="delete_table_col">
+          <a role="menuitem"
+            ><span data-localize="Delete Column" data-lg="Menu"
+              >Delete Column</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li class="divider"></li>
+        <li data-key="copy_table">
+          <a role="menuitem"
+            ><span data-localize="Copy Table" data-lg="Menu">Copy Table</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key="reformat_table">
+          <a role="menuitem"
+            ><span data-localize="Prettify Source Code" data-lg="Menu"
+              >Prettify Source Code</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li class="divider"></li>
+        <li data-key="delete_table">
+          <a role="menuitem"
+            ><span data-localize="Delete Table" data-lg="Menu"
+              >Delete Table</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+      </ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="search-menu"
+        role="menu"
+      ></ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="insert-menu"
+        role="menu"
+      >
+        <li data-key data-group="inline-style">
+          <a role="menuitem" data-style="image" class="state-off"
+            ><span data-localize="Image" data-lg="Menu">Image</span
+            ><span class="ty-menu-shortcut">Ctrl+Shift+I</span></a
+          >
+        </li>
+        <li class="divider" data-group="inline-style"></li>
+        <li data-key data-block-auto-disable>
+          <a role="menuitem" data-insert="def_footnote" class="state-off"
+            ><span data-localize="Footnotes" data-lg="Menu">Footnotes</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key data-block-auto-disable>
+          <a role="menuitem" data-insert="def_link" class="state-off"
+            ><span data-localize="Link Reference" data-lg="Menu"
+              >Link Reference</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key data-block-auto-disable>
+          <a role="menuitem" data-insert="hr" class="state-off"
+            ><span data-localize="Horizontal Line" data-lg="Menu"
+              >Horizontal Line</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key data-block-auto-disable>
+          <a role="menuitem" data-insert="table" class="state-off"
+            ><span data-localize="Table" data-lg="Menu">Table</span
+            ><span class="ty-menu-shortcut">Ctrl+ T</span></a
+          >
+        </li>
+        <li data-key data-block-auto-disable>
+          <a role="menuitem" data-insert="fences" class="state-off"
+            ><span data-localize="Code Fences" data-lg="Menu">Code Fences</span
+            ><span class="ty-menu-shortcut">Ctrl+Shift+K</span></a
+          >
+        </li>
+        <li data-key data-block-auto-disable>
+          <a role="menuitem" data-insert="math_block" class="state-off"
+            ><span data-localize="Math Block" data-lg="Menu">Math Block</span
+            ><span class="ty-menu-shortcut">Ctrl+Shift+M</span></a
+          >
+        </li>
+        <li data-key data-block-auto-disable>
+          <a role="menuitem" data-insert="toc" class="state-off"
+            ><span data-localize="Table of Contents" data-lg="Menu"
+              >Table of Contents</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key data-block-auto-disable>
+          <a role="menuitem" data-insert="meta_block" class="state-off"
+            ><span data-localize="YAML Front Matter" data-lg="Menu"
+              >YAML Front Matter</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li class="divider"></li>
+        <li data-key>
+          <a role="menuitem" data-insert-p="before" class="state-off"
+            ><span data-localize="Paragraph (before)" data-lg="Menu"
+              >Paragraph (before)</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+        <li data-key>
+          <a role="menuitem" data-insert-p="after" class="state-off"
+            ><span data-localize="Paragraph (after)" data-lg="Menu"
+              >Paragraph (after)</span
+            ><span class="ty-menu-shortcut"></span
+          ></a>
+        </li>
+      </ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="outline-menu"
+        role="menu"
+      >
+        <li data-action="highlight" data-key>
+          <a
+            role="menuitem"
+            data-localize="Highlight Current Header"
+            data-lg="Menu"
+            class="state-off"
+            >Highlight Current Header</a
+          >
+        </li>
+        <li class="divider"></li>
+        <li data-action="filter" data-key>
+          <a
+            role="menuitem"
+            data-localize="Filter"
+            data-lg="Front"
+            class="state-off"
+            >Filter</a
+          >
+        </li>
+        <li class="divider" data-collapse></li>
+        <li data-action="expand-all" data-key data-collapse>
+          <a
+            role="menuitem"
+            data-localize="Expand All"
+            data-lg="Menu"
+            class="state-off"
+            >Expand All</a
+          >
+        </li>
+        <li data-action="collapse-all" data-key data-collapse>
+          <a
+            role="menuitem"
+            data-localize="Collapse All"
+            data-lg="Menu"
+            class="state-off"
+            >Collapse All</a
+          >
+        </li>
+        <li class="divider" data-view></li>
+        <li data-action="collapsible-outline" data-key data-view>
+          <a
+            role="menuitem"
+            data-localize="Collapsible Outline"
+            data-lg="Menu"
+            class="state-off"
+            >Collapsible Outline</a
+          >
+        </li>
+        <li data-action="flat-outline" data-key data-view>
+          <a
+            role="menuitem"
+            data-localize="Flat Outline"
+            data-lg="Menu"
+            class="state-off"
+            >Flat Outline</a
+          >
+        </li>
+      </ul>
+      <ul
+        class="dropdown-menu context-menu ext-context-menu"
+        id="file-menu"
+        role="menu"
+      >
+        <li data-action="open" data-key for-file for-search>
+          <a
+            role="menuitem"
+            data-localize="Open"
+            data-lg="Menu"
+            class="state-off"
+            >Open</a
+          >
+        </li>
+        <li data-action="open_in_new_window" data-key for-file for-search>
+          <a
+            role="menuitem"
+            data-localize="Open in New Window"
+            data-lg="Menu"
+            class="state-off"
+            >Open in New Window</a
+          >
+        </li>
+        <li data-action="open_in_new_window" data-key for-folder>
+          <a
+            role="menuitem"
+            data-localize="Open in New Window"
+            data-lg="Menu"
+            class="state-off"
+            >Open in New Window</a
+          >
+        </li>
+        <li class="divider" for-file for-folder></li>
+        <li data-action="undo_file_op" data-key for-undo>
+          <a role="menuitem" class="state-off">Undo</a>
+        </li>
+        <li class="divider" for-undo></li>
+        <li data-action="new_file" for-new data-key>
+          <a
+            role="menuitem"
+            data-localize="New File"
+            data-lg="Menu"
+            class="state-off"
+            >New File</a
+          >
+        </li>
+        <li data-action="new_folder" for-new data-key>
+          <a
+            role="menuitem"
+            data-localize="New Folder"
+            data-lg="Menu"
+            class="state-off"
+            >New Folder</a
+          >
+        </li>
+        <li class="divider" for-search for-new></li>
+        <li data-action="search" data-key for-search>
+          <a
+            role="menuitem"
+            data-localize="Search"
+            data-lg="Menu"
+            class="state-off"
+            >Search</a
+          >
+        </li>
+        <li class="divider"></li>
+        <li data-action="list_view" data-key>
+          <a
+            role="menuitem"
+            data-localize="Articles (List View)"
+            data-lg="Menu"
+            class="state-off"
+            >Articles (List View)</a
+          >
+        </li>
+        <li data-action="tree_view" data-key>
+          <a
+            role="menuitem"
+            data-localize="File Tree (Tree View)"
+            data-lg="Menu"
+            class="state-off"
+            >File Tree (Tree View)</a
+          >
+        </li>
+        <li class="divider"></li>
+        <li data-action="rename" for-folder for-file data-key>
+          <a
+            role="menuitem"
+            data-localize="Rename"
+            data-lg="Menu"
+            class="state-off"
+            >Rename</a
+          >
+        </li>
+        <li data-action="duplicate" for-file data-key>
+          <a
+            role="menuitem"
+            data-localize="Duplicate"
+            data-lg="Menu"
+            class="state-off"
+            >Duplicate</a
+          >
+        </li>
+        <li class="divider" for-folder for-file></li>
+        <li data-action="delete" data-key for-folder for-file>
+          <a
+            role="menuitem"
+            data-localize="Delete"
+            data-lg="Menu"
+            class="state-off"
+            >Delete</a
+          >
+        </li>
+        <li class="divider" for-folder for-file for-search></li>
+        <li data-action="properties" for-win for-folder for-file data-key>
+          <a
+            role="menuitem"
+            data-localize="Properties"
+            data-lg="Menu"
+            class="state-off"
+            >Properties</a
+          >
+        </li>
+        <li data-action="copy_path" data-key for-search>
+          <a
+            role="menuitem"
+            data-localize="Copy File Path"
+            data-lg="Menu"
+            class="state-off"
+            >Copy File Path</a
+          >
+        </li>
+        <li data-action="reveal" data-key for-search>
+          <a
+            role="menuitem"
+            data-localize="Open File Location"
+            data-lg="Menu"
+            class="state-off"
+            >Open File Location</a
+          >
+        </li>
+        <li class="divider" for-folder for-file for-search for-search-only></li>
+        <li data-action="expand_all" data-key for-search for-search-only>
+          <a
+            role="menuitem"
+            data-localize="Expand All"
+            data-lg="Menu"
+            class="state-off"
+            >Expand All</a
+          >
+        </li>
+        <li data-action="collapse_all" data-key for-search for-search-only>
+          <a
+            role="menuitem"
+            data-localize="Collapse All"
+            data-lg="Menu"
+            class="state-off"
+            >Collapse All</a
+          >
+        </li>
+      </ul>
+      <ul class="dropdown-menu context-menu" id="user-context-menu" role="menu">
+        <li data-key>
+          <a role="menuitem" data-localize="Open" data-lg="Menu"
+            >Move to Folder...</a
+          >
+        </li>
+        <li data-key>
+          <a role="menuitem" data-localize="Open" data-lg="Menu"
+            >Upload Image</a
+          >
+        </li>
+        <li for-file class="divider"></li>
+        <li data-key>
+          <a role="menuitem" data-localize="Open" data-lg="Menu">Dismiss</a>
+        </li>
+      </ul></content
+    >
+    <div id="ty-top-placeholder" style="display: none"></div>
+    <footer aria-hidden="true" class="stopselect ty-footer">
+      <div class="footer-item footer-item-left" id="outline-btn-wrapper">
+        <span id="outline-btn" ty-hint="Toggle Sidebar"
+          ><i class="ty-icon ty-md-radio-button-off"></i>
+          <i class="ty-icon ty-md-radio-button-on"></i>
+          <i class="ion-chevron-left"></i
+        ></span>
+      </div>
+      <div
+        class="footer-item footer-item-left footer-btn typora-sourceview-off"
+        id="toggle-sourceview-btn"
+        ty-hint="Toggle Source Code Mode"
+        style="display: inline-block"
+      >
+        <i class="fa fa-code"></i>
+        <span data-localize="Exit Source Code Mode" data-lg="Front"
+          >Exit Source Code Mode</span
+        >
+      </div>
+      <div
+        class="footer-item footer-item-left footer-btn"
+        id="footer-more-btn"
+        style="display: none"
+      >
+        <i class="ion-more" aria-hidden="true"></i>
+      </div>
+      <div
+        class="footer-item footer-item-left footer-btn"
+        id="toggle-focus-mode-btn"
+        style="display: none"
+      >
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+      </div>
+      <div
+        class="footer-item footer-item-left footer-btn"
+        id="toggle-typewriter-mode-btn"
+        style="display: none"
+      >
+        <i class="ion-ios-infinite" aria-hidden="true"></i>
+      </div>
+      <div
+        class="footer-item footer-item-right"
+        id="footer-word-count"
+        ty-hint="Word Count"
+        data-lg="Panel"
+      >
+        <span id="footer-word-count-label">0 Words</span>
+        <span class="ty-word-count-expand"><span class="ion-code"></span></span>
+      </div>
+      <ul id="footer-word-count-info" class="dropdown-menu">
+        <li>
+          <span class="footer-word-count-info-line" style="opacity: 0.7"
+            ><span
+              class="footer-word-count-no-selection"
+              data-localize="Word Count"
+              data-lg="Panel"
+              >Word Count</span
+            ><span
+              class="footer-word-count-selection"
+              data-localize="Total"
+              data-lg="Panel"
+              >Total</span
+            ></span
+          >
+        </li>
+        <li class="divider"></li>
+        <li class="ty-footer-word-count-all">
+          <table>
+            <tr data-delimiter="3">
+              <td id="footer-read-time-count-td">≤ 1</td>
+              <td data-localize="Minutes" data-lg="Panel">Minutes</td>
+              <td></td>
+            </tr>
+            <tr data-delimiter="2">
+              <td id="footer-line-count-td">3</td>
+              <td data-localize="Lines" data-lg="Panel">Lines</td>
+              <td></td>
+            </tr>
+            <tr data-delimiter="0">
+              <td id="footer-word-count-td">1</td>
+              <td data-localize="Words" data-lg="Panel">Words</td>
+              <td></td>
+            </tr>
+            <tr data-delimiter="1">
+              <td id="footer-char-count-td">100</td>
+              <td data-localize="Characters" data-lg="Panel">Characters</td>
+              <td></td>
+            </tr>
+          </table>
+        </li>
+        <li
+          class="footer-word-count-selection"
+          style="margin-top: 16px; opacity: 0.7"
+        >
+          <span
+            class="footer-word-count-info-line"
+            data-localize="In Selection"
+            data-lg="Panel"
+            >In Selection</span
+          >
+        </li>
+        <li class="divider footer-word-count-selection"></li>
+        <li class="footer-word-count-selection">
+          <table>
+            <tr>
+              <td id="footer-word-count-td-sel">1</td>
+              <td data-localize="Words" data-lg="Panel">Words</td>
+            </tr>
+            <tr>
+              <td id="footer-char-count-td-sel">100</td>
+              <td data-localize="Characters" data-lg="Panel">Characters</td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <style id="footer-spell-check-download-process"></style>
+      <div
+        class="footer-item footer-item-right"
+        id="footer-spell-check"
+        ty-hint="Spell Check"
+        data-lg="Menu"
+      >
+        <span id="footer-spell-check-downloaded-status"
+          ><span
+            class="ion-checkmark-circled"
+            style="font-size: 1.1em; margin-right: 3px"
+          ></span> </span
+        ><span id="footer-spell-check-error-status"
+          ><span
+            class="ion-alert-circled"
+            style="font-size: 1.1em; margin-right: 3px"
+          ></span> </span
+        ><span id="footer-spell-check-download-status"
+          ><span class="ion-refreshing" style="margin-right: 2px"></span
+        ></span>
+        <span id="footer-spell-check-label"></span>
+      </div>
+    </footer>
+    <ul id="spell-check-panel" class="dropdown-menu">
+      <div class="ty-lang-control">
+        <li class="ty-spell-check-panel-control-item">
+          <input
+            class="ty-spell-check-panel-item-label"
+            id="ty-spell-check-panel-item-label"
+            type="text"
+            placeholder="Select Spell Check Language"
+            data-lg="Front"
+            data-localize="Select Spell Check Language"
+          />
+        </li>
+        <li class="divider"></li>
+        <li class="ty-spell-check-panel-item" data-spell-lang="auto">
+          <span class="ty-spell-check-panel-item-status"></span>
+          <span
+            class="ty-spell-check-panel-item-label"
+            data-localize="Auto Detect Language"
+            data-lg="Front"
+            >Auto Detect Language</span
+          >
+          <span class="ty-spell-check-panel-item-code"></span>
+        </li>
+        <li class="ty-spell-check-panel-item" data-spell-lang="disabled">
+          <span class="ty-spell-check-panel-item-status"></span>
+          <span
+            class="ty-spell-check-panel-item-label"
+            data-localize="Disable Spell Check"
+            data-lg="Front"
+            >Disable Spell Check</span
+          >
+          <span class="ty-spell-check-panel-item-code"></span>
+        </li>
+        <li class="divider ty-lang-list-below"></li>
+      </div>
+      <div class="ty-lang-list"></div>
+      <div class="ty-lang-control">
+        <li class="divider"></li>
+        <li
+          class="ty-spell-check-panel-item"
+          id="ty-spell-check-global-setting"
+        >
+          <span class="ty-spell-check-panel-item-status"></span>
+          <span
+            class="ty-spell-check-panel-item-label"
+            data-localize="Global Setting…"
+            data-lg="Front"
+            >Global Setting…</span
+          >
+          <span class="ty-spell-check-panel-item-code"></span>
+        </li>
+      </div>
+      <script id="ty-spell-check-panel-item-temp" type="text/x-custom-template">
+        <li class="ty-spell-check-panel-item %select" data-spell-lang="%code">
+        					<span class="ty-spell-check-panel-item-status"></span>
+        					<span class="ty-spell-check-panel-item-label">%label</span>
+        					<span class="ty-spell-check-panel-item-code">%code</span>
+        			</li>
+      </script>
+      <script
+        id="ty-spell-check-dict-missing-temp"
+        type="text/x-custom-template"
+      >
+        <p>$1</p>
+        			<p>
+        				<button id="ty-spell-check-dict-missing-primary-btn" class='btn btn-primary btn-sm dropdown-toggle-before' style='margin-right: 0'>$2</button><button class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" style='margin-right: 16px;' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+        				</div>
+        				<button id="ty-spell-check-dict-missing-disable-btn" class='btn btn-default btn-sm' data-localize='Disable Spell Check'>$3</button>
+        				<button id="ty-spell-check-dict-missing-close-btn" class='btn btn-default btn-sm' style='float:right;margin-right: -18px;' data-localize='Dismiss' data-lg="Front">$4</button></p>
+        			<ul class="dropdown-menu" id="ty-spell-check-dict-missing-menu">
+        				<li id="ty-spell-check-dict-missing-secondary-btn" class="dropdown-item" href="#">Learn More…</li>
+        			</ul>
+      </script>
+    </ul>
+    <div class="modal fade stopselect block-modal" id="dict-install-dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="dict-install-dialog-title"></h4>
+          </div>
+          <div class="modal-body">
+            <div data-localize="License Information" data-lg="Front">
+              License Information
+            </div>
+            <webview id="dict-install-dialog-license-viewer"></webview>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              data-localize="Download"
+              data-lg="Front"
+            >
+              Download
+            </button>
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              data-localize="Cancel"
+              data-lg="Front"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              style="float: left"
+              class="btn btn-default"
+              data-localize="Learn More…"
+              data-lg="Front"
+            >
+              Learn Morel…
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade stopselect block-modal" id="import-process-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4
+              class="modal-title"
+              id="quick-dialog-title"
+              data-localize="Importing..."
+              data-lg="Panel"
+            >
+              Importing...
+            </h4>
+            <div class="typora-search-spinner" style="margin-right: 16px">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div
+              class="row"
+              id="quick-dialog-message"
+              data-localize="Converting file using Pandoc. This may take some time."
+              data-lg="Panel"
+            >
+              Converting file using Pandoc. This may take some time.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              data-localize="Abort"
+              data-lg="Panel"
+            >
+              Abort
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade stopselect" id="export-process-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4
+              class="modal-title"
+              id="quick-dialog-title"
+              data-localize="Exporting..."
+              data-lg="Panel"
+            >
+              Exporting...
+            </h4>
+            <div class="typora-search-spinner" style="margin-right: 16px">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div
+              class="row"
+              id="quick-dialog-message"
+              data-localize="Exporting file using Pandoc. This may take some time."
+              data-lg="Panel"
+            >
+              Exporting file using Pandoc. This may take some time.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              data-localize="Abort"
+              data-lg="Panel"
+            >
+              Abort
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="megamenu-content"
+      aria-hidden="true"
+      data-pattern="pattern/cubes.png"
+      class="megamenu-content stopselect"
+    >
+      <table style="display: none">
+        <tr id="recent-file-item-pattern" class="recent-file-item">
+          <td class="recent-file-name"></td>
+          <td class="recent-file-dir"></td>
+          <td class="recent-file-path" style="display: none"></td>
+        </tr>
+      </table>
+      <div class="megamenu-section" id="megamenu-section-open">
+        <div class="megamenu-menu-panel">
+          <h1 data-localize="Open" data-lg="Menu">Open</h1>
+          <div class="long-btn" id="m-open-local">
+            <i class="ion-folder"></i
+            ><span data-localize="Open…" data-lg="Panel">Open…</span>
+          </div>
+        </div>
+        <div class="megamenu-menu-panel">
+          <h2 data-localize="Import" data-lg="Menu">Import</h2>
+          <div class="long-btn" id="m-import-local">
+            <i class="ion-folder"></i
+            ><span
+              ><span data-localize="Import..." data-lg="Panel">Import...</span
+              ><span class="preference-item-hint">
+                docx/wiki/rst/org/..</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="megamenu-menu-panel">
+          <h2 data-localize="Recent Documents" data-lg="Panel">
+            Recent Documents
+          </h2>
+          <div id="recent-file-panel">
+            <input
+              id="recent-file-panel-search-input"
+              class="quiet-focus search"
+              type="text"
+              placeholder="Search for…"
+              data-localize="Search for…"
+              data-lg="Panel"
+            />
+            <div class="dropdown" id="recent-file-panel-action-btn-container">
+              <button
+                id="recent-file-panel-action-btn"
+                class="btn"
+                type="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fa fa-ellipsis-h"></i>
+              </button>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="recent-file-panel-action-btn"
+              >
+                <li>
+                  <a
+                    href="#"
+                    id="megamenu-clear-recet-documents"
+                    data-localize="Clear Recent Documents"
+                    data-lg="Panel"
+                    >Clear Recent Documents</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <table
+              class="table table-striped table-hover"
+              id="recent-document-table"
+              style="margin-top: 12px"
+            >
+              <thead>
+                <tr>
+                  <th width="40%" data-localize="File Name" data-lg="Panel">
+                    File Name
+                  </th>
+                  <th class="right" data-localize="Path" data-lg="Panel">
+                    Path
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="list-js-list"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="megamenu-section" id="megamenu-section-export">
+        <div class="megamenu-menu-panel">
+          <h1 data-localize="Export As..." data-lg="Panel">Export As...</h1>
+          <div class="long-btn-wrap">
+            <div class="long-btn do-export-button" data-key="html">
+              <i class="fa fa-file-code-o"></i><span>HTML</span>
+            </div>
+            <div class="long-btn do-export-button" data-key="html-plain">
+              <i class="fa fa-file-code-o"></i
+              ><span>HTML (without styles)</span>
+            </div>
+          </div>
+          <div class="long-btn-wrap">
+            <div class="long-btn do-export-button" data-key="pdf">
+              <i class="fa fa-file-pdf-o"></i><span>PDF</span>
+            </div>
+          </div>
+        </div>
+        <div class="megamenu-menu-panel megamenu-menu-content-section">
+          <h1 data-localize="More Formats" data-lg="Panel">More Formats</h1>
+          <div class="long-btn-wrap" id="export-custom-container"></div>
+          <p
+            class="preference-item-hint hide-when-pandoc-installed"
+            style="margin-top: 30px"
+            data-localize="File formats under 'More Formats' sections needs <a class='open-pandoc-guide'>Pandoc to be installed</a>."
+            data-lg="Panel"
+            data-lt="html"
+          >
+            File formats under "More Formats" sections needs
+            <a class="open-pandoc-guide">Pandoc to be installed</a>.
+          </p>
+        </div>
+        <div class="megamenu-menu-panel megamenu-menu-content-section">
+          <h1 data-localize="Image" data-lg="Menu">Image</h1>
+          <div class="long-btn-wrap">
+            <div class="long-btn do-export-button" data-key="image">
+              <i class="fa fa-file-image-o"></i><span>Image (png/jpeg)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="megamenu-section" id="megamenu-section-preference"></div>
+      <div class="megamenu-section" id="megamenu-section-about">
+        <div class="megamenu-menu-panel" id="about-content">
+          <div
+            class="megamenu-menu-content-section"
+            id="about-content-about-section"
+          >
+            <h1 data-localize="About" data-lg="Menu">About</h1>
+            <div class="about-content-main">
+              <div class="about-content-icon">
+                <img src="assets/icon/icon_256x256.png" style="width: 128px" />
+              </div>
+              <div class="about-content-description">
+                <h2 class="about-content-description-main">
+                  Typora<span class="about-content-hint">
+                    for Windows / Linux</span
+                  >
+                </h2>
+                <div class="about-content-slogon">
+                  MADE WITH ❤ BY
+                  <a
+                    style="color: #4183c4; text-decoration: none"
+                    href="https://appmakes.io"
+                    class="ty-link"
+                    >appmakes.io</a
+                  >
+                </div>
+              </div>
+              <div class="about-content-meta">
+                <span id="about-page-version-label"></span> ✩
+                <span
+                  ><a href="http://typora.io" class="ty-link">website</a></span
+                >
+                ✩
+                <span
+                  ><a href="https://twitter.com/typora" class="ty-link"
+                    >@typora</a
+                  ></span
+                >
+              </div>
+              <div id="about-content-license">
+                <button
+                  type="button"
+                  id="about-content-license-button"
+                  class="btn btn-default"
+                  data-localize="Registration / Activation…"
+                  data-lg="Menu"
+                >
+                  Registration / Activation…
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="megamenu-menu-content-section">
+            <h1 data-localize="Help" data-lg="Menu">Help</h1>
+            <table
+              class="table table-striped table-hover"
+              id="typora-help-md-table"
+            >
+              <tbody class="list-js-list">
+                <tr style="cursor: pointer">
+                  <td>Quick Start</td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td>Markdown Reference</td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td>Install and Use Pandoc</td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td>Custom Themes</td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td>Use Images in Typora</td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td>Auto Save, Version Control and Recovery</td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td data-localize="Support Documentation" data-lg="Panel">
+                    Support Documentation
+                  </td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td>Change Log</td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td>Credits</td>
+                </tr>
+                <tr style="cursor: pointer">
+                  <td>Privacy Policy</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="megamenu-menu-content-section">
+            <h1 data-localize="Contact" data-lg="Panel">Contact</h1>
+            <table class="table table-striped table-hover">
+              <tbody class="list-js-list">
+                <tr>
+                  <td>Home Page</td>
+                  <td>
+                    <a class="ty-link" href="https://typora.io"
+                      >https://typora.io</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>
+                    <a class="ty-link" href="mailto:hi@typora.io"
+                      >hi@typora.io</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Twitter</td>
+                  <td>
+                    <a class="ty-link" href="https://twitter.com/typora"
+                      >@typora</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Public Issues</td>
+                  <td>
+                    <a
+                      class="ty-link"
+                      href="https://github.com/typora/typora-issues/issues"
+                      >https://github.com/typora/typora-issues/issues</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="megamenu-section" id="megamenu-section-theme">
+        <div class="megamenu-menu-panel">
+          <h1 data-localize="Themes" data-lg="Menu">Themes</h1>
+          <div id="theme-preview-grid">
+            <div class="theme-preview-div">
+              <i class="fa fa-check-circle"></i>
+            </div>
+          </div>
+        </div>
+        <div class="megamenu-menu-panel" style="margin-top: 0">
+          <div
+            class="long-btn ty-open-theme-folder-btn"
+            id="open-theme-folder-btn"
+          >
+            <span data-localize="Open Theme Folder" data-lg="Panel"
+              >Open Theme Folder</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="uni-preference-panel" class="uni-preference-panel"></div>
+    <div
+      class="modal fade fullscreen-modal stopselect"
+      id="preference-dialog"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4
+              class="modal-title"
+              id="myModalLabel"
+              data-localize="Preferences"
+              data-lg="Menu"
+            >
+              Preferences
+            </h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn"
+              data-dismiss="modal"
+              data-localize="Close"
+              data-lg="Front"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade fullscreen-modal stopselect"
+      id="about-dialog"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn"
+              data-dismiss="modal"
+              data-localize="Close"
+              data-lg="Front"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="save-error-banner" style="display: none">
+      <div class="content" data-localize="ave File Failed!" data-lg="Front">
+        Save File Failed!
+      </div>
+      <div class="control">
+        <button
+          type="button"
+          class="btn"
+          data-localize="Copy Content"
+          data-lg="Panel"
+        >
+          Copy Content
+        </button>
+        <i
+          class="fa fa-chevron-down"
+          id="trigger-save-error-dialog"
+          aria-hidden="true"
+        ></i>
+      </div>
+    </div>
+    <div
+      class="modal fade stopselect"
+      id="common-dialog"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"><div class="modal-title"></div></div>
+          <div class="modal-body">
+            <div class="row" id="common-dialog-message"></div>
+            <div class="row" id="common-dialog-checkbox">
+              <div class="checkbox">
+                <label
+                  ><input type="checkbox" id="common-dialog-checkbox" /><span
+                    id="common-dialog-checkbox-label"
+                  ></span
+                ></label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+    <div id="ty-tooltip" role="tooltip" class="ty-tooltip"></div>
+    <div id="ty-localize-placehoder" style="display: none"></div>
+    <script>
+      window.reqnode = window.require;
+      delete window.require;
+      delete window.exports;
+      delete window.module;
+    </script>
+    <script src="./appsrc/window/frame.js" defer="defer"></script>
+	<script src="./plugin/index.js" defer="defer"></script>
+
+
+    <script>
+      var mode = "release";
+      window._releaseNo = "b20995f3";
+      window.debugMode = mode != "release";
+
+      window.isOnWindowHtml = true;
+      const process = reqnode("process");
+
+      if (window.reqnode && !window._options) {
+        var typoraOptionPrefix = /^--tyopt=/;
+        for (argv of process.argv) {
+          if (typoraOptionPrefix.exec(argv)) {
+            window._options = JSON.parse(argv.substr("--tyopt=".length));
+            window.dirname = window._options.dirname;
+            break;
+          }
+        }
+      }
+
+      (function () {
+        if (!window.reqnode) return;
+        var Module = reqnode("module");
+        var path = reqnode("path");
+        var node_modules_asar = path.join(window.dirname, "node_modules.asar");
+        Module.globalPaths.push(node_modules_asar);
+
+        var _old_require = Module.prototype.require;
+        Module.prototype.require = function (id) {
+          if (this.paths.indexOf(node_modules_asar) == -1) {
+            this.paths.push(node_modules_asar);
+          }
+
+          if (/(\.node$)|(\/build\/Release)/.exec(id) && id[0] == ".") {
+            id = path
+              .resolve(path.dirname(this.id), id)
+              .replace(/\bnode_modules\.asar\b/, "node_modules");
+          }
+          return _old_require.call(this, id);
+        };
+      })();
+
+      window.require = undefined;
+      process.traceDeprecation = !!debugMode;
+      process.traceProcessWarnings = !!debugMode;
+      process.noDeprecation = !debugMode;
+
+      if (debugMode) {
+        function getPage(url) {
+          var XHRt = new XMLHttpRequest(); // new ajax
+          XHRt.open("GET", "html/" + url, false);
+          XHRt.send();
+          return XHRt.responseText;
+        }
+
+        SystemJS.config({
+          baseURL: "./lib/",
+          map: {
+            $: "jquery/jquery.js",
+            /*"fastdom/extensions/fastdom-promised.js": "fastdom/extensions/fastdom-promised.js",
+					"fastdom/fastdom.js": "fastdom/fastdom-strict.js",
+					"fastdom": "fastdom/fastdom.js"*/
+          },
+          meta: {
+            "codemirror/mode.min.js": { format: "global" },
+            "diagram/*": { format: "global" },
+            "diagram/diagram.min.js": { format: "global" },
+          },
+        });
+
+        document.querySelector("header").innerHTML =
+          getPage("sidebar.html") + document.querySelector("header").innerHTML;
+        document.querySelector("content").innerHTML =
+          getPage("above-content.html") +
+          document.querySelector("content").innerHTML;
+        document.querySelector("content").innerHTML =
+          document.querySelector("content").innerHTML + getPage("content.html");
+        document.querySelector("content").innerHTML =
+          document.querySelector("content").innerHTML +
+          getPage("context-menu.html");
+        document.querySelector("#megamenu-section-about").innerHTML =
+          getPage("about.html");
+
+        document
+          .querySelector("content")
+          .querySelectorAll("script[type='text/javascript']")
+          .forEach((s) => eval(s.innerHTML));
+
+        SystemJS.import("./appsrc/window/frame.js");
+      }
+    </script>
+    <script
+      src="./lib.asar/pdf/pdf-designer.min.js"
+      defer="defer"
+      async
+    ></script>
+    <script src="./lib.asar/pdf/pdf-lib.min.js" defer="defer" async></script>
+  </body>
+</html>

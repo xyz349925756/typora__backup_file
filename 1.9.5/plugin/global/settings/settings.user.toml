@@ -1,0 +1,1199 @@
+[global]
+ENABLE = true
+PERFORMANCE_MODE = true
+DISABLE_PLUGINS = [ ]
+CLICK_EDIT_BUTTON_TO_EXIT_INTERACTIVE_MODE = true
+CTRL_CLICK_TO_EXIST_INTERACTIVE_MODE = false
+
+[window_tab]
+ENABLE = false
+NAME = "标签页管理"
+CLICKABLE = true
+DRAG_STYLE = 1
+REMOVE_FILE_SUFFIX = true
+SHOW_DIR_FOR_SAME_NAME_FILE = true
+TAB_MAX_NUM = -1
+LIMIT_TAB_Y_AXIS_WHEN_DRAG = true
+LIMIT_TAB_ROI = false
+HEIGHT_SCALE = 5
+TAB_MIN_WIDTH = "100px"
+TAB_MAX_WIDTH = ""
+GAP_BETWEEN_TAB_AND_CONTENT = 0
+SHOW_FULL_PATH_WHEN_HOVER = true
+WHEN_CLOSE_LAST_TAB = "blankPage"
+NEW_TAB_AT = "right"
+ACTIVETE_TAB_WHEN_CLOSE = "right"
+SHOW_TAB_CLOSE_BUTTON = true
+CTRL_CLICK_TO_NEW_WINDOW = true
+CTRL_WHEEL_TO_SCROLL = true
+MIDDLE_CLICK_TO_CLOSE = true
+CLOSE_HOTKEY = [ "ctrl+w" ]
+SWITCH_NEXT_TAB_HOTKEY = [ "ctrl+PageDown", "ctrl+Tab" ]
+SWITCH_PREVIOUS_TAB_HOTKEY = [ "ctrl+PageUp", "ctrl+shift+Tab" ]
+COPY_PATH_HOTKEY = [ "" ]
+CONTEXT_MENU = [
+  "closeTab",
+  "closeOtherTabs",
+  "closeLeftTabs",
+  "closeRightTabs",
+  "sortTabs",
+  "copyPath",
+  "showInFinder",
+  "openInNewWindow"
+]
+HIDE_WINDOW_TITLE_BAR = false
+CHANGE_CONTENT_TOP = true
+CHANGE_NOTIFICATION_Z_INDEX = true
+LOCAL_OPEN = false
+INTERCEPT_INTERNAL_AND_LOCAL_LINKS = true
+
+[search_multi]
+ENABLE = false
+NAME = "全局多关键字搜索"
+CLICKABLE = true
+HOTKEY = "ctrl+shift+p"
+ALLOW_DRAG = true
+AUTO_HIDE = false
+BACKSPACE_TO_HIDE = true
+RELATIVE_PATH = true
+SHOW_MTIME = false
+REFOUCE_WHEN_OPEN_FILE = true
+CASE_SENSITIVE = false
+INCLUDE_FILE_PATH = true
+LINK_OTHER_PLUGIN = true
+MAX_SIZE = 2_000_000
+ALLOW_EXT = [
+  "",
+  "md",
+  "markdown",
+  "mdown",
+  "mmd",
+  "text",
+  "txt",
+  "rmarkdown",
+  "mkd",
+  "mdwn",
+  "mdtxt",
+  "rmd",
+  "mdtext",
+  "apib"
+]
+IGNORE_FOLDERS = [ ".git", "node_modules" ]
+
+[multi_highlighter]
+ENABLE = false
+NAME = "多关键字高亮"
+CLICKABLE = true
+HOTKEY = "ctrl+shift+h"
+ALLOW_DRAG = true
+BACKSPACE_TO_HIDE = true
+STYLE_COLOR = [
+  "#bbeeff",
+  "#ffbbcc",
+  "#88ee88",
+  "#ccbbff",
+  "#ffee88",
+  "#FFFFa0",
+  "#88cccc",
+  "#ffbb88",
+  "#cccccc",
+  "#ffaabb",
+  "#99ccff",
+  "#ff99cc",
+  "#66cc66",
+  "#cc99ff",
+  "#ffcc66",
+  "#FFFF80",
+  "#dd9966",
+  "#aaaaaa",
+  "#66aaaa",
+  "#dd6699"
+]
+CASE_SENSITIVE = false
+SHOW_RUN_BUTTON = false
+RESEARCH_WHILE_OPEN_FILE = true
+SHOW_CURRENT_INDEX = true
+SHOW_KEYWORD_OUTLINE = true
+SHOW_KEYWORD_BAR = true
+DEFAULT_COLOR = "#dd6699"
+REMOVE_WHEN_EDIT = true
+USE_LIST_THRESHOLD = -1
+CLEAR_LIST_THRESHOLD = 12
+
+[outline]
+ENABLE = true
+NAME = "类别大纲"
+CLICKABLE = true
+HOTKEY = ""
+DEFAULT_TYPE = "fence"
+USE_ALL = true
+SET_COLOR_IN_ALL = true
+AUTO_REFRESH_WHEN_OPEN_FILE = true
+SHOW_HIDDEN = false
+
+  [outline.SHOW_NAME]
+  fence = "Fence"
+  image = "Figure"
+  table = "Table"
+
+[commander]
+ENABLE = true
+NAME = "命令行环境"
+CLICKABLE = true
+HOTKEY = "ctrl+g"
+ALLOW_DRAG = true
+BACKSPACE_TO_HIDE = true
+QUICK_EXEC_SHOW = "error"
+COMMIT_EXEC_SHOW = "echo"
+USE_BUILTIN = true
+
+  [[commander.BUILTIN]]
+  name = ""
+  shell = "cmd/bash"
+  cmd = ""
+
+  [[commander.BUILTIN]]
+  name = "Explorer"
+  shell = "powershell"
+  hotkey = "ctrl+alt+e"
+  cmd = "explorer $d"
+
+  [[commander.BUILTIN]]
+  name = "Vscode"
+  shell = "cmd/bash"
+  cmd = "code $f"
+
+  [[commander.BUILTIN]]
+  name = "WT"
+  shell = "cmd/bash"
+  cmd = "cd $d && wt"
+
+  [[commander.BUILTIN]]
+  name = "GitCommit"
+  shell = "cmd/bash"
+  cmd = 'cd $m && git add . && git commit -m "update"'
+
+[md_padding]
+ENABLE = false
+NAME = "中英文混排优化"
+CLICKABLE = true
+HOTKEY = "ctrl+shift+b"
+FORMAT_IN_SELECTION_ONLY = false
+IGNORE_WORDS = [ ]
+LINE_BREAK_MAX_NUM = -1
+
+[read_only]
+ENABLE = false
+NAME = "只读模式"
+CLICKABLE = true
+HOTKEY = "ctrl+shift+r"
+READ_ONLY_DEFAULT = false
+DISABLE_CONTEXT_MENU_WHEN_READ_ONLY = true
+REMAIN_AVAILABLE_MENU_KEY = [ "typora-plugin", "dev-tool", "copy-img" ]
+SHOW_TEXT = "ReadOnly"
+
+[toolbar]
+ENABLE = true
+NAME = "多功能搜索"
+CLICKABLE = true
+HOTKEY = "ctrl+j"
+BACKSPACE_TO_HIDE = true
+IGNORE_WHEN_COMPOSITION = true
+TOOLBAR_TOP_PERCENT = 20
+TOOLBAR_WIDTH_PERCENT = 80
+DEBOUNCE_INTERVAL = 70
+DEFAULT_TOOL = "func"
+USE_NEGATIVE_SEARCH = true
+
+[blur]
+ENABLE = false
+NAME = "模糊模式"
+CLICKABLE = true
+HOTKEY = ""
+BLUR_DEFAULT = false
+BLUR_TYPE = "blur"
+RESRTORE_WHEN_HOVER = true
+BLUR_LEVEL = 10
+
+[resize_image]
+ENABLE = true
+NAME = "图片调整"
+CLICKABLE = true
+SCALE = 0.1
+ALLOW_OVERSIZE = true
+IMAGE_ALIGN = "center"
+RECORD_RESIZE = true
+
+[datatables]
+ENABLE = false
+NAME = "表格增强"
+CLICKABLE = true
+PAGING = true
+PAGE_LENGTH = 25
+SCROLLY = -1
+SROLL_COLLAPSE = true
+ORDERING = true
+DEFAULT_ORDER = false
+SEARCHING = true
+CASE_INSENSITIVE = true
+REGEX = false
+
+[go_top]
+ENABLE = true
+NAME = "一键到顶"
+CLICKABLE = true
+HOTKEY_GO_TOP = ""
+HOTKEY_GO_BOTTOM = ""
+
+[mindmap]
+ENABLE = true
+NAME = "思维导图"
+CLICKABLE = true
+FIX_ERROR_LEVEL_HEADER = true
+
+[markmap]
+ENABLE = true
+NAME = "Markmap"
+CLICKABLE = true
+RESOURCE_FROM = "local"
+ENABLE_TOC_MARKMAP = true
+TOC_HOTKEY = ""
+CLICK_TO_LOCALE = true
+LOCALE_HIGHT_RATIO = 0.2
+ALLOW_ICON_WRAP = true
+AUTO_FIT_WHEN_UPDATE = true
+LEFT_PERCENT_WHEN_INIT = 5
+WIDTH_PERCENT_WHEN_INIT = 90
+HEIGHT_PERCENT_WHEN_INIT = 35
+HEIGHT_PRECENT_WHEN_PIN_UP = 30
+WIDTH_PRECENT_WHEN_PIN_RIGHT = 50
+SHOW_BORDER_WHEN_NODE_HOVER = true
+BORDER_STYLE_WHEN_NODE_HOVER = "4px solid #FF7B00"
+REMOVE_FOREIGN_OBJECT_WHEN_DOWNLOAD_SVG = false
+BORDER_WHEN_DOWNLOAD_SVG = [ 50, 50 ]
+ENABLE_FENCE_MARKMAP = true
+FENCE_HOTKEY = ""
+LANGUAGE = "markmap"
+INTERACTIVE_MODE = true
+DEFAULT_FENCE_HEIGHT = "300px"
+DEFAULT_FENCE_BACKGROUND_COLOR = "#f8f8f8"
+FENCE_TEMPLATE = """
+```markmap\r
+---\r
+# 配置:\r
+markmap:\r
+  # 是否允许缩放\r
+  zoom: true\r
+  # 是否允许平移\r
+  pan: false\r
+  # 初始渲染时要展开的最大节点级别（-1则展开全部）\r
+  initialExpandLevel: -1\r
+  # 高度\r
+  height: 300px\r
+  # 背景色\r
+  backgroundColor: "#f8f8f8"\r
+---\r
+\r
+# markmap\r
+\r
+## Links\r
+\r
+- <https://markmap.js.org/>\r
+- [GitHub](https://github.com/gera2ld/markmap)\r
+\r
+## Related Projects\r
+\r
+- [coc-markmap](https://github.com/gera2ld/coc-markmap)\r
+- [gatsby-remark-markmap](https://github.com/gera2ld/gatsby-remark-markmap)\r
+\r
+## Features\r
+\r
+- links\r
+- **strong** ~~del~~ *italic* ==highlight==\r
+- multiline\r
+  text\r
+- `inline code`\r
+\r
+- Katex\r
+  - $x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$\r
+  - [More Katex Examples](#?d=gist:af76a4c245b302206b16aec503dbe07b:katex.md)\r
+- Now we can wrap very very very very long text based on `maxWidth` option\r
+```\r
+"""
+
+  [markmap.DEFAULT_TOC_OPTIONS]
+  duration = 500
+  initialExpandLevel = -1
+  colorFreezeLevel = 6
+  zoom = true
+  pan = true
+  colorScheme = [
+  "#1f77b4",
+  "#ff7f0e",
+  "#2ca02c",
+  "#d62728",
+  "#9467bd",
+  "#8c564b",
+  "#e377c2",
+  "#7f7f7f",
+  "#bcbd22",
+  "#17becf"
+]
+
+  [markmap.DEFAULT_FENCE_OPTIONS]
+  duration = 500
+  initialExpandLevel = -1
+  zoom = false
+  pan = false
+  height = "300px"
+  backgroundColor = "#f8f8f8"
+
+[auto_number]
+ENABLE = false
+NAME = "自动编号"
+CLICKABLE = true
+ENABLE_SIDE_BAR = true
+ENABLE_CONTENT = true
+ENABLE_TOC = true
+ENABLE_TABLE = true
+ENABLE_IMAGE = true
+ENABLE_FENCE = true
+ENABLE_WHEN_EXPORT = true
+FONT_FAMILY = "monospace"
+ALIGN = "center"
+
+  [auto_number.NAMES]
+  table = "Table"
+  image = "Image"
+  fence = "Fence"
+
+[fence_enhance]
+ENABLE = false
+NAME = "代码块增强"
+CLICKABLE = true
+ENABLE_BUTTON = true
+BUTTON_SIZE = "1.2em"
+BUTTON_MARGIN = "0.4em"
+BUTTON_TOP = "0.3em"
+BUTTON_RIGHT = "0.5em"
+BUTTON_OPACITY = 0.5
+BUTTON_OPACITY_HOVER = 0.8
+REMOVE_BUTTON_HINT = false
+AUTO_HIDE = false
+ENABLE_COPY = true
+ENABLE_INDENT = true
+ENABLE_FOLD = true
+FOLD_OVERFLOW = "hidden"
+FOLD_DEFAULT = false
+WAIT_RECOVER_INTERVAL = 1_000
+CLICK_CHECK_INTERVAL = 300
+ENABLE_HOTKEY = true
+SWAP_PREVIOUS_LINE = "Shift-Alt-Up"
+SWAP_NEXT_LINE = "Shift-Alt-Down"
+COPY_PREVIOUS_LINE = "Ctrl-Alt-Up"
+COPY_NEXT_LINE = "Ctrl-Alt-Down"
+INSERT_LINE_NEXT = "Ctrl-Enter"
+INSERT_LINE_PREVIOUS = "Shift-Ctrl-Enter"
+ENABLE_DANGEROUS_FEATURES = false
+INDENTED_WRAPPED_LINE = false
+HIGHLIGHT_WHEN_HOVER = false
+HIGHLIGHT_LINE_COLOR = "rgba(176, 178, 180, 0.4)"
+
+  [[fence_enhance.CUSTOM_BUTTONS]]
+  DISABLE = true
+  ICON = "fa fa-bomb"
+  HINT = "demo"
+  ON_INIT = ""
+  ON_RENDER = ""
+  ON_CLICK = "({cont}) => console.log(cont)"
+
+[collapse_paragraph]
+ENABLE = true
+NAME = "章节折叠"
+CLICKABLE = true
+STRICT_MODE = true
+STRICT_MODE_IN_CONTEXT_MENU = false
+RECORD_COLLAPSE = true
+
+  [collapse_paragraph.MODIFIER_KEY]
+  COLLAPSE_SINGLE = "ctrl"
+  COLLAPSE_SIBLINGS = "ctrl+alt"
+  COLLAPSE_ALL_SIBLINGS = "ctrl+shift+alt"
+  COLLAPSE_RECURSIVE = ""
+
+[collapse_list]
+ENABLE = false
+NAME = "列表折叠"
+CLICKABLE = true
+TRIANGLE_COLOR = ""
+RECORD_COLLAPSE = true
+
+[truncate_text]
+ENABLE = false
+NAME = "文段截断"
+CLICKABLE = true
+HIDE_FRONT_HOTKEY = ""
+SHOW_ALL_HOTKEY = ""
+HIDE_BASE_VIEW_HOTKEY = ""
+REMAIN_LENGTH = 80
+
+[export_enhance]
+ENABLE = false
+NAME = "导出增强"
+CLICKABLE = true
+DOWNLOAD_NETWORK_IMAGE = false
+DOWNLOAD_THREADS = 10
+
+[resize_table]
+ENABLE = false
+NAME = "表格调整"
+CLICKABLE = true
+REMOVE_MIX_WIDTH = true
+THRESHOLD = 20
+RECORD_RESIZE = true
+
+[text_stylize]
+ENABLE = true
+NAME = "文字风格化"
+CLICKABLE = true
+MODAL_BACKGROUND_COLOR = "#00FFFF"
+SHOW_MODAL_HOTKEY = ""
+TOOLBAR = [
+  "weight",
+  "italic",
+  "underline",
+  "throughline",
+  "overline",
+  "title",
+  "superScript",
+  "subScript",
+  "emphasis",
+  "increaseLetterSpacing",
+  "decreaseLetterSpacing",
+  "increaseSize",
+  "decreaseSize",
+  "family",
+  "foregroundColor",
+  "backgroundColor",
+  "borderColor",
+  "setBrush",
+  "useBrush",
+  "erase",
+  "blank",
+  "move",
+  "close"
+]
+COLORS = [
+  "#330000",
+  "#331900",
+  "#333300",
+  "#193300",
+  "#003300",
+  "#003319",
+  "#003333",
+  "#001933",
+  "#000033",
+  "#190033",
+  "#330033",
+  "#330019",
+  "#000000",
+  "#660000",
+  "#663300",
+  "#666600",
+  "#336600",
+  "#006600",
+  "#006633",
+  "#006666",
+  "#003366",
+  "#000066",
+  "#330066",
+  "#660066",
+  "#660033",
+  "#202020",
+  "#990000",
+  "#994C00",
+  "#999900",
+  "#4C9900",
+  "#009900",
+  "#00994C",
+  "#009999",
+  "#004C99",
+  "#000099",
+  "#4C0099",
+  "#990099",
+  "#99004C",
+  "#404040",
+  "#CC0000",
+  "#CC6600",
+  "#CCCC00",
+  "#66CC00",
+  "#00CC00",
+  "#00CC66",
+  "#00CCCC",
+  "#0066CC",
+  "#0000CC",
+  "#6600CC",
+  "#CC00CC",
+  "#CC0066",
+  "#606060",
+  "#FF0000",
+  "#FF8000",
+  "#FFFF00",
+  "#80FF00",
+  "#00FF00",
+  "#00FF80",
+  "#00FFFF",
+  "#0080FF",
+  "#0000FF",
+  "#7F00FF",
+  "#FF00FF",
+  "#FF007F",
+  "#808080",
+  "#FF3333",
+  "#FF9933",
+  "#FFFF33",
+  "#99FF33",
+  "#33FF33",
+  "#33FF99",
+  "#33FFFF",
+  "#3399FF",
+  "#3333FF",
+  "#9933FF",
+  "#FF33FF",
+  "#FF3399",
+  "#A0A0A0",
+  "#FF6666",
+  "#FFB266",
+  "#FFFF66",
+  "#B2FF66",
+  "#66FF66",
+  "#66FFB2",
+  "#66FFFF",
+  "#66B2FF",
+  "#6666FF",
+  "#B266FF",
+  "#FF66FF",
+  "#FF66B2",
+  "#C0C0C0",
+  "#FF9999",
+  "#FFCC99",
+  "#FFFF99",
+  "#CCFF99",
+  "#99FF99",
+  "#99FFCC",
+  "#99FFFF",
+  "#99CCFF",
+  "#9999FF",
+  "#CC99FF",
+  "#FF99FF",
+  "#FF99CC",
+  "#E0E0E0",
+  "#FFCCCC",
+  "#FFE5CC",
+  "#FFFFCC",
+  "#E5FFCC",
+  "#CCFFCC",
+  "#CCFFE5",
+  "#CCFFFF",
+  "#CCE5FF",
+  "#CCCCFF",
+  "#E5CCFF",
+  "#FFCCFF",
+  "#FFCCE5",
+  "#FFFFFF"
+]
+NUM_PER_LINE = 13
+
+  [[text_stylize.ACTION_HOTKEYS]]
+  hotkey = ""
+  action = "foregroundColor"
+
+  [[text_stylize.ACTION_HOTKEYS]]
+  hotkey = ""
+  action = "backgroundColor"
+
+  [text_stylize.DEFAULT_COLORS]
+  FOREGROUND = "#330000"
+  BACKGROUND = "#FFFFFF"
+  BORDER = "#330000"
+
+[cipher]
+ENABLE = true
+NAME = "加密文件"
+CLICKABLE = true
+SHOW_HINT_MODAL = true
+
+[custom]
+ENABLE = true
+NAME = "二级插件"
+CLICKABLE = true
+HIDE_DISABLE_PLUGINS = false
+DISABLE_CUSTOM_PLUGINS = [ ]
+ALLOW_SET_CONFIG_IN_SETTINGS_TOML = true
+
+[slash_commands]
+ENABLE = false
+NAME = "斜杠命令"
+CLICKABLE = true
+TRIGGER_REGEXP = "(?<!<)[\\/、\\\\](?<kw>[^\\/、\\\\]*)$"
+MATCH_STRATEGY = "abbr"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "一级标题"
+  keyword = "H1"
+  callback = "() => File.editor.stylize.changeBlock('header1', undefined, true)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "二级标题"
+  keyword = "H2"
+  callback = "() => File.editor.stylize.changeBlock('header2', undefined, true)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "三级标题"
+  keyword = "H3"
+  callback = "() => File.editor.stylize.changeBlock('header3', undefined, true)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "四级标题"
+  keyword = "H4"
+  callback = "() => File.editor.stylize.changeBlock('header4', undefined, true)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "五级标题"
+  keyword = "H5"
+  callback = "() => File.editor.stylize.changeBlock('header5', undefined, true)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "六级标题"
+  keyword = "H6"
+  callback = "() => File.editor.stylize.changeBlock('header6', undefined, true)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "段落"
+  keyword = "Paragraph"
+  callback = "() => File.editor.stylize.changeBlock('paragraph')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "提升标题等级"
+  keyword = "IncreaseHeaderLevel"
+  callback = "() => File.editor.stylize.increaseHeaderLevel()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "降低标题等级"
+  keyword = "DecreaseHeaderLevel"
+  callback = "() => File.editor.stylize.decreaseHeaderLevel()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "公式块"
+  keyword = "BlockMath"
+  callback = "() => File.editor.stylize.toggleMathBlock()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "代码块"
+  keyword = "Fence"
+  callback = "() => File.editor.stylize.toggleFences()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "引用"
+  keyword = "Blockquote"
+  callback = "() => File.editor.stylize.toggleIndent('blockquote')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "有序列表"
+  keyword = "OrderedList"
+  callback = "() => File.editor.stylize.toggleIndent('ol')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "无序列表"
+  keyword = "UnorderedList"
+  callback = "() => File.editor.stylize.toggleIndent('ul')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "任务列表"
+  keyword = "Tasklist"
+  callback = "() => File.editor.stylize.toggleIndent('tasklist')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "增加列表缩进"
+  keyword = "ListMoreIndent"
+  callback = "() => File.editor.UserOp.moreIndent(File.editor)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "减少列表缩进"
+  keyword = "ListLessIndent"
+  callback = "() => File.editor.UserOp.lessIndent(File.editor)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "在上方插入段落"
+  keyword = "InsertParagraphAbove"
+  callback = "() => File.editor.UserOp.insertParagraph(true)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "在下方插入段落"
+  keyword = "InsertParagraphBelow"
+  callback = "() => File.editor.UserOp.insertParagraph(false)"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "链接引用"
+  keyword = "DefLink"
+  callback = "() => File.editor.stylize.insertBlock('def_link')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "脚注"
+  keyword = "DefFootnote"
+  callback = "() => File.editor.stylize.insertBlock('def_footnote')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "水平分割线"
+  keyword = "Hr"
+  callback = "() => File.editor.stylize.insertBlock('hr')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "内容目录"
+  keyword = "Toc"
+  callback = "() => File.editor.stylize.insertBlock('toc')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "📝"
+  hint = "元信息"
+  keyword = "FrontMatter"
+  callback = "() => File.editor.stylize.insertMetaBlock()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "粗体"
+  keyword = "Strong"
+  callback = "() => File.editor.stylize.toggleStyle('strong')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "斜体"
+  keyword = "Em"
+  callback = "() => File.editor.stylize.toggleStyle('em')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "下划线"
+  keyword = "Underline"
+  callback = "() => File.editor.stylize.toggleStyle('underline')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "代码"
+  keyword = "Code"
+  callback = "() => File.editor.stylize.toggleStyle('code')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "内联公式"
+  keyword = "InlineMath"
+  callback = "() => File.editor.stylize.toggleStyle('inline_math')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "删除线"
+  keyword = "Del"
+  callback = "() =>File.editor.stylize.toggleStyle('del')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "注释"
+  keyword = "Comment"
+  callback = "() => File.editor.stylize.toggleStyle('comment')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "超链接"
+  keyword = "Link"
+  callback = "() => File.editor.stylize.toggleStyle('link')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "图像"
+  keyword = "Image"
+  callback = "() => File.editor.stylize.toggleStyle('image')"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "👕"
+  hint = "清除样式"
+  keyword = "ClearStyle"
+  callback = "() => File.editor.stylize.clearStyle()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "🧰"
+  hint = "至顶部"
+  keyword = "JumpTop"
+  callback = "() => File.editor.selection.jumpTop()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "🧰"
+  hint = "至底部"
+  keyword = "JumpBottom"
+  callback = "() => File.editor.selection.jumpBottom()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "🧰"
+  hint = "至行首"
+  keyword = "JumpToLineStart"
+  callback = "() => File.editor.selection.jumpToLineStart()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "🧰"
+  hint = "至行尾"
+  keyword = "JumpToLineEnd"
+  callback = "() => File.editor.selection.jumpToLineEnd()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "command"
+  icon = "🧰"
+  hint = "帮助"
+  keyword = "Help"
+  callback = "() => this.call()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "gen-snp"
+  icon = "🧩"
+  hint = "日期时间"
+  keyword = "Datetime"
+  callback = "() => (new Date()).toLocaleString('chinese', {hour12: false})"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "gen-snp"
+  icon = "🧩"
+  hint = "日期"
+  keyword = "Date"
+  callback = "() => {let day = new Date(); return `${day.getFullYear()}/${day.getMonth() + 1}/${day.getDate()}`}"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "gen-snp"
+  icon = "🧩"
+  hint = "时间"
+  keyword = "Time"
+  callback = "() => {let day = new Date(); return `${day.getHours()}:${day.getMinutes()}:${day.getSeconds()}`}"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "gen-snp"
+  icon = "🧩"
+  hint = "时间戳"
+  keyword = "Timestamp"
+  callback = "() => (new Date()).getTime().toString()"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "gen-snp"
+  icon = "🧩"
+  hint = "星期"
+  keyword = "Week"
+  callback = "() => '星期' + '日一二三四五六'.charAt((new Date()).getDay())"
+
+  [[slash_commands.COMMANDS]]
+  enable = true
+  type = "snippet"
+  icon = "🧩"
+  hint = ""
+  keyword = "SnippetExample"
+  callback = "https://github.com/obgnail/typora_plugin"
+
+[right_click_menu]
+ENABLE = true
+NAME = "右键菜单"
+CLICKABLE = true
+DO_NOT_HIDE = false
+MENU_MIN_WIDTH = "default"
+HIDE_OTHER_OPTIONS = false
+FIND_LOST_PLUGIN = true
+
+  [[right_click_menu.MENUS]]
+  NAME = "不常用插件"
+  LIST = [
+  "window_tab",
+  "fence_enhance",
+  "mindmap",
+  "auto_number",
+  "datatables",
+  "resize_image",
+  "resize_table",
+  "collapse_list",
+  "truncate_text",
+  "export_enhance",
+  "cipher",
+  "right_click_menu",
+  "help",
+  "---",
+  "go_top",
+  "text_stylize",
+  "toolbar",
+  "slash_commands",
+  "preferences",
+  "---",
+  "file_counter",
+  "json_rpc",
+  "mermaid_replace",
+  "test"
+]
+
+  [[right_click_menu.MENUS]]
+  NAME = "常用插件"
+  LIST = [
+  "commander",
+  "markmap",
+  "collapse_paragraph",
+  "custom",
+  "---",
+  "search_multi",
+  "multi_highlighter",
+  "outline",
+  "md_padding",
+  "blur",
+  "read_only"
+]
+
+[pie_menu]
+ENABLE = true
+NAME = "圆盘菜单"
+CLICKABLE = true
+HOTKEY = ""
+MODIFIER_KEY = "ctrl"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-book"
+  CALLBACK = "read_only"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-asterisk"
+  CALLBACK = "blur"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-eye"
+  CALLBACK = "custom.noImageMode"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-adjust"
+  CALLBACK = "custom.darkMode"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-file-text"
+  CALLBACK = "custom.templater"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-align-justify"
+  CALLBACK = "md_padding"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-paste"
+  CALLBACK = "custom.fullPathCopy"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-th-list"
+  CALLBACK = "custom.toc"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-sitemap"
+  CALLBACK = "markmap.toggle_toc"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-font"
+  CALLBACK = "text_stylize"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-search"
+  CALLBACK = "search_multi"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-image"
+  CALLBACK = "custom.imageReviewer"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-filter"
+  CALLBACK = "custom.resourceOperation"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-wrench"
+  CALLBACK = "preferences"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-calendar"
+  CALLBACK = "outline"
+
+  [[pie_menu.BUTTONS]]
+  ICON = "fa fa-code"
+  CALLBACK = "commander"
+
+[preferences]
+ENABLE = true
+NAME = "启停插件"
+CLICKABLE = true
+IGNORE_PLUGINS = [
+  "preferences",
+  "right_click_menu",
+  "custom",
+  "json_rpc",
+  "mermaid_replace",
+  "openInTotalCommander",
+  "redirectLocalRootUrl"
+]
+
+[file_counter]
+ENABLE = false
+NAME = "文件计数"
+CLICKABLE = false
+IGNORE_MIN_NUM = 0
+MAX_SIZE = 2_000_000
+ALLOW_EXT = [
+  "",
+  "md",
+  "markdown",
+  "mdown",
+  "mmd",
+  "text",
+  "txt",
+  "rmarkdown",
+  "mkd",
+  "mdwn",
+  "mdtxt",
+  "rmd",
+  "mdtext",
+  "apib"
+]
+IGNORE_FOLDERS = [ ".git", "node_modules" ]
+CTRL_WHEEL_TO_SCROLL_SIDEBAR_MENU = true
+FONT_WEIGHT = "bold"
+COLOR = ""
+BACKGROUND_COLOR = ""
+BEFORE_TEXT = ""
+
+[help]
+ENABLE = true
+NAME = "帮助"
+CLICKABLE = true
+
+[json_rpc]
+ENABLE = false
+NAME = "外部操纵Typora"
+CLICKABLE = false
+
+  [json_rpc.SERVER_OPTIONS]
+  port = 5_080
+  host = "127.0.0.1"
+  path = "/"
+  strict = false
+
+[mermaid_replace]
+ENABLE = false
+NAME = "mermaid组件替换"
+CLICKABLE = false
+
+[test]
+ENABLE = false
+NAME = "测试专用"
+CLICKABLE = false
+
+[collapse_table]
+ENABLE = true
+
+[article_uploader]
+ENABLE = false
